@@ -3,7 +3,7 @@
 **ARX™** is a proprietary, deterministic real-time operating system (RTOS) designed for embedded systems and performance-critical systems.  
 It is built from first principles with a focus on predictability, low overhead, and architectural clarity.
 
-##  💻 Supported Architectures  
+## Supported Architectures  
 * **ARM**
     * **ARM32:** Support for legacy and deterministic M/R-profile cores.
     * **ARM64:** High-performance 64-bit support (v8-A/R architectures).
@@ -13,16 +13,16 @@ It is built from first principles with a focus on predictability, low overhead, 
     - Validated on **SHAKTI C-Class** (Indian Indigenous SoC) and QEMU Virtual platforms.
     - Portable and extensible for custom RISC-V implementations.
     
-## ⚙️ Key Features
+## Key Features
 * **Deterministic Scheduler:** Priority-based preemptive scheduling.
 * **Dual-License Model:** GPLv3 for community use; Commercial for proprietary products.
 * **Lightweight:** Designed for memory-constrained environments (MPU-ready).
 * **Developer Efficiency:** Engineered for simplicity—lowering effort, cost, and time-to-market.
 
-## 🚧 ARX Status
+## ARX Status
 - Active development (core implementation is private).
 
-## 📦 SDK & Distribution
+## SDK & Distribution
 - The SDK implementation is maintained in a private repository.
 - This public repository provides documentation, architecture insights, and project overview .
 - Demo-ready binaries will be released here soon.  
