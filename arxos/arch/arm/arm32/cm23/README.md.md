@@ -1,17 +1,17 @@
 # ARX RTOS – ARM32 (Cortex-M23) Binary Placeholder
 
-🚧 This directory is reserved for **ARM32 (Cortex-M23) ARX RTOS binaries**.
+This directory is reserved for **ARM32 (Cortex-M23) ARX RTOS binaries**.
 
 ---
 
-## 📦 Status
+## Status
 
 Binaries for Cortex-M23 targets are **not yet uploaded**.
 Support will be added in upcoming releases.
 
 ---
 
-## 🎯 What to Expect
+## What to Expect
 
 Once available, this directory will include:
 
@@ -21,7 +21,7 @@ Once available, this directory will include:
 
 ---
 
-## ▶️ Expected Outcome
+## Expected Outcome
 
 These binaries will allow you to:
 
@@ -31,7 +31,7 @@ These binaries will allow you to:
 
 ---
 
-## ⚙️ Execution Environment
+## Execution Environment
 
 Initial support will focus on:
 
@@ -42,7 +42,7 @@ Initial support will focus on:
 
 ---
 
-## 🔄 Roadmap
+## Roadmap
 
 * Improved Cortex-M23 emulation configurations
 * Evaluation on real hardware platforms
@@ -50,7 +50,7 @@ Initial support will focus on:
 
 ---
 
-## 📌 Note
+## Note
 
 Due to limited direct board support for Cortex-M23 in QEMU, initial releases will focus on **emulated environments rather than specific development boards**.
 
