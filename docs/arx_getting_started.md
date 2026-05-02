@@ -1,6 +1,6 @@
 # ARX RTOS – Getting Started
 
-This guide explains how to **run prebuilt ARX RTOS binaries**.
+This guide explains how to **run prebuilt ARX RTOS binaries**.  
 ⚠️ This version does **not cover build environment setup**.
 
 ---
