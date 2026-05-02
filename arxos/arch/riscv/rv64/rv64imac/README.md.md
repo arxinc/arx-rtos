@@ -1,17 +1,17 @@
 # ARX RTOS – RISC-V (RV64IMAC) Binary Placeholder
 
-🚧 This directory is reserved for **RISC-V RV64IMAC ARX RTOS binaries**.
+This directory is reserved for **RISC-V RV64IMAC ARX RTOS binaries**.
 
 ---
 
-## 📦 Status
+## Status
 
 Binaries for RV64IMAC targets are **not yet available**.
 Support will be added in upcoming releases.
 
 ---
 
-## 🎯 What to Expect
+## What to Expect
 
 Once available, this directory will include:
 
@@ -21,7 +21,7 @@ Once available, this directory will include:
 
 ---
 
-## ▶️ Expected Outcome
+## Expected Outcome
 
 These binaries will allow you to:
 
@@ -31,7 +31,7 @@ These binaries will allow you to:
 
 ---
 
-## ⚙️ Execution Environment
+## Execution Environment
 
 Initial support will focus on:
 
@@ -50,7 +50,7 @@ Initial support will focus on:
 
 ---
 
-## 🔄 Roadmap
+## Roadmap
 
 * Expanded RV64IMAC platform coverage
 * Validation on real hardware targets
@@ -59,7 +59,7 @@ Initial support will focus on:
 
 ---
 
-## 📌 Note
+## Note
 
 Initial releases prioritize **emulation (QEMU)** for accessibility and consistency.
 Behavior in emulation may differ slightly from specific hardware implementations.
