@@ -1,17 +1,17 @@
 # ARX RTOS – ARM32 (Cortex-M0) Binary Placeholder
 
-🚧 This directory is reserved for **ARM32 (Cortex-M0) ARX RTOS binaries**.
+This directory is reserved for **ARM32 (Cortex-M0) ARX RTOS binaries**.
 
 ---
 
-## 📦 Status
+## Status
 
 Binaries for Cortex-M0 targets are **not yet uploaded**.
 Support will be added in upcoming releases.
 
 ---
 
-## 🎯 What to Expect
+## What to Expect
 
 Once available, this directory will include:
 
@@ -21,7 +21,7 @@ Once available, this directory will include:
 
 ---
 
-## ▶️ Expected Outcome
+## Expected Outcome
 
 These binaries will allow you to:
 
@@ -31,7 +31,7 @@ These binaries will allow you to:
 
 ---
 
-## 🔄 Roadmap
+## Roadmap
 
 Planned Cortex-M0 targets may include:
 
@@ -40,7 +40,7 @@ Planned Cortex-M0 targets may include:
 
 ---
 
-## 📌 Note
+## Note
 
 This placeholder maintains the repository structure and indicates upcoming ARM32 (Cortex-M0) support.
 Content will be updated as binaries become available.
