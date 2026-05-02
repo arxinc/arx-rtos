@@ -31,7 +31,7 @@ These binaries will allow you to:
 
 ---
 
-## ⚙️ Execution Environment
+## Execution Environment
 
 Initial support will focus on:
 
