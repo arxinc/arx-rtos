@@ -1,17 +1,17 @@
 # ARX RTOS – RISC-V (RV32IMAFC) Binary Placeholder
 
-🚧 This directory is reserved for **RISC-V RV32IMAFC ARX RTOS binaries**.
+This directory is reserved for **RISC-V RV32IMAFC ARX RTOS binaries**.
 
 ---
 
-## 📦 Status
+## Status
 
 Binaries for RV32IMAFC targets are **not yet fully available**.
 Initial support is being rolled out and will expand in upcoming releases.
 
 ---
 
-## 🎯 What to Expect
+## What to Expect
 
 Once available, this directory will include:
 
@@ -21,7 +21,7 @@ Once available, this directory will include:
 
 ---
 
-## ▶️ Expected Outcome
+## Expected Outcome
 
 These binaries will allow you to:
 
@@ -31,7 +31,7 @@ These binaries will allow you to:
 
 ---
 
-## ⚙️ Execution Environment
+## Execution Environment
 
 Initial support will focus on:
 
@@ -47,7 +47,7 @@ Initial support will focus on:
 
 ---
 
-## 🔄 Roadmap
+## Roadmap
 
 * Expanded RV32IMAFC platform coverage
 * Improved execution scripts and examples
@@ -56,7 +56,7 @@ Initial support will focus on:
 
 ---
 
-## 📌 Note
+## Note
 
 Initial releases prioritize **emulation (QEMU)** for accessibility and consistency.
 Floating-point behavior in emulation may differ slightly from specific hardware implementations.
