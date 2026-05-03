@@ -15,7 +15,7 @@ This guide explains how to **run prebuilt ARX RTOS binaries**.
 
 ---
 
-## 🎯 What You Can Do Now
+## What You Can Do Now
 
 You can:
 
@@ -30,7 +30,7 @@ You cannot yet:
 
 ---
 
-## 🧰 Requirements
+## Requirements
 
 To run the provided `.bin` files, ensure the following:
 
@@ -78,7 +78,7 @@ qemu-system-riscv32 \
 
 ---
 
-## ▶️ Running the Binary
+## Running the Binary
 
 ### Option A: Using provided script (recommended)
 
@@ -99,7 +99,7 @@ qemu.bat
 
 ---
 
-## 📂 Directory Layout (Binary only)
+## Directory Layout (Binary only)
 
 ```text
 ```text
@@ -166,7 +166,7 @@ ARX_SDK_A2026.04.30/
 
 ---
 
-## 🔄 Future Updates
+## Future Updates
 
 * Additional architectures will be added progressively:
 
@@ -177,7 +177,7 @@ ARX_SDK_A2026.04.30/
 
 ---
 
-## ⚠️ Notes
+## Notes
 
 * These binaries are **evaluation builds**
 * Interfaces and behavior may change
@@ -185,7 +185,7 @@ ARX_SDK_A2026.04.30/
 
 ---
 
-## 🛠️ Troubleshooting
+## Troubleshooting
 
 ### QEMU not found
 
@@ -203,7 +203,7 @@ ARX_SDK_A2026.04.30/
 
 ---
 
-## 📌 Summary
+## Summary
 
 * No build setup required
 * Use provided `.bin` + QEMU
