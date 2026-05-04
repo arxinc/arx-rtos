@@ -41,7 +41,10 @@ Install QEMU with ARM/RISC-V support.
 #### Verify installation:
 
 ```bash
+qemu-system-arm --version
+qemu-system-aarch64 --version
 qemu-system-riscv32 --version
+qemu-system-riscv64 --version
 ```
 
 ---
@@ -71,10 +74,19 @@ You can run binaries using:
 qemu-system-riscv32 \
   -machine virt \
   -nographic \
+  -bios none \
+  -serial mon:stdio \
+  -kernel arxos.bin
+
+qemu-system-riscv64 \
+  -machine virt \
+  -nographic \
+  -bios none \
+  -serial mon:stdio \
   -kernel arxos.bin
 ```
 
-(Exact command may vary per release)
+(Exact command may vary per release, please check the compatibilty)
 
 ---
 
