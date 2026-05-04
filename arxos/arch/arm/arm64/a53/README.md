@@ -1,12 +1,12 @@
-# ARX RTOS – ARM32 (Cortex-M33) Binary Placeholder
+# ARX RTOS – ARM32 (Cortex-A53) Binary Placeholder
 
-This directory is reserved for **ARM32 (Cortex-M33) ARX RTOS binaries**.
+This directory is reserved for **ARM64 (Cortex-A53) ARX RTOS binaries**.
 
 ---
 
 ## Status
 
-Binaries for Cortex-M33 targets are **not yet uploaded**.
+Binaries for Cortex-A53 targets are **not yet uploaded**.
 Support will be added in upcoming releases.
 
 ---
@@ -15,7 +15,7 @@ Support will be added in upcoming releases.
 
 Once available, this directory will include:
 
-* `*.bin` → Flashable ARX RTOS images for Cortex-M33 platforms
+* `*.bin` → Flashable ARX RTOS images for Cortex-A53 platforms
 * Execution notes for emulator-based testing (QEMU)
 * Optional run/debug scripts
 
@@ -25,7 +25,7 @@ Once available, this directory will include:
 
 These binaries will allow you to:
 
-* Run ARX RTOS in a Cortex-M33 compatible emulation environment
+* Run ARX RTOS in a Cortex-A53 compatible emulation environment
 * Observe boot logs and runtime behavior
 * Evaluate a sample workload consisting of **four RTOS tasks**, controlled by a test script
 
@@ -36,16 +36,14 @@ These binaries will allow you to:
 Initial support will focus on:
 
 * Generic ARM Cortex-M class emulation using QEMU
-* Configurations aligned with Cortex-M33 architecture
+* Configurations aligned with Cortex-A53 architecture
 
-👉 TrustZone (secure/non-secure execution) support will be introduced progressively.
 
 ---
 
 ## Roadmap
 
-* Enhanced Cortex-M33 emulation configurations
-* Gradual introduction of TrustZone-enabled scenarios
+* Enhanced Cortex-A53 emulation configurations
 * Validation on real hardware platforms
 * Improved tooling and execution scripts
 
@@ -53,6 +51,6 @@ Initial support will focus on:
 
 ## Note
 
-Due to limited direct board support for Cortex-M33 in QEMU, initial releases will focus on **emulated environments rather than specific development boards**.
+Due to limited direct board support for Cortex-A53 in QEMU, initial releases will focus on **emulated environments rather than specific development boards**.
 
 This placeholder maintains the repository structure and indicates upcoming Cortex-M33 support.
