@@ -1,4 +1,4 @@
-# ARX RTOS – ARM32 (Cortex-A53) Binary Placeholder
+# ARX RTOS – ARM64 (Cortex-A53) Binary Placeholder
 
 This directory is reserved for **ARM64 (Cortex-A53) ARX RTOS binaries**.
 
@@ -35,7 +35,7 @@ These binaries will allow you to:
 
 Initial support will focus on:
 
-* Generic ARM Cortex-M class emulation using QEMU
+* Generic ARM Cortex-A class emulation using QEMU
 * Configurations aligned with Cortex-A53 architecture
 
 
