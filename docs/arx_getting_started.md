@@ -101,6 +101,13 @@ qemu.bat
 * Double-click or run via terminal
 * QEMU will start and load the binary
 
+* Before running the script, you must update the paths inside *qemu.bat*
+* Set the correct path to your QEMU executables
+* Set the correct path to arxos.bin
+* Example (inside qemu.bat):  
+set QEMU_PATH=C:\path\to\qemu\bin  
+set ARX_BIN=C:\path\to\arxos.bin
+
 ---
 
 ### Option B: Manual (Linux / advanced users)
