@@ -53,4 +53,4 @@ Initial support will focus on:
 
 Due to limited direct board support for Cortex-A53 in QEMU, initial releases will focus on **emulated environments rather than specific development boards**.
 
-This placeholder maintains the repository structure and indicates upcoming Cortex-M33 support.
+This placeholder maintains the repository structure and indicates upcoming Cortex-A53 support.
