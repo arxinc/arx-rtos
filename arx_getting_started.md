@@ -68,7 +68,7 @@ This script:
 
 ### 3. Linux Users (manual execution)
 
-You can run binaries using:
+You can run binaries using following syntax for Virtual board:
 
 ```bash
 qemu-system-riscv32 \
