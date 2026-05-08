@@ -6,23 +6,23 @@ This directory is reserved for **RISC-V RV64GC ARX RTOS binaries**.
 
 ## Status
 
-Shakti-C support is currently available
+Shakti-C support is currently available  
 Other binaries will be added progressively in upcoming releases
 
 ---
 
 ## What to Expect
 
-Each respective sub-folder will contain binaries in the following format:  
+Each respective sub-folder will contain binaries & script in the following format:  
 `<board>_<subsys>_arxos.bin`
 
 Example:  
-shakti_c_kernel_arxos.bin
+shakti_c_newt_arxos.bin  
   
-* The directory may also include:  
+* The directory also include:  
 qemu.bat → QEMU execution helper script  
-Platform-specific execution notes  
-Supporting configuration files(If)
+README that explain the setup to run qemu.bat and about arsos.bin  
+Supporting configuration files(If Any)
   
 ---
 
@@ -32,7 +32,10 @@ These binaries will allow you to:
 
 * Run ARX RTOS in a RISC-V RV64GC compatible environment
 * Observe system boot and runtime behavior
-* Evaluate a sample workload consisting of **four RTOS tasks**, controlled by a test script
+* Evaluate a sample workload consisting of **four RTOS tasks**
+* Events are issued to event class Task randomly
+* Periodic class task released every 10 ms
+* Please check the functional view log for more detail.
 * Validate task scheduling and ISR-triggered forced system calls
 
 ---
