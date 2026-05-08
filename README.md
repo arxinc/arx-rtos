@@ -14,18 +14,47 @@ It is built from first principles with a focus on predictability, low overhead, 
     - Portable and extensible for custom RISC-V implementations.
     
 ## Key Features
-* **Deterministic Scheduler:** Priority-based preemptive scheduling.
-* **Dual-License Model:** GPLv3 for community use; Commercial for proprietary products.
-* **Lightweight:** Designed for memory-constrained environments (MPU-ready).
-* **Developer Efficiency:** Engineered for simplicity—lowering effort, cost, and time-to-market.
+- **Deterministic Scheduler**
+  - Priority-based preemptive scheduling
 
-## ARX Status
-- Active development (core implementation is private).
+- **Lightweight Design**
+  - Optimized for low-memory environments
+  - MPU-ready architecture
 
-## SDK & Distribution
-- The SDK implementation is maintained in a private repository.
-- This public repository provides documentation, architecture insights, and project overview .
-- Demo-ready binaries will be released here soon.  
+- **Portable Architecture**
+  - Clean abstraction layers for cross-platform portability
+
+- **Developer-Oriented Design**
+  - Simplified architecture for efficient integration and bring-up
+
+- **Hard Real-Time Focus**
+  - Designed for predictable timing behavior and bounded execution
+
+---
+
+## Project Status
+
+- Active development
+- Core SDK implementation is currently private
+- Public repository currently provides:
+  - Demonstration binaries
+  - Platform validation artifacts
+
+---
+
+## Demo Binaries
+
+⚠️ ARX RTOS binaries provided in this repository are intended for evaluation,  
+educational, and demonstration purposes only.
+
+Current focus areas include:
+
+- QEMU-based execution
+- RISC-V, ARM validation
+- SHAKTI C-Class platform support
+- Scheduler and ISR validation workloads
+
+---
 
 ## Documentation  
 
@@ -59,9 +88,10 @@ Please refer to the following documents for detailed explanations:
   Coding style, conventions, and contribution standards for ARX development.   
 
 ## Licensing
-ARX is dual-licensed by **ARX Software System**. 
-* For open-source projects, see `legal/COPYING` (GPLv3).
-* For commercial integration, see `legal/LICENSE_COMMERCIAL.txt`.
+Please read documents available at /Legal/*  
+LICENSE.md  
+DISCLAIMER.md  
+THIRD_PARTY.md  
 
 ---
 © 2026 ARX Software System. All rights reserved.
