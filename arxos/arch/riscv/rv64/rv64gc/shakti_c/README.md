@@ -146,6 +146,5 @@ Typical console activity may include:
 ```
 
 The exact output may vary depending on build configuration.
----
 
-This placeholder maintains the repository structure and indicates upcoming RV64GC support.
+---
