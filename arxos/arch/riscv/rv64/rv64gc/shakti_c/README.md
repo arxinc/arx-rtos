@@ -127,10 +127,22 @@ After execution:
 
 Typical console activity may include:
 
-```text
-ARX boot banner
+```console
++------------------------------------------------------------------------------+
+| Welcome to ARX™.                                                             |
+| Copyright © 2026 by ARX Software System NITK STEP Surathkal.                 |
+| ARX (Advanced Realtime Xecutables), A Preemptive RTOS.                       |
+| Lightweight | Deterministic | Scalable                                       |
++------------------------------------------------------------------------------+
+:
+:
 [ DONE ] Kernel Initialization.
 [ KERN ] Entering scheduler...
+
+[     0.064s][C0][USR][PID: 1][INFO]: Event CLS
+[     0.066s][C0][USR][PID: 2][INFO]: Periodic
+[     0.068s][C0][USR][PID: 3][INFO]: Front-end
+[     0.070s][C0][USR][PID: 4][INFO]: Background
 ```
 
 The exact output may vary depending on build configuration.
