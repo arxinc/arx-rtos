@@ -1,84 +1,139 @@
-# ARX RTOS – RISC-V (RV64GC) Binary Placeholder
-
-This directory is reserved for **RISC-V RV64GC ARX RTOS binaries**.
+# ARX RTOS – RV64 Shakti Class-C Binary Testing Procedure on QEMU
 
 ---
 
-## Status
+## Overview
 
-Binaries for RV64GC targets are **not yet available**.
-Support will be added in upcoming releases.
+This document describes the procedure to execute and test the ARX RTOS RV64 Shakti Class-C binary using QEMU.
+The provided binary includes:
 
----
-
-## What to Expect
-
-Once available, this directory will include:
-
-* `*.bin` / `*.elf` → Bootable ARX RTOS images for RV64GC platforms
-* Execution scripts (e.g., `qemu.bat`) for quick start
-* Minimal platform-specific notes
+* 4 ARX tasks, Each class 1 task is built with executable
+* System-level forced signals(Shutdown and Forced Idle) are asserted randomly from Interrupt Context.
+* Periodic class task released every 10 ms.
 
 ---
 
-## Expected Outcome
+# Prerequisite
 
-These binaries will allow you to:
+Ensure the following files are available in the same folder:
 
-* Run ARX RTOS in a RISC-V RV64GC compatible environment
-* Observe system boot and runtime behavior
-* Evaluate a sample workload consisting of **four RTOS tasks**, controlled by a test script
+* `arxos.bin`
+* `qemu.bat`
 
----
+Also ensure that:
 
-## Execution Environment
-
-Initial support will focus on:
-
-* RISC-V 64-bit emulation using QEMU (`riscv64`, `virt` machine)
-* Support for:
-
-  * Base integer + atomic instructions (I, M, A)
-  * Floating-point (F, D)
-  * Compressed instructions (C extension)
-* Console-based execution (`-nographic`)
-
-👉 Board-specific configurations will be introduced after validation.
+* QEMU for RISC-V is installed
 
 ---
 
-## Shakti Class C (RV64GC)
+# Configuration Steps
 
-Support for **Shakti Class C (RV64GC)** platforms will be introduced in a later phase.
+## Step 1: Update QEMU Path
 
-### ⚠️ Important Note
+Open the file:
 
-* Current releases **do not include direct support** for Shakti Class C hardware
-* Initial enablement will be validated in emulation before hardware bring-up
-* Execution scripts (e.g., `qemu.bat`) may require:
+```text
+qemu.bat
+```
+- Update the QEMU executable path
+- Provide the full path to the QEMU executable.
 
-  * Updating paths to QEMU executables
-  * Setting the correct ARX binary path (`arxos.bin` / `.elf`)
-  * Adjusting machine or CPU configuration if needed
-
-👉 Users targeting Shakti platforms should expect **additional setup steps** once support is released (e.g., toolchain alignment, platform-specific configuration, and boot flow changes).
-
----
-
-## Roadmap
-
-* Expanded RV64GC platform coverage
-* Validation on real hardware targets (including Shakti Class C)
-* Improved execution scripts and examples
-* Enhanced documentation for setup and usage
+Example:
+```text
+set QEMU_PATH=C:\qemu\qemu-system-riscv64.exe
+```
 
 ---
 
-## Note
+## Step 2: Update Binary Path
 
-Initial releases prioritize **emulation using QEMU** for accessibility and consistency.
-Behavior in emulation may differ slightly from actual hardware implementations such as Shakti Class C.
+Update the ARX RTOS binary path
+```text
+arxos.bin
+```
+Example:
+```text
+set ARX_BIN=C:\arx_test\arxos.bin
+```
 
+---
+
+# Execution Procedure
+
+## Step 3: Open Command Prompt with Administrator Privileges
+
+* Open Windows Start Menu
+* Search for:
+
+```text
+cmd
+```
+
+* Right-click Command Prompt
+* Select:
+
+```text
+Run as Administrator
+```
+
+---
+
+## Step 4: Change Directory
+
+Navigate to the folder containing:
+
+* `arxos.bin`
+* `qemu.bat`
+
+Example:
+
+```text
+cd C:\arx_test
+```
+
+---
+
+## Step 5: Execute QEMU Launch Command
+
+Run the following command:
+
+```text
+C:\Users\yours\Desktop\arx_test>qemu.bat riscv64 shakti_c
+```
+
+---
+
+# Expected Behavior
+
+After execution:
+
+* QEMU will start the RV64 Shakti Class C platform
+* ARX RTOS boot logs will appear on the console
+* Task scheduling activity should be visible
+* ISR-triggered system calls and assertions will execute
+* Console output should indicate successful initialization and task execution
+
+---
+
+# Notes
+
+* Ensure no other application is using the configured QEMU ports/resources
+* Administrator privilege is mandatory for proper execution
+* Any boot failure or assertion output should be captured and shared for analysis
+
+---
+
+# Expected Console Observation
+
+Typical console activity may include:
+
+```text
+ARX boot banner
+[ DONE ] Kernel Initialization.
+[ KERN ] Entering scheduler...
+```
+
+The exact output may vary depending on build configuration.
 ---
 
 This placeholder maintains the repository structure and indicates upcoming RV64GC support.
