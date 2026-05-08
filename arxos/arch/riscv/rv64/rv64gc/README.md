@@ -6,18 +6,26 @@ This directory is reserved for **RISC-V RV64GC ARX RTOS binaries**.
 
 ## Status
 
-Binaries for RV64GC targets are **not yet available**.
-Support will be added in upcoming releases.
+- Shakti-C support is currently available
+- Other binaries will be added progressively in upcoming releases
+
 
 ---
 
 ## What to Expect
 
-Once available, this directory will include:
+Each respective folder will contain binaries in the following format:
+```text
+<board>_<subsys>_arxos.bin
 
-* `*.bin` / `*.elf` → Bootable ARX RTOS images for RV64GC platforms
-* Execution scripts (e.g., `qemu.bat`) for quick start
-* Minimal platform-specific notes
+Example:
+shakti_c_kernel_arxos.bin
+
+The directory may also include:
+qemu.bat → QEMU execution helper script  
+Platform-specific execution notes  
+Supporting configuration files(If)    
+
 
 ---
 
@@ -28,6 +36,7 @@ These binaries will allow you to:
 * Run ARX RTOS in a RISC-V RV64GC compatible environment
 * Observe system boot and runtime behavior
 * Evaluate a sample workload consisting of **four RTOS tasks**, controlled by a test script
+* Validate task scheduling and ISR-triggered forced system calls
 
 ---
 
@@ -35,12 +44,8 @@ These binaries will allow you to:
 
 Initial support will focus on:
 
-* RISC-V 64-bit emulation using QEMU (`riscv64`, `virt` machine)
-* Support for:
-
-  * Base 64-bit integer + atomic instructions (I, M, A)
-  * Floating-point (single + double precision: F, D)
-  * Compressed instructions (C extension)
+* RISC-V 64-bit emulation using QEMU (`riscv64`, `Shakti-C`, `virt` machine)
+* Shakti-C compatible configurations
 * Console-based execution (`-nographic`)
 
 👉 Board-specific configurations will be introduced after validation.
@@ -50,6 +55,7 @@ Initial support will focus on:
 ## Roadmap
 
 * Expanded RV64GC platform coverage
+* Additional board-specific binaries
 * Validation on real hardware targets
 * Improved execution scripts and examples
 * Enhanced documentation for setup and usage
