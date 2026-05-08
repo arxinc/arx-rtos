@@ -36,11 +36,11 @@ Open the file:
 qemu.bat
 ```
 - Update the QEMU executable path
-- Provide the full path to the QEMU executable.
+- Provide the full path of the bin folder to the the QEMU executable `qemu-system-riscv64.exe`
 
 Example:
 ```text
-set QEMU_PATH=C:\qemu\qemu-system-riscv64.exe
+set QEMU_PATH_RISCV=C:/< Yours PC >/qemu-riscv/7.0.0-1.1/.content/bin
 ```
 
 ---
@@ -53,7 +53,7 @@ arxos.bin
 ```
 Example:
 ```text
-set ARX_BIN=C:\arx_test\arxos.bin
+set ARXIMAGE=C:\arx_test\arxos.bin
 ```
 
 ---
