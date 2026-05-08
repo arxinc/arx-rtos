@@ -122,7 +122,35 @@ After execution:
 * Any boot failure or assertion output should be captured and shared for analysis
 
 ---
+## Demo Task Configuration
 
+### Global Configuration
+
+| Parameter          | Value                 |
+|--------------------|-----------------------|
+| Minimum Stack Size | `4096 Bytes`          |
+
+---
+
+### Task Details
+
+| Task   | WCET | Release Period | Deadline | Priority | Task Class |
+|--------|------|----------------|----------|----------|------------|
+| Task-1 | `2`  | `5`            | `3`      | `0`      | Event      |
+| Task-2 | `2`  | `10`           | `5`      | `0`      | Periodic   |
+| Task-3 | `2`  | `20`           | `7`      | `0`      | Front-End  |
+| Task-4 | `2`  | `40`           | `9`      | `0`      | Background |
+
+---
+
+### Parameter Description
+
+| Parameter      | Description                     |
+|----------------|---------------------------------|
+| WCET           | Worst Case Execution Time       |
+| Release Period | Periodicity of task activation  |
+| Deadline       | Maximum allowed completion time |
+| Priority       | Static scheduling priority      |
 # Expected Console Observation
 
 Typical console activity may include:
