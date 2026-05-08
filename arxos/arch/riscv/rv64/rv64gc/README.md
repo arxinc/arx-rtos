@@ -6,27 +6,24 @@ This directory is reserved for **RISC-V RV64GC ARX RTOS binaries**.
 
 ## Status
 
-- Shakti-C support is currently available
-- Other binaries will be added progressively in upcoming releases
-
+Shakti-C support is currently available
+Other binaries will be added progressively in upcoming releases
 
 ---
 
 ## What to Expect
 
-Each respective folder will contain binaries in the following format:
-```text
-<board>_<subsys>_arxos.bin
+Each respective sub-folder will contain binaries in the following format:  
+`<board>_<subsys>_arxos.bin`
 
-Example:
+Example:  
 shakti_c_kernel_arxos.bin
-
-The directory may also include:
+  
+* The directory may also include:  
 qemu.bat → QEMU execution helper script  
 Platform-specific execution notes  
-Supporting configuration files(If)    
-
-
+Supporting configuration files(If)
+  
 ---
 
 ## Expected Outcome
@@ -48,8 +45,6 @@ Initial support will focus on:
 * Shakti-C compatible configurations
 * Console-based execution (`-nographic`)
 
-👉 Board-specific configurations will be introduced after validation.
-
 ---
 
 ## Roadmap
@@ -66,5 +61,7 @@ Initial support will focus on:
 
 Initial releases prioritize **emulation (QEMU)** for accessibility and consistency.
 Behavior in emulation may differ slightly from specific hardware implementations.
+
+This placeholder maintains the repository structure and indicates upcoming RV64GC support.
 
 This placeholder maintains the repository structure and indicates upcoming RV64GC support.
