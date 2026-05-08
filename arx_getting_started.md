@@ -165,20 +165,13 @@ ARX_SDK_A2026.04.30/
 │   │       │   │   ├── virt/
 │   │       │   │   │   ├── arxos.bin/
 │   │       │   │   │   ├── README.md
-│   │       │   │   ├── <Future Upload>/
-│   │
-│   ├── tools/
-│
-├── docs/
-│   ├── arx_documents.md
-│   ├── arx_getting_started.md
-│    
+│               │   ├── <Future Upload>/
 ├── legal/
-│   ├── COPYING
+│   ├── DISCLAIMER
 │   ├── LICENSE
-│   ├── LICENSE_COMMERCIAL
-│   ├── NOTICE
+│   ├── THIRD_PARTY
 │   
+├── arx_getting_started.md
 ├── README.md
 ```
 
