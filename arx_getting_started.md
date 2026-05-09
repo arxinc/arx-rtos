@@ -105,9 +105,10 @@ qemu.bat
 * Set the correct path to your QEMU executables
 * Set the correct path to arxos.bin
 * Example (inside *qemu.bat*):  
-set QEMU_PATH=C:\path\to\qemu\bin  
-set ARX_BIN=C:\path\to\arxos.bin
-
+set QEMU_PATH_RISCV=C:\path\to\qemu\bin  
+set ARXIMAGE=C:\path\to\arxos.bin  
+C:\Users\Yours> cd C:\path\arx-rtos\arxos\arch\riscv\rv64\rv64gc\shakti_c  
+C:\path\arx-rtos\arxos\arch\riscv\rv64\rv64gc\shakti_c> qemu.bat riscv64 shakti_c
 ---
 
 ### Option B: Manual (Linux / advanced users)
