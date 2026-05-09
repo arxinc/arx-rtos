@@ -47,8 +47,6 @@ Initial support will focus on:
 * Shakti-C compatible configurations
 * Console-based execution (`-nographic`)
 
-👉 Board-specific configurations will be introduced after validation.
-
 ---
 
 ## Roadmap
