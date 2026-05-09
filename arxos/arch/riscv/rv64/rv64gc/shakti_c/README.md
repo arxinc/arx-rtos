@@ -1,178 +1,84 @@
-# ARX RTOS – RV64 Shakti Class-C Binary Testing Procedure on QEMU
+# ARX RTOS – RISC-V (RV64GC) Binary Placeholder
+
+This directory is reserved for **RISC-V RV64GC ARX RTOS binaries**.
 
 ---
 
-## Overview
+## Status
 
-This document describes the procedure to execute and test the ARX RTOS RV64 Shakti Class-C binary using QEMU.
-The provided binary includes:
-
-* 4 ARX tasks, Each class 1 task is built with executable
-* System-level forced signals(Shutdown and Forced Idle) are asserted randomly from Interrupt Context.
-* Periodic class task released every 10 ms.
+Binaries for RV64GC targets are **not yet available**.
+Support will be added in upcoming releases.
 
 ---
 
-# Prerequisite
+## What to Expect
 
-Ensure the following files are available in the same folder:
+Once available, this directory will include:
 
-* `arxos.bin`
-* `qemu.bat`
-
-Also ensure that:
-
-* QEMU for RISC-V is installed
+* `*.bin` / `*.elf` → Bootable ARX RTOS images for RV64GC platforms
+* Execution scripts (e.g., `qemu.bat`) for quick start
+* Minimal platform-specific notes
 
 ---
 
-# Configuration Steps
+## Expected Outcome
 
-## Step 1: Update QEMU Path
+These binaries will allow you to:
 
-Open the file:
-
-```text
-qemu.bat
-```
-- Update the QEMU executable path
-- Provide the full path of the bin folder to the the QEMU executable `qemu-system-riscv64.exe`
-
-Example:
-```text
-set QEMU_PATH_RISCV=C:/< Yours PC >/qemu-riscv/7.0.0-1.1/.content/bin
-```
+* Run ARX RTOS in a RISC-V RV64GC compatible environment
+* Observe system boot and runtime behavior
+* Evaluate a sample workload consisting of **four RTOS tasks**, controlled by a test script
 
 ---
 
-## Step 2: Update Binary Path
+## Execution Environment
 
-Update the ARX RTOS binary path
-```text
-arxos.bin
-```
-Example:
-```text
-set ARXIMAGE=C:\arx_test\arxos.bin
-```
+Initial support will focus on:
 
----
+* RISC-V 64-bit emulation using QEMU (`riscv64`, `virt` machine)
+* Support for:
 
-# Execution Procedure
+  * Base integer + atomic instructions (I, M, A)
+  * Floating-point (F, D)
+  * Compressed instructions (C extension)
+* Console-based execution (`-nographic`)
 
-## Step 3: Open Command Prompt with Administrator Privileges
-
-* Open Windows Start Menu
-* Search for:
-
-```text
-cmd
-```
-
-* Right-click Command Prompt
-* Select:
-
-```text
-Run as Administrator
-```
+👉 Board-specific configurations will be introduced after validation.
 
 ---
 
-## Step 4: Change Directory
+## Shakti Class C (RV64GC)
 
-Navigate to the folder containing:
+Support for **Shakti Class C (RV64GC)** platforms will be introduced in a later phase.
 
-* `arxos.bin`
-* `qemu.bat`
+### ⚠️ Important Note
 
-Example:
+* Current releases **do not include direct support** for Shakti Class C hardware
+* Initial enablement will be validated in emulation before hardware bring-up
+* Execution scripts (e.g., `qemu.bat`) may require:
 
-```text
-cd C:\arx_test
-```
+  * Updating paths to QEMU executables
+  * Setting the correct ARX binary path (`arxos.bin` / `.elf`)
+  * Adjusting machine or CPU configuration if needed
 
----
-
-## Step 5: Execute QEMU Launch Command
-
-Run the following command:
-
-```text
-C:\Users\yours\Desktop\arx_test>qemu.bat riscv64 shakti_c
-```
+👉 Users targeting Shakti platforms should expect **additional setup steps** once support is released (e.g., toolchain alignment, platform-specific configuration, and boot flow changes).
 
 ---
 
-# Expected Behavior
+## Roadmap
 
-After execution:
-
-* QEMU will start the RV64 Shakti Class C platform
-* ARX RTOS boot logs will appear on the console
-* Task scheduling activity should be visible
-* ISR-triggered system calls and assertions will execute
-* Console output should indicate successful initialization and task execution
+* Expanded RV64GC platform coverage
+* Validation on real hardware targets (including Shakti Class C)
+* Improved execution scripts and examples
+* Enhanced documentation for setup and usage
 
 ---
 
-# Notes
+## Note
 
-* Ensure no other application is using the configured QEMU ports/resources
-* Administrator privilege is mandatory for proper execution
-* Any boot failure or assertion output should be captured and shared for analysis
-
----
-## Demo Task Configuration
-
-### Global Configuration
-
-| Parameter          | Value                 |
-|--------------------|-----------------------|
-| Minimum Stack Size | `4096 Bytes`          |
+Initial releases prioritize **emulation using QEMU** for accessibility and consistency.
+Behavior in emulation may differ slightly from actual hardware implementations such as Shakti Class C.
 
 ---
 
-### Task Details
-
-| Task   | WCET | Release Period | Deadline | Priority | Task Class |
-|--------|------|----------------|----------|----------|------------|
-| Task-1 | `2`  | `5`            | `3`      | `0`      | Event      |
-| Task-2 | `2`  | `10`           | `5`      | `0`      | Periodic   |
-| Task-3 | `2`  | `20`           | `7`      | `0`      | Front-End  |
-| Task-4 | `2`  | `40`           | `9`      | `0`      | Background |
-
----
-
-### Parameter Description
-
-| Parameter      | Description                     |
-|----------------|---------------------------------|
-| WCET           | Worst Case Execution Time       |
-| Release Period | Periodicity of task activation  |
-| Deadline       | Maximum allowed completion time |
-| Priority       | Static scheduling priority      |
-# Expected Console Observation
-
-Typical console activity may include:
-
-```console
-+------------------------------------------------------------------------------+
-| Welcome to ARX™.                                                             |
-| Copyright © 2026 by ARX Software System NITK STEP Surathkal.                 |
-| ARX (Advanced Realtime Xecutables), A Preemptive RTOS.                       |
-| Lightweight | Deterministic | Scalable                                       |
-+------------------------------------------------------------------------------+
-:
-:
-[ DONE ] Kernel Initialization.
-[ KERN ] Entering scheduler...
-
-[     0.064s][C0][USR][PID: 1][INFO]: Event CLS
-[     0.066s][C0][USR][PID: 2][INFO]: Periodic
-[     0.068s][C0][USR][PID: 3][INFO]: Front-end
-[     0.070s][C0][USR][PID: 4][INFO]: Background
-```
-
-The exact output may vary depending on build configuration.
-
----
+This placeholder maintains the repository structure and indicates upcoming RV64GC support.

@@ -52,3 +52,4 @@ QEMU licensing information can be found at:
 
 ```text
 https://www.qemu.org/
+https://github.com/riscv-software-src/opensbi

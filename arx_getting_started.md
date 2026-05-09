@@ -68,7 +68,7 @@ This script:
 
 ### 3. Linux Users (manual execution)
 
-You can run binaries using following syntax for Virtual board:
+You can run binaries using:
 
 ```bash
 qemu-system-riscv32 \
@@ -157,7 +157,8 @@ ARX_SDK_A2026.04.30/
 │   │       ├── rv64/
 │   │       │   ├── rv64gc/
 │   │       │   │   ├── shakti-c/
-│   │       │   │   │   ├── arxos.bin/
+│   │       │   │   │   ├── shakti_c_kernel_arxos.bin
+│   │       │   │   │   ├── qemu.bat
 │   │       │   │   │   ├── README.md
 │   │       │   │   ├── <Future Upload>/
 │   │       │   │
@@ -165,13 +166,20 @@ ARX_SDK_A2026.04.30/
 │   │       │   │   ├── virt/
 │   │       │   │   │   ├── arxos.bin/
 │   │       │   │   │   ├── README.md
-│               │   ├── <Future Upload>/
+│   │       │   │   ├── <Future Upload>/
+│   │
+│   ├── tools/
+│
+├── docs/
+│   ├── arx_documents.md
+│   ├── arx_getting_started.md
+│    
 ├── legal/
-│   ├── DISCLAIMER
+│   ├── COPYING
 │   ├── LICENSE
-│   ├── THIRD_PARTY
+│   ├── LICENSE_COMMERCIAL
+│   ├── NOTICE
 │   
-├── arx_getting_started.md
 ├── README.md
 ```
 

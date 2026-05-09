@@ -6,24 +6,27 @@ This directory is reserved for **RISC-V RV64GC ARX RTOS binaries**.
 
 ## Status
 
-Shakti-C support is currently available  
-Other binaries will be added progressively in upcoming releases
+- Shakti-C support is currently available
+- Other binaries will be added progressively in upcoming releases
+
 
 ---
 
 ## What to Expect
 
-Each respective sub-folder will contain binaries & script in the following format:  
-`<board>_<subsys>_arxos.bin`
+Each respective folder will contain binaries in the following format:
+```text
+<board>_<subsys>_arxos.bin
 
-Example:  
-shakti_c_newt_arxos.bin  
-  
-* The directory also include:  
+Example:
+shakti_c_kernel_arxos.bin
+
+The directory may also include:
 qemu.bat → QEMU execution helper script  
-README that explain the setup to run qemu.bat and about arsos.bin  
-Supporting configuration files(If Any)
-  
+Platform-specific execution notes  
+Supporting configuration files(If Any)    
+
+
 ---
 
 ## Expected Outcome
@@ -32,11 +35,8 @@ These binaries will allow you to:
 
 * Run ARX RTOS in a RISC-V RV64GC compatible environment
 * Observe system boot and runtime behavior
-* Evaluate a sample workload consisting of **four RTOS tasks**
-* Events are issued to event class Task randomly
-* Periodic class task released every 10 ms
-* Please check the functional view log for more detail.
-* Validate task scheduling and ISR-triggered forced system calls
+* Evaluate a sample workload consisting of **four RTOS tasks**, controlled by a test script
+* Validate task scheduling and ISR-triggered forced system signals
 
 ---
 
@@ -47,6 +47,8 @@ Initial support will focus on:
 * RISC-V 64-bit emulation using QEMU (`riscv64`, `Shakti-C`, `virt` machine)
 * Shakti-C compatible configurations
 * Console-based execution (`-nographic`)
+
+👉 Board-specific configurations will be introduced after validation.
 
 ---
 
@@ -64,7 +66,5 @@ Initial support will focus on:
 
 Initial releases prioritize **emulation (QEMU)** for accessibility and consistency.
 Behavior in emulation may differ slightly from specific hardware implementations.
-
-This placeholder maintains the repository structure and indicates upcoming RV64GC support.
 
 This placeholder maintains the repository structure and indicates upcoming RV64GC support.

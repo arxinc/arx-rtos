@@ -29,10 +29,17 @@
 
 @echo off
 
-:: Set executable path here as  set ARXIMAGE="../../arx_test/arxos.bin"
+:: Configure the paths below before executing this script.
+
+:: Example:
+:: set ARXIMAGE=C:/arx_test/shakti_c_newp_arxos.bin
 set ARXIMAGE=
 
-:: Set QEMU path here as set QEMU_PATH_RISCV=C:/Users/Yours/AppData/Roaming/xPacks/@xpack-dev-tools/qemu-riscv/7.0.0-1.1/.content/bin
+:: Specify the directory containing QEMU executables.
+:: Example:
+:: Set QEMU_PATH_RISCV=C:/Users/YourName/AppData/Roaming/xPacks/@xpack-dev-tools/qemu-riscv/7.0.0-1.1/.content/bin
+:: Set QEMU_PATH_ARM=C:/Users/YourName/AppData/Roaming/xPacks/@xpack-dev-tools/qemu-arm/8.2.6-1.1/.content/bin
+
 set QEMU_PATH_RISCV=
 set QEMU_PATH_ARM=
 
@@ -40,6 +47,9 @@ set QEMU_RV32=%QEMU_PATH_RISCV%/qemu-system-riscv32.exe
 set QEMU_RV64=%QEMU_PATH_RISCV%/qemu-system-riscv64.exe
 set QEMU_ARM32=%QEMU_PATH_ARM%/qemu-system-gnuarmeclipse.exe
 set QEMU_ARM64=%QEMU_PATH_ARM%/qemu-system-gnuarmeclipse.exe
+
+if "%ARXIMAGE%"=="" goto setpathshelp
+if "%QEMU_PATH_RISCV%"=="" goto setpathshelp
 
 set ARCH=%1
 set BOARD=%2
@@ -54,9 +64,10 @@ REM RISC-V 32
 REM -------------------------------------------------------------------------------
 
 
+
 REM -------------------------------------------------------------------------------
 REM RISC-V 64
-REM Please use -s -S  and pause to start debug with debugger.
+REM Enable '-s -S' and use 'pause' to attach a debugger before execution starts.
 REM -------------------------------------------------------------------------------
 if "%ARCH%"=="riscv64" (
     if "%BOARD%"=="virt" (
@@ -87,20 +98,32 @@ if "%ARCH%"=="riscv64" (
 REM -------------------------------------------------------------------------------
 REM ARM 32
 REM -------------------------------------------------------------------------------
+	    
+
+
 
 REM -------------------------------------------------------------------------------
 REM ARM 64
 REM -------------------------------------------------------------------------------
+	    
+
+
 
 echo [ERROR] Unsupported ARCH/BOARD
 goto usagehelp
 
-
+:setpathshelp
+echo Please make sure paths to ARX and QEMU executables are set.
 :usagehelp
 echo Usage: qemu.bat ^<arch^> ^<board^>
 echo Example:
-echo   qemu.bat riscv32 virt
+echo   qemu.bat riscv64 shakti_c
 echo   qemu.bat arm cortex-m4
+
+::"%QEMU_PATH_RISCV%/qemu-system-riscv32.exe" -machine help
+::"%QEMU_PATH_RISCV%/qemu-system-riscv64.exe" -machine help
+::"%QEMU_PATH_ARM%/qemu-system-gnuarmeclipse.exe" -machine help
+
 exit /b 1
 
 :endofbat
