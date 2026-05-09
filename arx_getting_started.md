@@ -25,7 +25,7 @@ You can:
 
 You cannot yet:
 
-* Build from source (documentation pending)
+* Build from source
 * Customize kernel configuration
 
 ---
