@@ -53,7 +53,8 @@ qemu-system-riscv64 --version
 
 ### 2. Windows Users
 
-Following helper script is provided:
+Following helper script  is provided:   
+(Example: qemu.bat available at **arxos\arch\riscv\rv64\rv64gc\shakti_c**)  
 
 ```text
 qemu.bat
@@ -104,8 +105,8 @@ Before executing the script, update the following paths inside `qemu.bat`:
 Example configuration:
 
 ```bat
-set QEMU_PATH_RISCV=C:\path\to\qemu\bin
-set ARXIMAGE=C:\path\to\arxos.bin
+set "QEMU_PATH_RISCV=C:\path\to\where\qemu is installed\bin"
+set "ARXIMAGE=C:\path\to\where board specific executable is present\arxos.bin"
 ```
 
 ---
