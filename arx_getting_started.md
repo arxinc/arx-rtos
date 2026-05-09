@@ -10,7 +10,6 @@ This guide explains how to **run prebuilt ARX RTOS binaries**.
 * ARX RTOS is being released in stages
 * Prebuilt binaries (`*.bin`) will be uploaded progressively for multiple architectures / SoCs
 * ✅ **Currently available**:
-
   * RISC-V 64 bits (Shakti Class-C)
 
 ---
@@ -25,7 +24,7 @@ You can:
 
 You cannot yet:
 
-* Build from source
+* Build this binary with your source
 * Customize kernel configuration
 
 ---
@@ -41,7 +40,7 @@ Install QEMU with ARM/RISC-V support.
 #### Verify QEMU Installation
 
 > Ensure that the QEMU executable path is available in the system `PATH`
-> environment variable. Otherwise, use the absolute executable path.
+> environment variable. Otherwise, use the absolute(full) executable path.
 
 ```bash
 qemu-system-arm --version
@@ -54,7 +53,7 @@ qemu-system-riscv64 --version
 
 ### 2. Windows Users
 
-A helper script will be provided:
+Following helper script is provided:
 
 ```text
 qemu.bat
@@ -62,10 +61,11 @@ qemu.bat
 
 This script:
 
-* Launches QEMU with correct parameters
+* This script automatically launches QEMU and loads the ARX RTOS binary.
+* Run qemu.bat with correct parameters(see the uses note inside qemu.bat)
 * Loads the ARX binary automatically
 
-👉 No manual command setup required
+👉 No manual command setup required from user
 
 ---
 
@@ -94,21 +94,11 @@ qemu-system-riscv64 \
 ---
 
 ## Running the Binary
-
-### Option A: Using provided script (recommended)
-The repository includes a helper script:
-```text
-qemu.bat
-```
-This script automatically launches QEMU and loads the ARX RTOS binary.
-
----
-
 ### Step 1: Configure `qemu.bat`
 
 Before executing the script, update the following paths inside `qemu.bat`:
 
-- QEMU installation path
+- QEMU installation bin folder path(Please navigate your system).
 - ARX RTOS binary path (`arxos.bin`)
 
 Example configuration:
