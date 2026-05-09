@@ -38,7 +38,10 @@ To run the provided `.bin` files, ensure the following:
 
 Install QEMU with ARM/RISC-V support.
 
-#### Verify installation:
+#### Verify QEMU Installation
+
+> Ensure that the QEMU executable path is available in the system `PATH`
+> environment variable. Otherwise, use the absolute executable path.
 
 ```bash
 qemu-system-arm --version
