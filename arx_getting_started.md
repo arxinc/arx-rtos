@@ -93,22 +93,68 @@ qemu-system-riscv64 \
 ## Running the Binary
 
 ### Option A: Using provided script (recommended)
-
+The repository includes a helper script:
 ```text
 qemu.bat
 ```
+This script automatically launches QEMU and loads the ARX RTOS binary.
 
-* Double-click or run via terminal
-* QEMU will start and load the binary
+---
 
-* Before running the script, you must update the paths inside *qemu.bat*
-* Set the correct path to your QEMU executables
-* Set the correct path to arxos.bin
-* Example (inside *qemu.bat*):  
-set QEMU_PATH_RISCV=C:\path\to\qemu\bin  
-set ARXIMAGE=C:\path\to\arxos.bin  
-C:\Users\Yours> cd C:\path\arx-rtos\arxos\arch\riscv\rv64\rv64gc\shakti_c  
-C:\path\arx-rtos\arxos\arch\riscv\rv64\rv64gc\shakti_c> qemu.bat riscv64 shakti_c
+### Step 1: Configure `qemu.bat`
+
+Before executing the script, update the following paths inside `qemu.bat`:
+
+- QEMU installation path
+- ARX RTOS binary path (`arxos.bin`)
+
+Example configuration:
+
+```bat
+set QEMU_PATH_RISCV=C:\path\to\qemu\bin
+set ARXIMAGE=C:\path\to\arxos.bin
+```
+
+---
+
+### Step 2: Open Command Prompt with Administrator Privileges
+
+- Open the Windows Start Menu
+- Search for:
+
+```text
+cmd
+```
+
+- Right-click **Command Prompt**
+- Select:
+
+```text
+Run as Administrator
+```
+### Step 3: Change Directory
+
+Navigate to the directory containing:
+
+- `qemu.bat`
+- `arxos.bin`
+
+Example:
+
+```cmd
+cd C:\path\arx-rtos\arxos\arch\riscv\rv64\rv64gc\shakti_c
+```
+
+---
+
+### Step 4: Execute the Binary
+
+Run the following command:
+
+```cmd
+qemu.bat riscv64 shakti_c
+```
+
 ---
 
 ### Option B: Manual (Linux / advanced users)
