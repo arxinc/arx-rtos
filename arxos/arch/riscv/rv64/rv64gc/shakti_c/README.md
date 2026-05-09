@@ -4,10 +4,10 @@
 
 ## Overview
 
-This document describes the procedure to execute and test the ARX RTOS RV64 Shakti Class-C binary using QEMU.
+This document describes the procedure to execute and test the ARX RTOS RV64 Shakti Class-C binary using QEMU.  
 The provided binary includes:
 
-* 4 ARX tasks, Each class 1 task is built with executable
+* 4 ARX tasks, Each class task is built with executable
 * System-level forced signals(Shutdown and Forced Idle) are asserted randomly from Interrupt Context.
 * Periodic class task released every 10 ms.
 
@@ -17,7 +17,7 @@ The provided binary includes:
 
 Ensure the following files are available in the same folder:
 
-* `arxos.bin`
+* `shakti_c_kernel_arxos.bin`
 * `qemu.bat`
 
 Also ensure that:
@@ -35,7 +35,7 @@ Open the file:
 ```text
 qemu.bat
 ```
-- Update the QEMU executable path
+- Update the QEMU executable folder path
 - Provide the full path of the bin folder to the the QEMU executable `qemu-system-riscv64.exe`
 
 Example:
@@ -47,13 +47,13 @@ set QEMU_PATH_RISCV=C:/< Yours PC >/qemu-riscv/7.0.0-1.1/.content/bin
 
 ## Step 2: Update Binary Path
 
-Update the ARX RTOS binary path
+Update the ARX RTOS + Application(i.e. shakti_c_kernel_arxos.bin) binary path
 ```text
 arxos.bin
 ```
 Example:
 ```text
-set ARXIMAGE=C:\arx_test\arxos.bin
+set ARXIMAGE=C:/< Yours PC >/shakti_c_kernel_arxos.bin
 ```
 
 ---
@@ -82,13 +82,13 @@ Run as Administrator
 
 Navigate to the folder containing:
 
-* `arxos.bin`
+* `shakti_c_kernel_arxos.bin`
 * `qemu.bat`
 
 Example:
 
 ```text
-cd C:\arx_test
+cd C:/< Yours PC >/arxos/arch/riscv/rv64/rv64gc/shakti_c
 ```
 
 ---
@@ -98,7 +98,7 @@ cd C:\arx_test
 Run the following command:
 
 ```text
-C:\Users\yours\Desktop\arx_test>qemu.bat riscv64 shakti_c
+C:/< Yours PC >/arxos/arch/riscv/rv64/rv64gc/shakti_c>qemu.bat riscv64 shakti_c
 ```
 
 ---
