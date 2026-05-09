@@ -1,13 +1,13 @@
-# ARX RTOS – RISC-V (RV64GC) Binary Placeholder
+# ARX RTOS – RISC-V (SHAKTI-C) Binary Placeholder
 
-This directory is reserved for **RISC-V RV64GC ARX RTOS binaries**.
+This directory is reserved for **RISC-V RV64GC SHAKTI IITM Board binaries**.
 
 ---
 
 ## Status
 
-Binaries for RV64GC targets are **not yet available**.
-Support will be added in upcoming releases.
+shakti_c_kernel_arxos.bin **available**.
+Other modules support will be added in upcoming releases.
 
 ---
 
@@ -36,20 +36,11 @@ These binaries will allow you to:
 Initial support will focus on:
 
 * RISC-V 64-bit emulation using QEMU (`riscv64`, `virt` machine)
-* Support for:
-
-  * Base integer + atomic instructions (I, M, A)
-  * Floating-point (F, D)
-  * Compressed instructions (C extension)
 * Console-based execution (`-nographic`)
-
-👉 Board-specific configurations will be introduced after validation.
 
 ---
 
 ## Shakti Class C (RV64GC)
-
-Support for **Shakti Class C (RV64GC)** platforms will be introduced in a later phase.
 
 ### ⚠️ Important Note
 
