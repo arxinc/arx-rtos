@@ -60,8 +60,6 @@ Please refer to the following documents for detailed explanations:
 
 ## Licensing
 ARX is dual-licensed by **ARX Software System**. 
-* For open-source projects, see `legal/COPYING` (GPLv3).
-* For commercial integration, see `legal/LICENSE_COMMERCIAL.txt`.
 
 ---
 © 2026 ARX Software System. All rights reserved.
