@@ -14,9 +14,8 @@ This directory is reserved for **RISC-V RV64GC ARX RTOS binaries**.
 
 ## What to Expect
 
-Each respective folder will contain binaries in the following format:
-```text
-<board>_<subsys>_arxos.bin
+Each respective folder will contain binaries in the following format:  
+board_subsys_arxos.bin
 
 Example:
 shakti_c_kernel_arxos.bin
