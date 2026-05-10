@@ -134,12 +134,12 @@ After execution:
 
 ### Task Details
 
-| Task   | WCET | Release Period | Deadline | Priority | Task Class |
-|--------|------|----------------|----------|----------|------------|
-| Task-1 | `2`  | `5`            | `3`      | `0`      | Event      |
-| Task-2 | `2`  | `10`           | `5`      | `0`      | Periodic   |
-| Task-3 | `2`  | `20`           | `7`      | `0`      | Front-End  |
-| Task-4 | `2`  | `40`           | `9`      | `0`      | Background |
+| Task   | WCET | Release Period | Deadline | Priority |
+|--------|------|----------------|----------|----------|
+| Task-1 | `2`  | `5`            | `3`      | `0`      |
+| Task-2 | `2`  | `10`           | `5`      | `0`      |
+| Task-3 | `2`  | `20`           | `7`      | `0`      |
+| Task-4 | `2`  | `40`           | `9`      | `0`      |
 
 ---
 
