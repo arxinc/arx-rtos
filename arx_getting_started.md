@@ -62,7 +62,7 @@ qemu.bat
 
 This script:
 
-* This script automatically launches QEMU and loads the ARX RTOS binary.
+* Automatically launches QEMU and loads the ARX RTOS binary.
 * Run qemu.bat with correct parameters(see the uses note inside qemu.bat)
 * Loads the ARX binary automatically
 
