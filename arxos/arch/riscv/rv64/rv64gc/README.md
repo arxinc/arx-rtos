@@ -52,7 +52,6 @@ Initial support will focus on:
 ## Roadmap
 Prebuilt demonstration binaries are being added progressively to help users quickly evaluate ARX RTOS features, platform bring-up, and kernel capabilities.
 Current planned demonstration coverage includes:
-## Prebuilt Demonstration Binaries
 ### System and Kernel
 
 * ARX boot process
