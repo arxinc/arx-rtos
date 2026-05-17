@@ -50,12 +50,58 @@ Initial support will focus on:
 ---
 
 ## Roadmap
+Prebuilt demonstration binaries are being added progressively to help users quickly evaluate ARX RTOS features, platform bring-up, and kernel capabilities.
+Current planned demonstration coverage includes:
+## Prebuilt Demonstration Binaries
+### System and Kernel
 
-* Expanded RV64GC platform coverage
-* Additional board-specific binaries
-* Validation on real hardware targets
-* Improved execution scripts and examples
-* Enhanced documentation for setup and usage
+* ARX boot process
+* Kernel bring-up
+* New task creation
+* Scheduling behavior
+* Task state transition test
+* Stack overflow test
+* Cluster formation
+* CMD execution infrastructure
+* Realtime FSM
+* ARX Background processing
+
+### Signals and Communication
+
+* ARX Forced signal-Shutdown
+* ARX Forced signal-Standby(Idle)
+* ARX Forced signal-Reset
+* ARX Forced signal-Cancellation
+* Task private signals
+* FEV demonstration
+* Task software fault handling
+* IPC (Interprocess Communication)
+* ICC (Inter-Core Communication)
+* Wait for event
+
+### Synchronization Mechanisms
+
+* Exclusive lock
+* Mutex
+* Semaphore
+* Reader-Writer lock
+
+### Memory and Protection
+
+* MPU configuration and usage
+* FPU configuration and usage
+
+### Hardware and BSP
+
+* ARX HAL
+* BSP development
+* Interrupt handling
+* Network bring-up
+
+### Power and Performance
+
+* ARX power management
+* PI test
 
 ---
 
