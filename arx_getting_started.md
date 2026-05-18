@@ -40,7 +40,8 @@ Install QEMU with ARM/RISC-V support.
 #### Verify QEMU Installation
 
 > Ensure that the QEMU executable path is available in the system `PATH`
-> environment variable. Otherwise, use the absolute(full) executable path.
+> environment variable.  
+> Otherwise, use the absolute(full) executable path.
 
 ```bash
 qemu-system-arm --version
@@ -63,9 +64,7 @@ qemu.bat
 This script:
 
 * Automatically launches QEMU and loads the ARX RTOS binary.
-* Run qemu.bat with correct parameters(see the uses note inside qemu.bat)
-* Loads the ARX binary automatically
-
+* Run qemu.bat with correct parameters(see the usagehelp note inside qemu.bat)  
 👉 No manual command setup required from user
 
 ---
@@ -146,7 +145,7 @@ cd C:\path\arx-rtos\arxos\arch\riscv\rv64\rv64gc\shakti_c
 Run the following command:
 
 ```cmd
-qemu.bat riscv64 shakti_c
+C:\path\arx-rtos\arxos\arch\riscv\rv64\rv64gc\shakti_c> qemu.bat riscv64 shakti_c
 ```
 
 ---
