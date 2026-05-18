@@ -27,8 +27,64 @@ It is built from first principles with a focus on predictability, low overhead, 
 - This public repository provides documentation, architecture insights, and project overview .
 - Demo-ready binaries will be released here soon.  
 
-## Documentation  
+## Roadmap
+Prebuilt demonstration binaries are being added progressively to help users quickly evaluate ARX RTOS features,  
+platform bring-up, and kernel capabilities.  
+Current planned demonstration coverage includes:
+### System and Kernel
 
+* ARX boot process
+* Kernel bring-up
+* New task creation
+* Scheduling behavior
+* Task state transition
+* Stack overflow
+* Cluster formation
+* CMD execution infrastructure
+* Realtime FSM infrastructure
+* ARX Background processing
+* Temporal and Spatial isolation
+
+### Signals and Communication
+
+* ARX Forced signal-Shutdown, Standby(Idle), Reset
+* ARX Forced signal-Resume(Cancellation forced condition)
+* Task private signals
+* FEV demonstration
+* Task software fault handling
+* IPC (Interprocess Communication)
+* ICC (Inter-Core Communication)
+* Wait for event
+* Fault handling
+
+### Synchronization Mechanisms
+
+* Exclusive lock
+* Mutex
+* Semaphore
+* Reader-Writer lock
+
+### Memory and Protection
+
+* MPU configuration and usage
+* FPU configuration and usage
+
+### Hardware and BSP
+
+* ARX HAL
+* BSP development
+* Interrupt handling
+* Network bring-up
+
+### Power and Performance
+
+* ARX power management
+* PI test
+
+---
+
+## Documentation
+(currently in setup phase)  
 Please refer to the following documents for detailed explanations:  
 
 - [📖 ARXOS Overview](https://arxos.in/documents/arxos.pdf)  
