@@ -14,12 +14,17 @@ This directory is reserved for **RISC-V RV64GC ARX RTOS binaries**.
 
 ## What to Expect
 
-Each respective folder will contain binaries in the following format:  
-board_subsys_arxos.bin
+Each respective folder will contain binaries in the following format:
+
+```text
+[board]_[subsys]_arxos.bin
+```
 
 Example:
-shakti_c_kernel_arxos.bin
 
+```text
+shakti_c_fsigs_arxos.bin
+```
 The directory may also include:
 qemu.bat → QEMU execution helper script  
 Platform-specific execution notes  
