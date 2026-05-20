@@ -88,7 +88,7 @@ Run as Administrator
 
 Navigate to the folder containing:
 
-* `shakti_c_fsigs_arxos.bin`
+* `*_arxos.bin`
 * `qemu.bat`
 
 Example:
