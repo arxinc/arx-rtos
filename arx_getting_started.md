@@ -49,10 +49,25 @@ qemu-system-aarch64 --version
 qemu-system-riscv32 --version
 qemu-system-riscv64 --version
 ```
+### 2. Download and Extract ARX Binary Package
+
+Download or clone the ARX RTOS package to a suitable location on your system:
+
+```bash
+git clone https://github.com/arxinc/arx-rtos.git
+```
+
+Alternatively, download and extract the package directly from GitHub.
+
+After extraction, navigate to the architecture-specific binaries located under:
+
+```text
+arx-rtos-main/arxos/arch/...
+```
 
 ---
 
-### 2. Windows Users
+### 3. Windows Users
 
 Following helper script  is provided:   
 (Example: qemu.bat available at **arxos\arch\riscv\rv64\rv64gc\shakti_c**)  
@@ -69,7 +84,7 @@ This script:
 
 ---
 
-### 3. Linux Users (manual execution)
+### 4. Linux Users (manual execution)
 
 You can run binaries using:
 
@@ -145,7 +160,7 @@ cd C:\path\arx-rtos\arxos\arch\riscv\rv64\rv64gc\shakti_c
 Run the following command:
 
 ```cmd
-C:\path\arx-rtos\arxos\arch\riscv\rv64\rv64gc\shakti_c> qemu.bat riscv64 shakti_c
+C:\path\arx-rtos-main\arxos\arch\riscv\rv64\rv64gc\shakti_c> qemu.bat riscv64 shakti_c
 ```
 
 ---
@@ -197,7 +212,7 @@ ARX_SDK_A2026.04.30/
 │   │       ├── rv64/
 │   │       │   ├── rv64gc/
 │   │       │   │   ├── shakti-c/
-│   │       │   │   │   ├── shakti_c_kernel_arxos.bin
+│   │       │   │   │   ├── shakti_c_fsigs_arxos.bin
 │   │       │   │   │   ├── qemu.bat
 │   │       │   │   │   ├── README.md
 │   │       │   │   ├── <Future Upload>/
