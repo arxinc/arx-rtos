@@ -51,12 +51,6 @@ set QEMU_PATH_RISCV=C:/< Yours PC >/qemu-riscv/7.0.0-1.1/.content/bin
 Update the path to the `*_arxos.bin` image (for example: `shakti_c_fsigs_arxos.bin`).  
 The `*_arxos.bin` image contains both the ARX RTOS and the application software built together.
 
-Binary format:
-
-```text
-*_arxos.bin
-```
-
 Example:
 
 ```text
