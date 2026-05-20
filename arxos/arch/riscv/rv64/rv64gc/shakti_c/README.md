@@ -9,7 +9,9 @@ The provided binary includes:
 
 * 4 ARX tasks, Each class task is built with executable
 * System-level forced signals(Shutdown and Forced Idle) are asserted randomly from Interrupt Context.
+* Forced signals cancellation (Resume) also asserted randomly from Interrupt Context.
 * Periodic class task released every 10 ms.
+* Periodic task timing accuracy on QEMU may depend on host system performance
 
 ---
 
@@ -17,7 +19,7 @@ The provided binary includes:
 
 Ensure the following files are available in the same folder:
 
-* `shakti_c_kernel_arxos.bin`
+* `*_arxos.bin` (Example: shakti_c_fsigs_arxos.bin)
 * `qemu.bat`
 
 Also ensure that:
@@ -46,16 +48,20 @@ set QEMU_PATH_RISCV=C:/< Yours PC >/qemu-riscv/7.0.0-1.1/.content/bin
 ---
 
 ## Step 2: Update Binary Path
+Update the path to the `*_arxos.bin` image (for example: `shakti_c_fsigs_arxos.bin`).  
+The `*_arxos.bin` image contains both the ARX RTOS and the application software built together.
 
-Update the ARX RTOS + Application(i.e. shakti_c_kernel_arxos.bin) binary path
+Binary format:
+
 ```text
-arxos.bin
+*_arxos.bin
 ```
+
 Example:
-```text
-set ARXIMAGE=C:/< Yours PC >/shakti_c_kernel_arxos.bin
-```
 
+```text
+set ARXIMAGE=C:/<Your_PC_Path>/arx-rtos-main/arxos/arch/riscv/rv64/rv64gc/shakti_c/shakti_c_fsigs_arxos.bin
+```
 ---
 
 # Execution Procedure
@@ -82,13 +88,13 @@ Run as Administrator
 
 Navigate to the folder containing:
 
-* `shakti_c_kernel_arxos.bin`
+* `shakti_c_fsigs_arxos.bin`
 * `qemu.bat`
 
 Example:
 
 ```text
-cd C:/< Yours PC >/arxos/arch/riscv/rv64/rv64gc/shakti_c
+cd C:/< Yours PC >/arx-rtos-main/arxos/arch/riscv/rv64/rv64gc/shakti_c
 ```
 
 ---
@@ -98,7 +104,7 @@ cd C:/< Yours PC >/arxos/arch/riscv/rv64/rv64gc/shakti_c
 Run the following command:
 
 ```text
-C:/< Yours PC >/arxos/arch/riscv/rv64/rv64gc/shakti_c>qemu.bat riscv64 shakti_c
+C:/< Yours PC >/arx-rtos-main/arxos/arch/riscv/rv64/rv64gc/shakti_c>qemu.bat riscv64 shakti_c
 ```
 
 ---
@@ -112,6 +118,7 @@ After execution:
 * Task scheduling activity should be visible
 * ISR-triggered system calls and assertions will execute
 * Console output should indicate successful initialization and task execution
+* ARX safely handled all forced and emergency calls and transitioned the system to a graceful exit or standby state.
 
 ---
 
@@ -120,6 +127,9 @@ After execution:
 * Ensure no other application is using the configured QEMU ports/resources
 * Administrator privilege is mandatory for proper execution
 * Any boot failure or assertion output should be captured and shared for analysis
+* This is a time-limited demo binary.
+* ARX internally enforces a limited execution period, after which the demo may stop running.
+* Please restart the application to continue evaluation.
 
 ---
 ## Demo Task Configuration
