@@ -7,11 +7,10 @@ This guide explains how to **run prebuilt ARX RTOS binaries**.
 
 ## Current Status
 
-* ARX RTOS is being released in stages
-* Prebuilt binaries (`*.bin`) will be uploaded progressively for multiple architectures / SoCs
+* Prebuilt binaries (`*.bin`) will be progressively published for multiple architectures and SoC platforms
 * ✅ **Currently available**:
-  * RISC-V 64 bits (Shakti Class-C)
-
+  * RISC-V 64-bit (Shakti C-Class)
+  * RISC-V 64-bit (QEMU VIRT SMP)
 ---
 
 ## What You Can Do Now
@@ -213,6 +212,10 @@ ARX_SDK_A2026.04.30/
 │   │       │   ├── rv64gc/
 │   │       │   │   ├── shakti-c/
 │   │       │   │   │   ├── shakti_c_fsigs_arxos.bin
+│   │       │   │   │   ├── qemu.bat
+│   │       │   │   │   ├── README.md
+│   │       │   │   ├── virt/
+│   │       │   │   │   ├── virt_fsigs_arxos.bin
 │   │       │   │   │   ├── qemu.bat
 │   │       │   │   │   ├── README.md
 │   │       │   │   ├── <Future Upload>/
