@@ -32,7 +32,7 @@
 :: Configure the paths below before executing this script.
 
 :: Example:
-:: set ARXIMAGE=C:/arx_test/shakti_c_kernel_arxos.bin
+:: set ARXIMAGE=C:/arx_test/shakti_c_fsigs_arxos.bin
 set ARXIMAGE=
 
 :: Specify the directory containing QEMU executables.
