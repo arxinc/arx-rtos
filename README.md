@@ -10,8 +10,6 @@ It is built from first principles with a focus on predictability, low overhead, 
 * **RISC-V**
     * **RISC-V 32:** Optimized for resource-constrained microcontrollers and IoT devices.
     * **RISC-V 64:** Support for a wide range of RISC-V 64-bit cores.
-    - Validated on **SHAKTI C-Class** (Indian Indigenous SoC) and QEMU Virtual platforms.
-    - Portable and extensible for custom RISC-V implementations.
     
 ## Key Features
 * **Deterministic Scheduler:** Priority-based preemptive scheduling.
@@ -67,7 +65,7 @@ Current planned demonstration coverage includes:
 ---
 
 ## Documentation
-(currently in setup phase)  
+(Currently in setup phase)  
 Please refer to the following documents for detailed explanations:  
 
 - [📖 ARXOS Overview](https://arxos.in/documents/arxos.pdf)  
