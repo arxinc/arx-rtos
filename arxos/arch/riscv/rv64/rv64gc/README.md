@@ -4,10 +4,11 @@ This directory is reserved for **RISC-V RV64GC ARX RTOS binaries**.
 
 ---
 
-## Status(✅)
-- RISC-V 64-bit (Shakti C-Class)
-- RISC-V 64-bit (QEMU VIRT SMP)
-- Other binaries will be added progressively in upcoming releases
+## Status
+✓ RISC-V 64-bit (Shakti C-Class)  
+✓ RISC-V 64-bit (QEMU VIRT SMP)
+
+Support for additional boards and platforms will be added progressively.
 
 
 ---
