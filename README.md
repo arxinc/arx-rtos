@@ -34,7 +34,8 @@ Current planned demonstration coverage includes:
 ### 1.0 ARX Boot Process
 #### Overview
 This demo validates the ARX boot sequence from platform reset to kernel startup and scheduler activation.  
-Executable: [platform]_[boot]_[arxos.bin  ]  
+*Executable: `[platform][boot][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 #### Demonstrated Features
 * Early platform/BSP initialization
 * Memory initialization
@@ -51,7 +52,8 @@ ARX initializes core platform services, starts the kernel, and transitions clean
 ### 2.0 Kernel bring-up
 #### Overview
 This demo validates ARX kernel initialization, subsystem setup, and runtime service activation.  
-Executable: [platform]_[kernel]_[arxos.bin  ]  
+*Executable: `[platform][kernel][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 #### Demonstrated Features
 * Kernel initialization
 * Core service registration
@@ -66,7 +68,8 @@ The kernel initializes all required subsystems and enters deterministic realtime
 ### 3.0 New task creation
 #### Overview
 This demo validates ARX task creation, initialization, and scheduler integration.  
-Executable: [platform]_[newp]_[arxos.bin  ]  
+*Executable: `[platform][newp][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 #### Demonstrated Features
 * Static task creation
 * Stack allocation
@@ -81,7 +84,8 @@ New tasks are created successfully and scheduled according to assigned prioritie
 ### 4.0 Scheduling behavior
 #### Overview
 This demo validates ARX deterministic priority-based scheduling behavior under concurrent execution.  
-Executable: [platform]_[schd]_[arxos.bin  ]  
+*Executable: `[platform][scheduler][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending
 #### Demonstrated Features
 * Priority scheduling
@@ -97,7 +101,8 @@ Higher-priority tasks preempt lower-priority tasks while maintaining determinist
 ### 5.0 Task state transition
 #### Overview
 This demo validates ARX task lifecycle management and scheduler-driven state transitions.  
-Executable: [platform]_[state]_[arxos.bin  ]  
+*Executable: `[platform][state][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending
 #### Demonstrated Features
 * Ready state
@@ -116,7 +121,8 @@ Tasks transition correctly between scheduler-managed runtime states.
 ### 6.0 Stack overflow
 #### Overview
 This demo validates ARX stack overflow detection and runtime protection mechanisms.  
-Executable: [platform]_[spovf]_[arxos.bin  ]  
+*Executable: `[platform][spovf][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending
 #### Demonstrated Features
 * Stack monitoring
@@ -130,7 +136,8 @@ ARX detects stack corruption safely and prevents uncontrolled system behavior.
 ### 7.0 Cluster formation
 #### Overview
 This demo validates ARX: TODO  
-Executable: [platform]_[clust]_[arxos.bin  ]  
+*Executable: `[platform][clust][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending
 #### Demonstrated Features
 * TODO
@@ -141,7 +148,8 @@ Executable: [platform]_[clust]_[arxos.bin  ]
 ### 8.0 CMD execution infrastructure
 #### Overview
 This demo validates ARX: TODO  
-Executable: [platform]_[cmdinfa]_[arxos.bin  ]  
+*Executable: `[platform][cmdinfra][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending
 #### Demonstrated Features
 * TODO
@@ -152,7 +160,8 @@ Executable: [platform]_[cmdinfa]_[arxos.bin  ]
 ### 9.0 Realtime FSM infrastructure
 #### Overview
 This demo validates ARX: TODO  
-Executable: [platform]_[fsminfa]_[arxos.bin  ]  
+*Executable: `[platform][fsminfra][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending
 #### Demonstrated Features
 * TODO
@@ -163,7 +172,8 @@ Executable: [platform]_[fsminfa]_[arxos.bin  ]
 ### 10.0 ARX Background processing
 #### Overview
 This demo validates ARX: TODO  
-Executable: [platform]_[bgnd]_[arxos.bin  ]  
+*Executable: `[platform][bgndbw][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending
 #### Demonstrated Features
 * TODO
@@ -174,7 +184,8 @@ Executable: [platform]_[bgnd]_[arxos.bin  ]
 ### 11.0 Temporal and Spatial isolation
 #### Overview
 This demo validates ARX temporal and spatial isolation mechanisms for protected realtime execution.  
-Executable: [platform]_[isolat]_[arxos.bin  ]  
+*Executable: `[platform][isolate][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending
 #### Demonstrated Features
 * Temporal isolation
@@ -190,7 +201,8 @@ Tasks remain isolated in both execution time and memory space without interferin
 ### 12.0 ARX Forced signal-Shutdown, Standby(Idle), Reset
 #### Overview
 This demo validates ARX: TODO  
-Executable: [platform]_[bsirc]_[arxos.bin  ]  
+*Executable: `[platform][bsirc][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending
 #### Demonstrated Features
 * TODO
@@ -201,7 +213,8 @@ Executable: [platform]_[bsirc]_[arxos.bin  ]
 ### 13.0 ARX Forced signal-Resume(Cancellation forced condition)
 #### Overview
 This demo validates ARX: TODO  
-Executable: [platform]_[fcncle]_[arxos.bin  ]  
+*Executable: `[platform][fresume][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending
 #### Demonstrated Features
 * TODO
@@ -212,7 +225,8 @@ Executable: [platform]_[fcncle]_[arxos.bin  ]
 ### 14.0 Task private signals
 #### Overview
 This demo validates ARX: TODO  
-Executable: [platform]_[pvts]_[arxos.bin  ]  
+*Executable: `[platform][pvts][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending
 #### Demonstrated Features
 * TODO
@@ -223,7 +237,8 @@ Executable: [platform]_[pvts]_[arxos.bin  ]
 ### 15.0 FEV demonstration
 #### Overview
 This demo validates ARX: TODO  
-Executable: [platform]_[fevs]_[arxos.bin  ]  
+*Executable: `[platform][fevs][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending
 #### Demonstrated Features
 * TODO
@@ -234,7 +249,8 @@ Executable: [platform]_[fevs]_[arxos.bin  ]
 ### 16.0 Task software fault handling
 #### Overview
 This demo validates ARX task software fault detection and recovery during task execution.  
-Executable: [platform]_[tswflt]_[arxos.bin  ]  
+*Executable: `[platform][swfaults][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending  
 #### Demonstrated Features
 * Fault reporting to ARX process management
@@ -249,7 +265,8 @@ Faulty tasks are detected and isolated without impacting overall system stabilit
 ### 17.0 IPC (Interprocess Communication
 #### Overview
 This demo validates ARX interprocess communication mechanisms between concurrent tasks.  
-Executable: [platform]_[ipc]_[arxos.bin  ]  
+*Executable: `[platform][ipc][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending  
 #### Demonstrated Features
 * Message passing
@@ -265,7 +282,8 @@ Tasks exchange data safely and deterministically through ARX IPC services.
 ### 18.0 ICC (Inter-Core Communication)
 #### Overview
 This demo validates ARX communication and synchronization between processor cores.  
-Executable: [platform]_[icc]_[arxos.bin  ]  
+*Executable: `[platform][icc][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending
 #### Demonstrated Features
 * Inter-core messaging
@@ -281,7 +299,8 @@ Processor cores exchange data reliably while maintaining synchronization integri
 ### 19.0 Wait for event
 #### Overview
 This demo validates ARX event-driven task synchronization and wake-up handling.  
-Executable: [platform]_[wfevt]_[arxos.bin  ]  
+*Executable: `[platform][wfevt][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending  
 #### Demonstrated Features
 * Event waiting
@@ -297,7 +316,8 @@ Tasks block efficiently while waiting for events and resume execution determinis
 ### 20.0 Fault handling
 #### Overview
 This demo validates ARX runtime fault handling and system protection mechanisms.  
-Executable: [platform]_[fault]_[arxos.bin  ]  
+*Executable: `[platform][fault][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending  
 #### Demonstrated Features
 * Fault detection
@@ -313,7 +333,8 @@ ARX safely detects and handles runtime faults without uncontrolled failures.
 ### 21.0 Exclusive lock
 #### Overview
 This demo validates ARX exclusive locking mechanisms for protected resource access.  
-Executable: [platform]_[excllk]_[arxos.bin  ]  
+*Executable: `[platform][excllk][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending  
 #### Demonstrated Features
 * Exclusive locking to protect resource
@@ -325,9 +346,9 @@ safe to use for Interrupt and Task context, return immediately if lock not avail
 
 ### 22.0 Mutex Synchronization
 #### Overview
-Executable: [platform]_[mutex]_[arxos.bin  ]  
-This demo validates ARX mutex synchronization using four concurrent tasks and shared critical sections, where each task uses two mutexes to form a protected critical section.
-
+This demo validates ARX mutex synchronization using four concurrent tasks and shared critical sections, where each task uses two mutexes to form a protected critical section.  
+*Executable: `[platform][mutext][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 #### Task Configuration
 `[Task, Mutex] : [T0, (M0,M1)] [T1, (M2,M3)] [T2, (M3,M4)] [T3, (M1,M4)]`
 #### Demonstrated Features
@@ -342,12 +363,11 @@ Tasks compete for shared mutexes while ARX safely synchronizes access to resourc
 ---
 
 ### 23.0 Priority Inversion Handling
-
 #### Overview
-Executable: [platform]_[pitest]_[arxos.bin  ]  
-This demo validates ARX Priority Inheritance (PI) handling using nine concurrent tasks across High, Medium, and Low priority groups.
-High-priority and low-priority tasks share a common mutex, while middle-priority tasks execute without using the shared lock.
-
+This demo validates ARX Priority Inheritance (PI) handling using nine concurrent tasks across High, Medium, and Low priority groups.  
+High-priority and low-priority tasks share a common mutex, while middle-priority tasks execute without using the shared lock.  
+*Executable: `[platform][pitest][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 #### Priority Configuration
 | Priority | Tasks      | Order        |
 | -------- | ---------- | ------------ |
@@ -373,7 +393,8 @@ When a high-priority task blocks on a mutex owned by a low-priority task, ARX te
 ### 24.0 Semaphore
 #### Overview
 This demo validates ARX semaphore-based synchronization between concurrent tasks.  
-Executable: [platform]_[sema]_[arxos.bin  ]  
+*Executable: `[platform][sema][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending  
 #### Demonstrated Features
 * Binary semaphore
@@ -388,7 +409,8 @@ Tasks synchronize efficiently using semaphore-based coordination mechanisms.
 ### 25.0 Reader-Writer lock
 #### Overview
 This demo validates ARX reader-writer lock synchronization for shared resource access.  
-Executable: [platform]_[rwlk]_[arxos.bin  ]  
+*Executable: `[platform][rwlk][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending  
 #### Demonstrated Features
 * Shared read access
@@ -404,7 +426,8 @@ Multiple readers execute concurrently while writers maintain exclusive resource 
 ### 26.0 MPU configuration and usage
 #### Overview
 This demo validates ARX Memory Protection Unit (MPU) configuration and runtime enforcement.  
-Executable: [platform]_[mputst]_[arxos.bin  ]  
+*Executable: `[platform][mpu][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending  
 #### Demonstrated Features
 * MPU region configuration
@@ -420,7 +443,8 @@ Unauthorized memory accesses are detected and blocked by MPU protection mechanis
 ### 27.0 FPU configuration and usage
 #### Overview
 This demo validates ARX Floating Point Unit (FPU) initialization and runtime usage.  
-Executable: [platform]_[fputst]_[arxos.bin  ]  
+*Executable: `[platform][fpu][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending  
 #### Demonstrated Features
 * FPU initialization
@@ -436,7 +460,8 @@ Floating-point operations execute correctly across multiple concurrent tasks.
 ### 28.0 ARX HAL
 #### Overview
 This demo validates the ARX Hardware Abstraction Layer (HAL) interface and platform services.  
-Executable: [platform]_[hal]_[arxos.bin  ]  
+*Executable: `[platform][hal][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending  
 #### Demonstrated Features
 * Hardware abstraction
@@ -452,7 +477,8 @@ ARX provides consistent hardware-independent runtime services across supported p
 ### 29.0 BSP development
 #### Overview
 This demo validates Board Support Package (BSP) initialization and platform integration.  
-Executable: [platform]_[bspdev]_[arxos.bin  ]  
+*Executable: `[platform][bsp][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending  
 #### Demonstrated Features
 * Board initialization
@@ -468,7 +494,8 @@ The BSP initializes platform hardware correctly and enables ARX runtime operatio
 ### 30.0 Interrupt handling
 #### Overview
 This demo validates ARX interrupt processing and realtime interrupt response behavior.  
-Executable: [platform]_[isr]_[arxos.bin  ]  
+*Executable: `[platform][isr][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending
 #### Demonstrated Features
 * ISR execution
@@ -484,7 +511,8 @@ Interrupts are handled deterministically with minimal latency and correct task s
 ### 31.0 Network bring-up
 #### Overview
 This demo validates ARX network stack initialization and runtime connectivity.  
-Executable: [platform]_[net]_[arxos.bin  ]  
+*Executable: `[platform][net][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending  
 #### Demonstrated Features
 * Network initialization
@@ -500,7 +528,8 @@ ARX initializes networking services and establishes stable communication success
 ### 32.0 ARX power management
 #### Overview
 This demo validates ARX runtime power management and low-power state transitions.  
-Executable: [platform]_[pwm]_[arxos.bin  ]  
+*Executable: `[platform][pwm][arxos.bin]`*  
+*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
 > Status: Planned / Upload Pending  
 #### Demonstrated Features
 * Idle management
