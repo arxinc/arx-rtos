@@ -138,6 +138,44 @@ Tasks compete for shared mutexes while ARX safely synchronizes access to resourc
 
 ---
 
+## Priority Inversion Handling
+
+### Overview
+
+This demo validates ARX Priority Inheritance (PI) handling using nine concurrent tasks across High, Medium, and Low priority groups.
+High-priority and low-priority tasks share a common mutex, while middle-priority tasks execute without using the shared lock.
+
+### Priority Configuration
+
+### Priority Configuration
+
+| Priority | Tasks      | Order        |
+| -------- | ---------- | ------------ |
+| High     | H0, H1, H2 | H0 > H1 > H2 |
+| Medium   | M0, M1, M2 | M0 > M1 > M2 |
+| Low      | L0, L1, L2 | L0 > L1 > L2 |
+
+### Shared Resource Configuration
+
+`[Shared Mutex] : [H0,H1,H2,L0,L1,L2]`
+
+`[No Mutex Access] : [M0,M1,M2]`
+
+### Demonstrated Features
+
+* Priority inversion handling
+* Priority inheritance
+* Mutex synchronization
+* Task preemption control
+* Deterministic scheduling
+
+### Expected Behavior
+
+Medium-priority tasks normally preempt low-priority tasks.
+When a high-priority task blocks on a mutex owned by a low-priority task, ARX temporarily boosts the lock owner priority and prevents middle-priority tasks from interfering until the mutex is released.
+
+---
+
 # Notes
 
 * Ensure no other application is using the configured QEMU ports/resources
