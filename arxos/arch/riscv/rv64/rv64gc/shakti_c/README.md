@@ -114,6 +114,28 @@ After execution:
 * Console output should indicate successful initialization and task execution
 * ARX safely handled all forced and emergency calls and transitioned the system to a graceful exit or standby state.
 
+
+## Mutex Synchronization
+### Overview
+
+This demo validates ARX mutex synchronization using four concurrent tasks and shared critical sections, where each task uses two mutexes to form a protected critical section.
+
+### Task Configuration
+`[Task, Mutex] : [T0, (M0,M1)] [T1, (M2,M3)] [T2, (M3,M4)] [T3, (M1,M4)]`
+
+
+### Demonstrated Features
+
+* Mutex lock/unlock
+* Critical section protection
+* Deadlock avoidance
+* Task preemption handling
+* Deterministic scheduling
+
+### Expected Behavior
+
+Tasks compete for shared mutexes while ARX safely synchronizes access to resources without deadlocks or starvation.
+
 ---
 
 # Notes
