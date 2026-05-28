@@ -33,9 +33,8 @@ Current planned demonstration coverage includes:
 ---
 ### ARX Boot Process
 #### Overview
+This demo validates the ARX boot sequence from platform reset to kernel startup and scheduler activation.  
 Executable: [platform]_[boot]_[arxos.bin  ]  
-This demo validates the ARX boot sequence from platform reset to kernel startup and scheduler activation.
-
 #### Demonstrated Features
 * Early platform/BSP initialization
 * Memory initialization
@@ -44,7 +43,6 @@ This demo validates the ARX boot sequence from platform reset to kernel startup 
 * User task creation
 * Scheduler activation
 * System bring-up flow
-
 #### Expected Behavior
 ARX initializes core platform services, starts the kernel, and transitions cleanly into multitasking operation.
 
@@ -52,16 +50,14 @@ ARX initializes core platform services, starts the kernel, and transitions clean
 
 ### Kernel bring-up
 #### Overview
+This demo validates ARX kernel initialization, subsystem setup, and runtime service activation.  
 Executable: [platform]_[kernel]_[arxos.bin  ]  
-This demo validates ARX kernel initialization, subsystem setup, and runtime service activation.
-
 #### Demonstrated Features
 * Kernel initialization
 * Core service registration
 * Timer initialization
 * Scheduler initialization
 * Runtime environment setup
-
 #### Expected Behavior
 The kernel initializes all required subsystems and enters deterministic realtime execution.
 
@@ -69,9 +65,8 @@ The kernel initializes all required subsystems and enters deterministic realtime
 
 ### New task creation
 #### Overview
+This demo validates ARX task creation, initialization, and scheduler integration.  
 Executable: [platform]_[newp]_[arxos.bin  ]  
-This demo validates ARX task creation, initialization, and scheduler integration.
-
 #### Demonstrated Features
 * Static task creation
 * Stack allocation
@@ -85,131 +80,248 @@ New tasks are created successfully and scheduled according to assigned prioritie
 
 ## Scheduling behavior
 ### Overview
+This demo validates ARX deterministic priority-based scheduling behavior under concurrent execution.  
 Executable: [platform]_[schd]_[arxos.bin  ]  
 > Status: Planned / Upload Pending
-  
+### Demonstrated Features
+* Priority scheduling
+* Task preemption
+* Realtime execution
+* Deterministic scheduling
+* Runtime task management
+### Expected Behavior
+Higher-priority tasks preempt lower-priority tasks while maintaining deterministic execution order.
+
 ---
 
 ## Task state transition
 ### Overview
+This demo validates ARX task lifecycle management and scheduler-driven state transitions.  
 Executable: [platform]_[state]_[arxos.bin  ]  
 > Status: Planned / Upload Pending
+### Demonstrated Features
+* Ready state
+* Running state
+* Blocked state
+* Suspended(Limited Period) state
+* Suspended(Unlimited Period) state
+* Sleep(Unlimited Period) state
+* WAITING transition handling
+* Termination state
+### Expected Behavior
+Tasks transition correctly between scheduler-managed runtime states.
 
 ---
 
 ## Stack overflow
 ### Overview
+This demo validates ARX stack overflow detection and runtime protection mechanisms.  
 Executable: [platform]_[spovf]_[arxos.bin  ]  
 > Status: Planned / Upload Pending
-  
+### Demonstrated Features
+* Stack monitoring
+* Overflow detection
+* Overflow reporting
+### Expected Behavior
+ARX detects stack corruption safely and prevents uncontrolled system behavior.
+
 ---
  
 ## Cluster formation
 ### Overview
+This demo validates ARX: TODO  
 Executable: [platform]_[clust]_[arxos.bin  ]  
-> Status: Planned / Upload Pending  
----
+> Status: Planned / Upload Pending
+### Demonstrated Features
+* TODO
+### Expected Behavior
 
+---
 
 ## CMD execution infrastructure
 ### Overview
+This demo validates ARX: TODO  
 Executable: [platform]_[cmdinfa]_[arxos.bin  ]  
 > Status: Planned / Upload Pending
+### Demonstrated Features
+* TODO
+### Expected Behavior
   
 ---
 
 ## Realtime FSM infrastructure
 ### Overview
+This demo validates ARX: TODO  
 Executable: [platform]_[fsminfa]_[arxos.bin  ]  
 > Status: Planned / Upload Pending
-  
----
+### Demonstrated Features
+* TODO
+### Expected Behavior
 
+---
 
 ## ARX Background processing
 ### Overview
+This demo validates ARX: TODO  
 Executable: [platform]_[bgnd]_[arxos.bin  ]  
 > Status: Planned / Upload Pending
-  
+### Demonstrated Features
+* TODO
+### Expected Behavior
+
 ---
 
 ## Temporal and Spatial isolation
 ### Overview
+This demo validates ARX temporal and spatial isolation mechanisms for protected realtime execution.  
 Executable: [platform]_[isolat]_[arxos.bin  ]  
 > Status: Planned / Upload Pending
-  
+### Demonstrated Features
+* Temporal isolation
+* Spatial isolation
+* Memory protection
+* Execution partitioning
+* Fault containment
+### Expected Behavior
+Tasks remain isolated in both execution time and memory space without interfering with other partitions.
+
 ---
   
 ## ARX Forced signal-Shutdown, Standby(Idle), Reset
 ### Overview
+This demo validates ARX: TODO  
 Executable: [platform]_[bsirc]_[arxos.bin  ]  
 > Status: Planned / Upload Pending
+### Demonstrated Features
+* TODO
+### Expected Behavior
   
 ---
 
 ## ARX Forced signal-Resume(Cancellation forced condition)
 ### Overview
+This demo validates ARX: TODO  
 Executable: [platform]_[fcncle]_[arxos.bin  ]  
 > Status: Planned / Upload Pending
+### Demonstrated Features
+* TODO
+### Expected Behavior
   
 ---
 
 ## Task private signals
 ### Overview
+This demo validates ARX: TODO  
 Executable: [platform]_[pvts]_[arxos.bin  ]  
 > Status: Planned / Upload Pending
-  
+### Demonstrated Features
+* TODO
+### Expected Behavior
+ 
 ---
 
 ## FEV demonstration
 ### Overview
+This demo validates ARX: TODO  
 Executable: [platform]_[fevs]_[arxos.bin  ]  
 > Status: Planned / Upload Pending
+### Demonstrated Features
+* TODO
+### Expected Behavior
   
 ---
 
 ## Task software fault handling
 ### Overview
+This demo validates ARX task software fault detection and recovery during task execution.  
 Executable: [platform]_[tswflt]_[arxos.bin  ]  
-> Status: Planned / Upload Pending
-  
+> Status: Planned / Upload Pending  
+### Demonstrated Features
+* Fault reporting to ARX process management
+* Initial recovery attempt by associated fault handler(If available)
+* Last attempt by error task handler(If available)
+* Runtime protection from software logical/hardware faults
+### Expected Behavior
+Faulty tasks are detected and isolated without impacting overall system stability.
+
 ---
 
 ## IPC (Interprocess Communication
 ### Overview
+This demo validates ARX interprocess communication mechanisms between concurrent tasks.  
 Executable: [platform]_[ipc]_[arxos.bin  ]  
-> Status: Planned / Upload Pending
-  
+> Status: Planned / Upload Pending  
+### Demonstrated Features
+* Message passing
+* Task synchronization
+* Event signaling
+* Communication channels
+* Deterministic IPC behavior
+### Expected Behavior
+Tasks exchange data safely and deterministically through ARX IPC services.
+
 ---
 
 ## ICC (Inter-Core Communication)
 ### Overview
+This demo validates ARX communication and synchronization between processor cores.  
 Executable: [platform]_[icc]_[arxos.bin  ]  
 > Status: Planned / Upload Pending
+### Demonstrated Features
+* Inter-core messaging
+* Core synchronization
+* Shared resource handling
+* Multicore communication
+* SMP coordination
+### Expected Behavior
+Processor cores exchange data reliably while maintaining synchronization integrity.
 
 ---
 
 ## Wait for event
 ### Overview
+This demo validates ARX event-driven task synchronization and wake-up handling.  
 Executable: [platform]_[wfevt]_[arxos.bin  ]  
-> Status: Planned / Upload Pending
-  
+> Status: Planned / Upload Pending  
+### Demonstrated Features
+* Event waiting
+* Event signaling
+* Task blocking
+* Wake-up scheduling
+* Synchronization handling
+### Expected Behavior
+Tasks block efficiently while waiting for events and resume execution deterministically.
+
 ---
 
 ## Fault handling
 ### Overview
+This demo validates ARX runtime fault handling and system protection mechanisms.  
 Executable: [platform]_[fault]_[arxos.bin  ]  
-> Status: Planned / Upload Pending
-  
+> Status: Planned / Upload Pending  
+### Demonstrated Features
+* Fault detection
+* Exception processing
+* Runtime recovery
+* System protection
+* Error reporting
+### Expected Behavior
+ARX safely detects and handles runtime faults without uncontrolled failures.
+
 ---
 
 ## Exclusive lock
 ### Overview
+This demo validates ARX exclusive locking mechanisms for protected resource access.  
 Executable: [platform]_[excllk]_[arxos.bin  ]  
-> Status: Planned / Upload Pending
-  
----
+> Status: Planned / Upload Pending  
+### Demonstrated Features
+* Exclusive locking to protect resource
+* Return immediately if lock not available
+### Expected Behavior
+safe to use for Interrupt and Task context, return immediately if lock not available.
 
+---
 
 ## Mutex Synchronization
 ### Overview
@@ -272,64 +384,144 @@ When a high-priority task blocks on a mutex owned by a low-priority task, ARX te
 
 ## Semaphore
 ### Overview
+This demo validates ARX semaphore-based synchronization between concurrent tasks.  
 Executable: [platform]_[sema]_[arxos.bin  ]  
-> Status: Planned / Upload Pending
-  
+> Status: Planned / Upload Pending  
+### Demonstrated Features
+* Binary semaphore
+* Counting semaphore
+* Task synchronization
+* Resource coordination
+### Expected Behavior
+Tasks synchronize efficiently using semaphore-based coordination mechanisms.
+
 ---
 
 ## Reader-Writer lock
 ### Overview
+This demo validates ARX reader-writer lock synchronization for shared resource access.  
 Executable: [platform]_[rwlk]_[arxos.bin  ]  
-> Status: Planned / Upload Pending
-  
+> Status: Planned / Upload Pending  
+### Demonstrated Features
+* Shared read access
+* Exclusive write access
+* Lock arbitration
+* Resource protection
+* Concurrent access handling
+### Expected Behavior
+Multiple readers execute concurrently while writers maintain exclusive resource ownership.
+
 ---
 
 ## MPU configuration and usage
 ### Overview
+This demo validates ARX Memory Protection Unit (MPU) configuration and runtime enforcement.  
 Executable: [platform]_[mputst]_[arxos.bin  ]  
-> Status: Planned / Upload Pending
-  
+> Status: Planned / Upload Pending  
+### Demonstrated Features
+* MPU region configuration
+* Memory isolation
+* Access protection
+* Fault generation
+* Runtime enforcement
+### Expected Behavior
+Unauthorized memory accesses are detected and blocked by MPU protection mechanisms.
+
 ---
 
 ## FPU configuration and usage
 ### Overview
+This demo validates ARX Floating Point Unit (FPU) initialization and runtime usage.  
 Executable: [platform]_[fputst]_[arxos.bin  ]  
-> Status: Planned / Upload Pending
-  
+> Status: Planned / Upload Pending  
+### Demonstrated Features
+* FPU initialization
+* Floating-point context handling
+* Task FPU usage
+* Context switching
+* Runtime computation
+### Expected Behavior
+Floating-point operations execute correctly across multiple concurrent tasks.
+
 ---
 
 ## ARX HAL
 ### Overview
+This demo validates the ARX Hardware Abstraction Layer (HAL) interface and platform services.  
 Executable: [platform]_[hal]_[arxos.bin  ]  
-> Status: Planned / Upload Pending
-  
+> Status: Planned / Upload Pending  
+### Demonstrated Features
+* Hardware abstraction
+* Peripheral access
+* Platform portability
+* Driver interface
+* System services
+### Expected Behavior
+ARX provides consistent hardware-independent runtime services across supported platforms.
+
 ---
 
 ## BSP development
 ### Overview
+This demo validates Board Support Package (BSP) initialization and platform integration.  
 Executable: [platform]_[bspdev]_[arxos.bin  ]  
-> Status: Planned / Upload Pending
-  
+> Status: Planned / Upload Pending  
+### Demonstrated Features
+* Board initialization
+* Clock setup
+* Memory initialization
+* Peripheral configuration
+* Platform bring-up
+### Expected Behavior
+The BSP initializes platform hardware correctly and enables ARX runtime operation.
+
 ---
 
 ## Interrupt handling
 ### Overview
+This demo validates ARX interrupt processing and realtime interrupt response behavior.  
 Executable: [platform]_[isr]_[arxos.bin  ]  
 > Status: Planned / Upload Pending
-  
+### Demonstrated Features
+* ISR execution
+* Interrupt dispatch
+* Nested interrupts
+* Interrupt latency
+* Scheduler interaction
+### Expected Behavior
+Interrupts are handled deterministically with minimal latency and correct task synchronization.
+
 ---
 
 ## Network bring-up
 ### Overview
+This demo validates ARX network stack initialization and runtime connectivity.  
 Executable: [platform]_[net]_[arxos.bin  ]  
-> Status: Planned / Upload Pending
+> Status: Planned / Upload Pending  
+### Demonstrated Features
+* Network initialization
+* Interface configuration
+* Packet handling
+* Driver integration
+* Runtime communication
+### Expected Behavior
+ARX initializes networking services and establishes stable communication successfully.
   
 ---
 
 ## ARX power management
 ### Overview
+This demo validates ARX runtime power management and low-power state transitions.  
 Executable: [platform]_[pwm]_[arxos.bin  ]  
-> Status: Planned / Upload Pending
+> Status: Planned / Upload Pending  
+### Demonstrated Features
+* Idle management
+* Sleep states
+* Wake-up handling
+* Power optimization
+* Runtime power control
+### Expected Behavior
+ARX transitions efficiently between active and low-power states while maintaining system stability.
 
 ---
 
