@@ -69,7 +69,7 @@ The kernel initializes all required subsystems and enters deterministic realtime
 
 ### New task creation
 #### Overview
-
+Executable: [platform]_[newp]_[arxos.bin  ]  
 This demo validates ARX task creation, initialization, and scheduler integration.
 
 #### Demonstrated Features
@@ -83,84 +83,137 @@ New tasks are created successfully and scheduled according to assigned prioritie
 
 ---
 
-### Scheduling behavior
+## Scheduling behavior
+### Overview
+Executable: [platform]_[schd]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
 
-### Task state transition
-  
+## Task state transition
+### Overview
+Executable: [platform]_[state]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
+
 ---
 
-### Stack overflow
+## Stack overflow
+### Overview
+Executable: [platform]_[spovf]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
  
-### Cluster formation
+## Cluster formation
+### Overview
+Executable: [platform]_[clust]_[arxos.bin  ]  
+> Status: Planned / Upload Pending  
+---
+
+
+## CMD execution infrastructure
+### Overview
+Executable: [platform]_[cmdinfa]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
+  
+---
+
+## Realtime FSM infrastructure
+### Overview
+Executable: [platform]_[fsminfa]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
 
 
-### CMD execution infrastructure
+## ARX Background processing
+### Overview
+Executable: [platform]_[bgnd]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
 
-### Realtime FSM infrastructure
-  
----
-
-
-### ARX Background processing
-  
----
-
-### Temporal and Spatial isolation
+## Temporal and Spatial isolation
+### Overview
+Executable: [platform]_[isolat]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
   
-### ARX Forced signal-Shutdown, Standby(Idle), Reset
+## ARX Forced signal-Shutdown, Standby(Idle), Reset
+### Overview
+Executable: [platform]_[bsirc]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
 
-### ARX Forced signal-Resume(Cancellation forced condition)
+## ARX Forced signal-Resume(Cancellation forced condition)
+### Overview
+Executable: [platform]_[fcncle]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
 
-### Task private signals
+## Task private signals
+### Overview
+Executable: [platform]_[pvts]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
 
-### FEV demonstration
+## FEV demonstration
+### Overview
+Executable: [platform]_[fevs]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
 
-### Task software fault handling
+## Task software fault handling
+### Overview
+Executable: [platform]_[tswflt]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
 
-### IPC (Interprocess Communication
+## IPC (Interprocess Communication
+### Overview
+Executable: [platform]_[ipc]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
 
-### ICC (Inter-Core Communication)
+## ICC (Inter-Core Communication)
+### Overview
+Executable: [platform]_[icc]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
 
 ---
 
-### Wait for event
+## Wait for event
+### Overview
+Executable: [platform]_[wfevt]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
 
-### Fault handling
+## Fault handling
+### Overview
+Executable: [platform]_[fault]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
 
-### Exclusive lock
+## Exclusive lock
+### Overview
+Executable: [platform]_[excllk]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
 
 
 ## Mutex Synchronization
 ### Overview
-
+Executable: [platform]_[mutex]_[arxos.bin  ]  
 This demo validates ARX mutex synchronization using four concurrent tasks and shared critical sections, where each task uses two mutexes to form a protected critical section.
 
 ### Task Configuration
@@ -184,11 +237,9 @@ Tasks compete for shared mutexes while ARX safely synchronizes access to resourc
 ## Priority Inversion Handling
 
 ### Overview
-
+Executable: [platform]_[pitest]_[arxos.bin  ]  
 This demo validates ARX Priority Inheritance (PI) handling using nine concurrent tasks across High, Medium, and Low priority groups.
 High-priority and low-priority tasks share a common mutex, while middle-priority tasks execute without using the shared lock.
-
-### Priority Configuration
 
 ### Priority Configuration
 
@@ -219,40 +270,66 @@ When a high-priority task blocks on a mutex owned by a low-priority task, ARX te
   
 ---
 
-### Semaphore
+## Semaphore
+### Overview
+Executable: [platform]_[sema]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
 
-### Reader-Writer lock
+## Reader-Writer lock
+### Overview
+Executable: [platform]_[rwlk]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
 
-
-### MPU configuration and usage
+## MPU configuration and usage
+### Overview
+Executable: [platform]_[mputst]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
 
-### FPU configuration and usage
+## FPU configuration and usage
+### Overview
+Executable: [platform]_[fputst]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
 
-### ARX HAL
+## ARX HAL
+### Overview
+Executable: [platform]_[hal]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
 
-### BSP development
+## BSP development
+### Overview
+Executable: [platform]_[bspdev]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
 
-### Interrupt handling
+## Interrupt handling
+### Overview
+Executable: [platform]_[isr]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
 
-### Network bring-up
+## Network bring-up
+### Overview
+Executable: [platform]_[net]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
   
 ---
 
-### ARX power management
+## ARX power management
+### Overview
+Executable: [platform]_[pwm]_[arxos.bin  ]  
+> Status: Planned / Upload Pending
 
 ---
 
