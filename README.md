@@ -31,62 +31,91 @@ platform bring-up, and kernel capabilities.
 Current planned demonstration coverage includes:
 
 ---
+
 ### 1.0 ARX Boot Process
 #### Overview
-This demo validates the ARX boot sequence from platform reset to kernel startup and scheduler activation.  
-*Executable: `[platform][boot][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
-* Early platform/BSP initialization
-* Memory initialization
-* Kernel startup sequence
-* Device driver initialization
-* User task creation
-* Scheduler activation
-* System bring-up flow
+This demo validates the foundational ARX boot sequence, tracing the execution path from cold hardware platform reset through low-level initialization, kernel subsystem bring-up, and the definitive transition into the active scheduler runtime.
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][boot][arxos.bin]` |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Demo Video** |*Uploading Soon* |
+
+#### Sequence & Initialization Phases
+The system bring-up sequence executes across distinct operational layers to guarantee a deterministic hardware state before multitasking begins:
+
+#### Key Features Demonstrated
+* **Early Platform/BSP Initialization:** Verification of boot-strap entry points, register states, and basic architecture-specific setups.
+* **Memory Initialization:** Safe partitioning and initialization of RAM segments, vector table positioning, and runtime memory boundaries.
+* **Kernel Startup Sequence:** Orderly allocation and tracking of foundational kernel management layers.
+* **Device Driver Initialization:** Bring-up of mandatory system hardware blocks (e.g., system tick timers and diagnostic UART interfaces).
+* **User Task Creation:** Instantiation of the initial root task topologies into the execution pool.
+* **Scheduler Activation:** Dropping out of the raw bootstrap state and executing the first deterministic context switch.
+
 #### Expected Behavior
-ARX initializes core platform services, starts the kernel, and transitions cleanly into multitasking operation.
+Upon power-on or platform reset, the binary processes all early Board Support Package (BSP) dependencies linearly. Once memory architectures and necessary system device drivers are online, ARX instantiates the predefined base tasks, initializes the core kernel state, and hands off execution control directly to the hardware-managed scheduler. 
+A clean, predictable logs stream will output to the diagnostic console, tracking each initialization phase without faults or unexpected processor exceptions.
 
 ---
 
-### 2.0 Kernel bring-up
+### 2.0 Kernel Bring-up
 #### Overview
-This demo validates ARX kernel initialization, subsystem setup, and runtime service activation.  
-*Executable: `[platform][kernel][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
-* Kernel initialization
-* Core service registration
-* Timer initialization
-* Scheduler initialization
-* Runtime environment setup
-#### 1.0 Expected Behavior
-The kernel initializes all required subsystems and enters deterministic realtime execution.
+This demo validates the internal ARX kernel initialization lifecycle, confirming the deterministic setup of foundational data structures, registration of core services, and the activation of core timing infrastructures before the system hands control to the multitasking loop.
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][kernel][arxos.bin]` |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Demo Video** |*Uploading Soon* |
+
+#### Core Initialization Subsystems
+During this specific phase, the kernel transitions from low-level assembly-level architecture setups into its modular, structured C-runtime environment:
+
+#### Key Features Demonstrated
+* **Kernel Initialization:** Setup of internal kernel states, operational modes, and global management tables.
+* **Core Service Registration:** Validation of the internal API interfaces, system call traps, and inter-process communication (IPC) plumbing hooks.
+* **Timer Initialization:** Setting up the architecture-specific tick counter, registering interrupt handlers, and scheduling the baseline quantum.
+* **Scheduler Initialization:** Allocation and configuration of priority run-queues, bitmap trackers, and the idle task framework.
+* **Runtime Environment Setup:** Fine-tuning kernel memory protections, critical section primitives, and early status structures.
+
+#### Expected Behavior
+The ARX kernel parses its internal module configuration definitions, initializes mandatory software objects, anchors its system call vector routing table, and activates hardware-driven tracking timers. 
+The phase concludes when all prerequisite internal subsystems report a ready status, at which point the kernel establishes its initial execution baseline and enters a fully deterministic, real-time multitasking state.
 
 ---
 
-### 3.0 New task creation
+### 3.0 New Task Creation
 #### Overview
-This demo validates ARX task creation, initialization, and scheduler integration.  
-*Executable: `[platform][newp][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
-* Static task creation
-* Stack allocation
-* Priority assignment
-* Scheduler insertion
-* Task startup
+This demo validates the ARX kernel's lifecycle mechanisms for task creation, stack initialization, and seamless integration into the active scheduler run-queues.
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][newp][arxos.bin]` |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Demo Video** |*Uploading Soon* |
+
+#### Task Characterization & Constraints
+The system instantiates four distinct tasks configured with strict execution budgets, periods, and deadlines to verify real-time scheduling alignment:
+
+| Task ID | WCET | Release Period | Deadline | Priority |
+| :--- | :---: | :---: | :---: | :---: |
+| **Task-1** | `2` | `5` | `3` | `0` |
+| **Task-2** | `2` | `10` | `5` | `1` |
+| **Task-3** | `2` | `20` | `7` | `2` |
+| **Task-4** | `2` | `40` | `9` | `3` |
+
+> **Note on Priorities:** Priority assignment follows standard kernel configuration metrics, where lower numerical values represent higher urgency/dominance during execution arbitration.
+
+#### Key Features Demonstrated
+* **Static Task Creation:** Allocation of core task control blocks (TCBs) during system initialization phase.
+* **Stack Allocation:** Proper alignment and initialization of isolated execution stacks.
+* **Priority Assignment:** Correct configuration of scheduling bands across multiple independent contexts.
+* **Scheduler Insertion:** Immediate migration of initialized tasks into the ready queue structures.
+* **Task Startup:** Successful context switching into the entry point functions of freshly spawned tasks.
+
 #### Expected Behavior
-New tasks are created successfully and scheduled according to assigned priorities.
+Upon initialization, the ARX kernel parses the defined task topology, prepares the runtime context for each task instance, and registers them with the scheduling engine. Tasks execute deterministically according to their defined metrics, meeting operational deadlines under strict priority-based preemption constraints.
 
 ---
 
@@ -406,57 +435,75 @@ This short video demonstrates the test configuration, runtime execution flow, an
 safe to use for Interrupt and Task context, return immediately if lock not available.
 
 ---
-
 ### 22.0 Mutex Synchronization
+
 #### Overview
-This demo validates ARX mutex synchronization using four concurrent tasks and shared critical sections, where each task uses two mutexes to form a protected critical section.  
-*Executable: `[platform][mutext][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Task Configuration
-`[Task, Mutex] : [T0, (M0,M1)] [T1, (M2,M3)] [T2, (M3,M4)] [T3, (M1,M4)]`
-#### Demonstrated Features
-* Mutex lock/unlock
-* Critical section protection
-* Deadlock avoidance
-* Task preemption handling
-* Deterministic scheduling
+This demo validates ARX mutex synchronization using four concurrent tasks and shared critical sections, where each task uses two mutexes to form a protected critical section.
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][mutex][arxos.bin]` |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Demo Video** |*Uploading Soon* |
+
+#### Task & Mutex Configuration
+The tasks are configured to share resource boundaries across specific critical sections:
+
+| Task | Associated Mutexes |
+| :---: | :--- |
+| **T0** | `M0`, `M1` |
+| **T1** | `M2`, `M3` |
+| **T2** | `M3`, `M4` |
+| **T3** | `M1`, `M4` |
+
+> **Note on Lock Order:** Mutexes are allocated and requested according to strict structural rules to ensure runtime predictability.
+
+#### Key Features Demonstrated
+* **Core Primitives:** Deterministic mutex `lock` and `unlock` operations.
+* **Resource Integrity:** Robust critical section protection under heavy contention.
+* **System Stability:** Practical application of lock hierarchies for **deadlock avoidance**.
+* **Real-Time Execution:** Seamless task preemption handling and deterministic scheduling.
+
 #### Expected Behavior
-Tasks compete for shared mutexes while ARX safely synchronizes access to resources without deadlocks or starvation.
-  
+Tasks compete dynamically for shared mutexes while the ARX kernel safely synchronizes access to shared resources, maintaining system determinism without introducing deadlocks or task starvation.
+
 ---
 
 ### 23.0 Priority Inversion Handling
-#### Overview
-This demo validates ARX Priority Inheritance (PI) handling using nine concurrent tasks across High, Medium, and Low priority groups.  
-High-priority and low-priority tasks share a common mutex, while middle-priority tasks execute without using the shared lock.  
-*Executable: `[platform][pitest][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Priority Configuration
-| Priority | Tasks      | Order        |
-| -------- | ---------- | ------------ |
-| High     | H0, H1, H2 | H0 > H1 > H2 |
-| Medium   | M0, M1, M2 | M0 > M1 > M2 |
-| Low      | L0, L1, L2 | L0 > L1 > L2 |
 
-#### Shared Resource Configuration
-`[Shared Mutex] : [H0,H1,H2,L0,L1,L2]`
-`[No Mutex Access] : [M0,M1,M2]`
-#### Demonstrated Features
-* Priority inversion handling
-* Priority inheritance
-* Mutex synchronization
-* Task preemption control
-* Deterministic scheduling
+#### Overview
+This demo validates the ARX kernel's Priority Inheritance mechanism using nine concurrent tasks split across High, Medium, and Low priority groups. It demonstrates how the system prevents unbounded priority inversion when middle-priority tasks attempt to preempt a lower-priority task holding a resource required by a high-priority task.
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][pitest][arxos.bin]` |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Demo Video** |*Uploading Soon* |
+
+#### System Topology & Priority Hierarchy
+Tasks are organized into strict priority bands, with execution dominance structured as follows:
+
+| Priority Group | Assigned Tasks | Internal Priority Ordering |
+| :---: | :---: | :--- |
+| **High** | `H0`, `H1`, `H2` | `H0` > `H1` > `H2` |
+| **Medium** | `M0`, `M1`, `M2` | `M0` > `M1` > `M2` |
+| **Low** | `L0`, `L1`, `L2` | `L0` > `L1` > `L2` |
+
+#### Resource Boundaries
+* **Shared Mutex Access:** `H0`, `H1`, `H2`, `L0`, `L1`, `L2`
+* **No Mutex Access (Independent):** `M0`, `M1`, `M2`
+
+#### Key Features Demonstrated
+* **Priority Inversion Mitigation:** Prevention of unbounded latency for high-priority tasks.
+* **Dynamic Priority Inheritance:** Real-time boosting and restoration of task priorities based on lock ownership.
+* **Resource Access Control:** Mutex synchronization under heavy multi-band contention.
+* **Task Preemption Control:** Accurate handling of preemption boundaries across execution groups.
+* **Deterministic Scheduling:** Guaranteeing predictable bounded execution under complex blocking conditions.
+
 #### Expected Behavior
-Medium-priority tasks normally preempt low-priority tasks.
-When a high-priority task blocks on a mutex owned by a low-priority task, ARX temporarily boosts the lock owner priority and prevents middle-priority tasks from interfering until the mutex is released.
-  
+Under normal conditions, medium-priority tasks (`M0`-`M2`) will preempt low-priority tasks (`L0`-`L2`). 
+However, when a high-priority task blocks on the shared mutex currently held by a low-priority task, ARX dynamically escalates the lock owner's effective priority to match the blocked high-priority task. This crucial escalation prevents the independent medium-priority tasks from running and interfering, allowing the lock owner to complete its critical section swiftly and release the mutex to restore standard deterministic bounds.
+
 ---
 
 ### 24.0 Semaphore
