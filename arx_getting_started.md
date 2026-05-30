@@ -211,11 +211,13 @@ ARX_SDK_A2026.04.30/
 │   │       ├── rv64/
 │   │       │   ├── rv64gc/
 │   │       │   │   ├── shakti-c/
-│   │       │   │   │   ├── shakti_c_fsigs_arxos.bin
+│   │       │   │   │   ├── shakti_c_newp_arxos.bin
+│   │       │   │   │   ├── shakti_c_mutex_arxos.bin
+│   │       │   │   │   ├── shakti_c_pitest_arxos.bin
 │   │       │   │   │   ├── qemu.bat
 │   │       │   │   │   ├── README.md
 │   │       │   │   ├── virt/
-│   │       │   │   │   ├── virt_fsigs_arxos.bin
+│   │       │   │   │   ├── virt_newp_arxos.bin
 │   │       │   │   │   ├── qemu.bat
 │   │       │   │   │   ├── README.md
 │   │       │   │   ├── <Future Upload>/
