@@ -19,7 +19,7 @@ The provided binary includes:
 
 Ensure the following files are available in the same folder:
 
-* `*_arxos.bin` (Example: virt_fsigs_arxos.bin)
+* `*_arxos.bin` (Example: virt_newp_arxos.bin)
 * `qemu.bat`
 
 Also ensure that:
@@ -48,13 +48,13 @@ set QEMU_PATH_RISCV=C:/< Yours PC >/qemu-riscv/7.0.0-1.1/.content/bin
 ---
 
 ## Step 2: Update Binary Path
-Update the path to the `*_arxos.bin` image (for example: `virt_fsigs_arxos.bin`).  
+Update the path to the `*_arxos.bin` image (for example: `virt_newp_arxos.bin`).  
 The `*_arxos.bin` image contains both the ARX RTOS and the application software built together.
 
 Example:
 
 ```text
-set ARXIMAGE=C:/<Your_PC_Path>/arx-rtos-main/arxos/arch/riscv/rv64/rv64gc/virt/virt_fsigs_arxos.bin
+set ARXIMAGE=C:/<Your_PC_Path>/arx-rtos-main/arxos/arch/riscv/rv64/rv64gc/virt/virt_newp_arxos.bin
 ```
 ---
 
