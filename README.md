@@ -339,23 +339,30 @@ Faulty tasks are detected and isolated without impacting overall system stabilit
 
 ---
 
-### 17.0 IPC (Interprocess Communication
+### 17.0 IPC (Interprocess Communication)
+
 #### Overview
-This demo validates ARX interprocess communication mechanisms between concurrent tasks.  
-*Executable: `[platform][ipc][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending  
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
-* Message passing
-* Task synchronization
-* Event signaling
-* Communication channels
-* Deterministic IPC behavior
+This demo validates the ARX kernel's native Interprocess Communication (IPC) mechanisms, confirming safe, predictable, and deterministic data exchange and event signaling pathways between isolated, concurrent execution contexts.
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][ipc][arxos.bin]` |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** |*Uploading Soon* |
+
+---
+
+#### Key Features Demonstrated
+* **Inter-Task Communication:** Exchange of information between independent tasks using ARX IPC services.
+* **Data Transfer Mechanisms:** Validation of data exchange paths supported by the ARX communication framework.
+* **Producer-Consumer Workflows:** Demonstration of information flow between data-producing and data-consuming tasks.
+* **Communication Reliability:** Verification of message delivery, reception, and processing behavior under concurrent execution conditions.
+* **IPC Service Integration:** Demonstration of how application tasks interact with ARX communication facilities.
+
 #### Expected Behavior
-Tasks exchange data safely and deterministically through ARX IPC services.
+Producer tasks generate information and transfer it through ARX IPC services to one or more consumer tasks. Consumer tasks receive and process the transferred information according to the communication model being evaluated.
+The demonstration validates that communication operations execute correctly between independent execution contexts while maintaining data integrity and predictable task interaction behavior. Various IPC scenarios may be exercised to illustrate communication workflows, message handling, and application-level coordination using ARX communication services.
 
 ---
 
