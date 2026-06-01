@@ -210,18 +210,29 @@ This short video demonstrates the test configuration, runtime execution flow, an
   
 ---
 
-### 9.0 Realtime FSM infrastructure
+### 9.0 Realtime FSM Infrastructure
+
 #### Overview
-This demo validates ARX: TODO  
-*Executable: `[platform][fsminfra][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
-* TODO
+This demo validates the ARX Finite State Machine (FSM) infrastructure, confirming deterministic state transitions, event-driven execution loops, and predictable execution timing boundaries designed for complex embedded control logic.
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][fsminfra][arxos.bin]` |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** |*Uploading Soon* |
+
+#### Key Features Demonstrated
+* **Deterministic State Transitions:** Guarantees that transition latencies remain bounded and independent of the total number of system states.
+* **Event Action Routing:** Efficient asynchronous and synchronous event queue handling inside dedicated real-time tasks.
+* **Guard Condition Evaluation:** Validating safe state execution boundaries through conditional execution hooks.
+* **State Entry/Exit Actions:** Clean execution tracking of hardware/software configurations during lifecycle state boundaries.
+* **Memory Optimization:** Micro-footprint static state table structures ideal for tightly integrated embedded target platforms.
+
 #### Expected Behavior
+The FSM infrastructure parses incoming system events sequentially without missing high-priority notifications. 
+State transitions execute deterministically according to preset guard rules, invoking entry, exit, and transition actions flawlessly. 
+The framework successfully handles state loops and boundary errors without triggering execution drift, maintaining complete real-time predictability.
 
 ---
 
