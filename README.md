@@ -360,6 +360,14 @@ This demo validates the ARX kernel's native Interprocess Communication (IPC) mec
 * **Communication Reliability:** Verification of message delivery, reception, and processing behavior under concurrent execution conditions.
 * **IPC Service Integration:** Demonstration of how application tasks interact with ARX communication facilities.
 
+#### IPC Circular Validation Test
+This test verifies end-to-end message passing and routing reliability across a circular communication chain of multiple processes.  
+**Data Flow:**
+* **PID 1** sends message `110` to **PID 2**
+* **PID 2** forwards message `111` to **PID 3**
+* **PID 3** forwards message `112` to **PID 4**
+* **PID 4** sends message `113` back to **PID 1**  
+Successful execution confirms correct transmission, precise message routing, and overall IPC subsystem reliability.
 #### Expected Behavior
 Producer tasks generate information and transfer it through ARX IPC services to one or more consumer tasks. Consumer tasks receive and process the transferred information according to the communication model being evaluated.
 The demonstration validates that communication operations execute correctly between independent execution contexts while maintaining data integrity and predictable task interaction behavior. Various IPC scenarios may be exercised to illustrate communication workflows, message handling, and application-level coordination using ARX communication services.
