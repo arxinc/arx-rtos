@@ -1,33 +1,44 @@
-# ARX RTOS – ARM32 (Cortex-M4) Binary Placeholder
+# ARX RTOS – ARM32 (Cortex-M4) Evaluation Binaries
 
-This directory is reserved for **ARM32 (Cortex-M4) ARX RTOS binaries**.
+This directory contains **ARM32 (Cortex-M4) ARX RTOS binaries** for supported development boards.
 
 ---
 
 ## Status
 
-Binaries for Cortex-M4 targets are **not yet uploaded**.
-Support will be added in upcoming releases.
+✅ Binary support for **STM32F407VG (Cortex-M4)** is now available.
+
+Additional Cortex-M4 board binaries and evaluation packages will be added in future releases.
 
 ---
 
 ## What to Expect
 
-Once available, this directory will include:
+This directory may include:
 
 * `*.bin` → Flashable ARX RTOS images for Cortex-M4 platforms
 * Board-specific execution notes
+* UART setup instructions
 * Optional run/debug scripts
 
 ---
 
 ## Expected Outcome
 
-These binaries will allow you to:
+These binaries allow you to:
 
 * Run ARX RTOS on supported Cortex-M4 boards
 * Observe boot logs and runtime behavior
-* Evaluate a sample workload consisting of **four RTOS tasks**, controlled by a test script
+* Evaluate RTOS scheduling, synchronization, and system services
+* Execute board-specific validation and demonstration workloads
+
+---
+
+## Currently Available
+
+* STM32F407VG (Cortex-M4)
+
+  * `stm32_pitest_arxos.bin`
 
 ---
 
@@ -37,10 +48,10 @@ Planned Cortex-M4 targets may include:
 
 * STM32F4 Discovery
 * STM32 Nucleo-F401RE
+* Additional Cortex-M4 evaluation platforms
 
 ---
 
 ## Note
 
-This placeholder maintains the repository structure and indicates upcoming ARM32 (Cortex-M4) support.
-Content will be updated as binaries become available.
+Evaluation binaries are provided for demonstration and validation purposes. Additional board support packages (BSPs), binaries, and documentation will be published as they become available.
