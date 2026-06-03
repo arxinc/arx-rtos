@@ -162,21 +162,33 @@ Tasks transition correctly between scheduler-managed runtime states.
 
 ---
 
-### 6.0 Stack overflow
+### 6.0 Stack Overflow Detection
+
 #### Overview
-This demo validates ARX stack overflow detection and runtime protection mechanisms.  
-*Executable: `[platform][spovf][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
-* Stack monitoring
-* Overflow detection
-* Overflow reporting
+This demo validates the ARX kernel's stack overflow detection and active runtime protection mechanisms, proving the system's ability to trap illegal stack growth before it corrupts adjacent task contexts or critical kernel memory spaces.
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][spovf][arxos.bin]` |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** | *Uploading Soon* |
+
+#### Architectural Stack Protection Models
+The kernel implements robust containment boundaries to trap out-of-bounds stack pointer mutations dynamically:  
+Method A: Hardware-Enforced MPU Region Guard  
+Method B: Software Stack Canary Monitoring
+
+#### Key Features Demonstrated
+* **Active Stack Monitoring:** Continuous or context-switch-driven validation of task-specific stack allocation allocations.
+* **Hardware/Software Overflow Detection:** Utilization of Memory Protection Unit (MPU) alignment boundaries or magic-number canary tracking to catch out-of-bounds stack frames.
+* **Proactive Fault Isolation:** Immediately halting the offending execution context before it modifies neighboring TCBs or application data memory.
+* **Overflow Reporting & Diagnostics:** Generation of diagnostic stack-trace info, register snapshots, and tracking logs over the serial console upon fault capture.
+
 #### Expected Behavior
-ARX detects stack corruption safely and prevents uncontrolled system behavior.
+The demo application intentionally forces a target task to execute deep recursive calls or allocate large arrays locally, exhausting its allocated stack limit. The moment the stack pointer crosses the safe operational threshold(80%), ARX intercepts the violation via a hardware exception (MPU fault) or a software guard check. 
+
+Rather than allowing an uncontrolled system crash or memory corruption, the kernel safely isolates the faulty task, preserves general system stability, and emits an explicit stack overflow warning message to the diagnostic terminal.
 
 ---
  
@@ -464,22 +476,29 @@ ARX safely detects and handles runtime faults without uncontrolled failures.
 
 ---
 
-### 21.0 Exclusive lock
+### 21.0 Exclusive Lock
 #### Overview
-This demo validates ARX exclusive locking mechanisms for protected resource access.  
-*Executable: `[platform][excllk][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending  
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
-* Exclusive locking to protect resource
-* Return immediately if lock not available
+This demo validates the ARX exclusive locking primitives, confirming absolute, non-blocking hardware/software isolation for critical resources. This mechanism is explicitly engineered for safe execution across both Task and Interrupt Service Routine (ISR) contexts.
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][excllk][arxos.bin]` |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** | *Uploading Soon* |
+
+#### Key Features Demonstrated
+* **Absolute Resource Protection:** Enforcing mutually exclusive ownership boundaries over core hardware registers and memory segments.
+* **Immediate Failure Return (Try-Lock Semantics):** Instantly returning execution control with an error/busy status if the lock is held, completely bypassing scheduler blocking queues.
+* **Dual-Context Compatibility:** Validating safe operation inside both standard schedulable Task contexts and high-priority Asynchronous Interrupt (ISR) environments.
+* **Zero-Yield Execution:** Ensuring that calling contexts do not sleep, preventing illegal scheduling operations within execution-critical paths.
+
 #### Expected Behavior
-safe to use for Interrupt and Task context, return immediately if lock not available.
+When the exclusive lock is unallocated, a task or ISR acquires it instantly and enters its protected section. If a secondary context (including a high-priority ISR) attempts to acquire the lock while it is held, the ARX primitive will not suspend execution or block; instead, it returns an immediate "not available" status code. 
+This immediate feedback loop allows the calling context to gracefully diverge, executing alternative logic or deferring the operation, thereby preserving real-time execution guarantees across all system layers.
 
 ---
+
 ### 22.0 Mutex Synchronization
 
 #### Overview
