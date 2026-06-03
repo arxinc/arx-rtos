@@ -217,7 +217,7 @@ This demo validates the ARX Finite State Machine (FSM) infrastructure, confirmin
 
 | Attribute | Details |
 | :--- | :--- |
-| **Executable** | `[platform][fsminfra][arxos.bin]` |
+| **Executable** | `[platform][fsm][arxos.bin]` |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Available |
 | **Demo Video** |*Uploading Soon* |
@@ -280,7 +280,7 @@ This demo validates the ARX response to forced signals assertion by system contr
 | :--- | :--- |
 | **Executable** | `[platform][bsirc][arxos.bin]` |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Planned / Upload Pending |
+| **Status** | Available |
 | **Demo Video** |*Uploading Soon* |
 
 #### Key Features Demonstrated
@@ -303,9 +303,9 @@ This demo validates the ARX forced condition assertion canecellation.
 
 | Attribute | Details |
 | :--- | :--- |
-| **Executable** | `[platform][fsminfra][arxos.bin]` |
+| **Executable** | `[platform][fcan][arxos.bin]` |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Planned / Upload Pending |
+| **Status** | Available |
 | **Demo Video** |*Uploading Soon* |
 
 #### Key Features Demonstrated
