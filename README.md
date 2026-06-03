@@ -219,7 +219,7 @@ This demo validates the ARX Finite State Machine (FSM) infrastructure, confirmin
 | :--- | :--- |
 | **Executable** | `[platform][fsminfra][arxos.bin]` |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Planned / Upload Pending |
+| **Status** | Available |
 | **Demo Video** |*Uploading Soon* |
 
 #### Key Features Demonstrated
