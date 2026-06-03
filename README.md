@@ -379,7 +379,6 @@ This demo validates the ARX kernel's native Interprocess Communication (IPC) mec
 | :--- | :--- |
 | **Executable** | `[platform][ipc][arxos.bin]` |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Planned / Upload Pending |
 | **Demo Video** |*Uploading Soon* |
 
 ---
