@@ -272,17 +272,27 @@ Tasks remain isolated in both execution time and memory space without interferin
 ---
   
 ### 12.0 ARX Forced signal-Shutdown, Standby(Idle), Reset
+
 #### Overview
-This demo validates ARX: TODO  
-*Executable: `[platform][bsirc][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
-* TODO
+This demo validates the ARX response to forced signals assertion by system control/emergency.
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][bsirc][arxos.bin]` |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** |*Uploading Soon* |
+
+#### Key Features Demonstrated
+* **Deterministic Forced Response:** Guarantees that emergency state-transition and recovery latencies remain strictly bounded.
+* **Asynchronous Signal Routing:** Efficient event propagation coordinated between active `READY` state tasks and pending kernel jobs.
+* **Prepare System for Emergency:** Immediate containment of cascading faults by halting or blocking non-critical inputs, prioritizing the execution of critical pending tasks.
+* **Fail-Safe & Graceful Recovery:** Structured handling sequences that transition the system into a safe state, coordinating graceful shutdowns, data serialization, or managed processor resets.
+
 #### Expected Behavior
+The ARX BSIRC infrastructure remains persistently active and available to intercept and arbitrate forced signal conditions under any system load.
+Upon receiving a forced signal, the BSIRC subsystem prioritizes stabilizing the active runtime context by allowing executing tasks to cleanly conclude their atomic critical operations, ensuring the system enters a deterministic state before handling the forced transition. 
+While the exact latency to achieve system readiness is bounded and dynamically dependent on the number of active tasks and their current resource engagement (WCET metrics), the force-handling mechanism operates efficiently in strict cooperation with the scheduler to honor existing workload boundaries without compromising system integrity.
   
 ---
 
