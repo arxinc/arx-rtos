@@ -552,41 +552,53 @@ However, when a high-priority task blocks on the shared mutex currently held by 
 ---
 
 ### 24.0 Semaphore
+
 #### Overview
-This demo validates ARX semaphore-based synchronization between concurrent tasks.  
-*Executable: `[platform][sema][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending  
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
-* Binary semaphore
-* Counting semaphore
-* Task synchronization
-* Resource coordination
+This demo validates ARX semaphore-based synchronization mechanisms between concurrent tasks, evaluating both binary signaling and counting resource coordination primitives under real-time constraints.
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][sema][arxos.bin]` |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** | *Uploading Soon* |
+
+#### Key Features Demonstrated
+* **Binary Semaphore:** Dedicated task-to-task signaling, verification of standard unblocking mechanics, and event-driven wakeups.
+* **Counting Semaphore:** Managing access to a bounded pool of identical shared system resources using atomic token tracking.
+* **Task Synchronization:** Strict coordination of execution sequencing between decoupled threads without resource leaking.
+* **Resource Coordination:** Clean management of task blocking and unblocking states within the scheduler run-queues based on token availability.
+
 #### Expected Behavior
-Tasks synchronize efficiently using semaphore-based coordination mechanisms.
+Tasks interlock dynamically using the semaphore primitives without introducing race conditions. When a task attempts to acquire a semaphore with zero tokens available, the ARX kernel immediately blocks the calling context and updates its tracking state. 
+
+Upon a token release (`Give`) by a producer or interrupting service, the scheduler unblocks the highest-priority waiting task deterministically, resuming execution with predictable latency boundaries.
 
 ---
 
-### 25.0 Reader-Writer lock
+### 25.0 Reader-Writer Lock
+
 #### Overview
-This demo validates ARX reader-writer lock synchronization for shared resource access.  
-*Executable: `[platform][rwlk][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending  
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
-* Shared read access
-* Exclusive write access
-* Lock arbitration
-* Resource protection
-* Concurrent access handling
+This demo validates the ARX Reader-Writer Lock (`rwlock`) primitives, confirming the kernel's ability to safely decouple read-only shared access from exclusive write-only operations under high thread contention.
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][rwlk][arxos.bin]` |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** | *Uploading Soon* |
+
+#### Key Features Demonstrated
+* **Shared Read Access:** Allowing multiple low-priority or peer reader tasks to concurrently inspect a single memory region without blocking each other.
+* **Exclusive Write Access:** Enforcing absolute serialization so that only one writer thread can mutate data at any given time.
+* **Lock Arbitration:** Preventing starvation states by managing the scheduling priority boundary between incoming readers and pending writers.
+* **Resource Protection:** Guarding application data layers against critical race conditions and read-while-write memory corruption.
+* **Concurrent Access Handling:** Smooth transition states within the scheduler run-queues as the lock toggles between shared and exclusive ownership.
+
 #### Expected Behavior
-Multiple readers execute concurrently while writers maintain exclusive resource ownership.
+Multiple reader tasks can acquire the lock simultaneously and access the critical shared resource concurrently without latency penalties. However, the moment a writer task requests access, ARX blocks subsequent reader requests, allows active readers to finish, and grants exclusive ownership to the writer. 
+
+During the write phase, all other threads remain blocked deterministically, ensuring absolute data consistency across execution domains.
 
 ---
 
