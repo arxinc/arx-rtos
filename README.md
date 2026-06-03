@@ -297,17 +297,27 @@ While the exact latency to achieve system readiness is bounded and dynamically d
 ---
 
 ### 13.0 ARX Forced signal-Resume(Cancellation forced condition)
+
 #### Overview
-This demo validates ARX: TODO  
-*Executable: `[platform][fresume][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
-* TODO
+This demo validates the ARX forced condition assertion canecellation.
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][fsminfra][arxos.bin]` |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** |*Uploading Soon* |
+
+#### Key Features Demonstrated
+
+* **Asynchronous Signal Assertion:** Forced signals can be asserted asynchronously from any execution context.
+* **Signal Cancellation:** Pending **Shutdown**, **Reset**, and **Idle** operations can be canceled if a resume signal is received before the associated timeout expires.
+* **Shutdown Timeout Handling:** A shutdown request may be associated with a timeout period. If power removal does not occur after the system reaches a safe shutdown state, the shutdown request is automatically canceled and normal operation resumes.
+* **Idle Timeout Handling:** The system enters an idle state upon request and remains idle indefinitely until a resume signal is received. If a resume signal is asserted before the idle timeout expires, the idle operation is canceled.
+* **Reset Timeout Handling:** A reset request is deferred until the system reaches a safe reset point. If a resume signal is received before the timeout expires, the pending reset operation is canceled.
+
 #### Expected Behavior
+The ARX forced signal infrastructure cancelled any forced signal if issued before timeout resume signal is issued.
   
 ---
 
