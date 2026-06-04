@@ -119,46 +119,53 @@ Upon initialization, the ARX kernel parses the defined task topology, prepares t
 
 ---
 
-### 4.0 Scheduling behavior
+### 4.0 Scheduling Behavior
 #### Overview
-This demo validates ARX deterministic priority-based scheduling behavior under concurrent execution.  
-*Executable: `[platform][scheduler][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
-* Priority scheduling
-* Task preemption
-* Realtime execution
-* Deterministic scheduling
-* Runtime task management
+This demo validates the ARX kernel's deterministic, fixed-priority preemptive scheduling engine under heavy concurrent execution workloads, proving its ability to guarantee immediate execution of high-priority tasks.
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][scheduler][arxos.bin]` |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** | *Uploading Soon* |
+
+#### Key Features Demonstrated
+* **Strict Priority Scheduling:** Validation of the kernel's execution selection based entirely on assigned task dominance metrics.
+* **Low-Latency Task Preemption:** Instant suspension of lower-priority contexts the moment a higher-priority task transitions into the ready queue.
+* **Real-Time Execution Trackability:** Execution of multiple independent loops to track deterministic timeline jitter and scheduling boundaries.
+* **Deterministic Scheduling:** Ensuring that ready queue sorting and context-switching latencies remain constant regardless of the number of registered tasks.
+* **Runtime Task Management:** Smooth state transitions (`RUNNING`, `READY`, `BLOCKED`) during heavy asynchronous event injections.
+
 #### Expected Behavior
-Higher-priority tasks preempt lower-priority tasks while maintaining deterministic execution order.
+When multiple tasks are ready to run, the ARX scheduling engine assigns the CPU exclusively to the task with the highest priority configuration. If a high-priority task unblocks (due to a timer tick, semaphore release, or hardware interrupt), the kernel executes a low-latency context switch, preempting the lower-priority thread instantly. 
+The lower-priority task is safely preserved in the ready queue and resumes execution only when all higher-priority threads relinquish the processor, demonstrating absolute adherence to real-time execution bounds.
 
 ---
 
-### 5.0 Task state transition
+### 5.0 Task State Transition
+
 #### Overview
-This demo validates ARX task lifecycle management and scheduler-driven state transitions.  
-*Executable: `[platform][state][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
-* Ready state
-* Running state
-* Blocked state
-* Suspended(Limited Period) state
-* Suspended(Unlimited Period) state
-* Sleep(Unlimited Period) state
-* WAITING transition handling
-* Termination state
+This demo validates the ARX kernel's task lifecycle management infrastructure, proving the integrity of the state machine as tasks transition dynamically through scheduler-driven execution modes based on timing, synchronization events, and explicit kernel requests.
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][state][arxos.bin]` |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** | *Uploading Soon* |
+
+#### Key Features Demonstrated
+* **Running & Ready States:** Proper allocation of the CPU to the highest-priority target task, and immediate queue re-insertion when a task is yielded or preempted.
+* **Blocked State:** Orderly relocation of a task from the active ready queue to a resource-specific wait queue upon encountering a locked primitive or missing dependency.
+* **Suspended (Limited vs. Unlimited Period):** Validating time-bounded suspension hooks (e.g., timed delays) alongside absolute, open-ended suspensions requiring an explicit external resume wake-up call.
+* **Sleep (Unlimited Period):** Verification of low-power or deep-sleep dormant configurations where the task context is cleanly shelved without taxing scheduler tracking overhead.
+* **WAITING Transition Handling:** Ensuring robust internal kernel arbitration when a task is waiting on multiple compounding constraints simultaneously.
+* **Termination State:** Secure de-allocation of TCB parameters, stack recovery, and structural cleanup when a task reaches its exit instruction.
+
 #### Expected Behavior
-Tasks transition correctly between scheduler-managed runtime states.
+The demo orchestrates a controlled suite of task operations that force target threads through every stage of the lifecycle state machine. The ARX kernel manipulates task control flags and ready bitmaps without dropping contexts or leaving hanging pointer definitions. 
+Tasks enter, wait, wake up, and terminate in perfect synchronicity with environmental stimulus, showing no memory leakage or priority queue corruption during heavy state churn.
 
 ---
 
