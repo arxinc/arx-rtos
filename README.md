@@ -391,6 +391,7 @@ This demo validates the ARX kernel's native Interprocess Communication (IPC) mec
 | :--- | :--- |
 | **Executable** | `[platform][ipc][arxos.bin]` |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Available |
 | **Demo Video** |*Uploading Soon* |
 
 ---
@@ -508,6 +509,7 @@ This demo validates ARX mutex synchronization using four concurrent tasks and sh
 | :--- | :--- |
 | **Executable** | `[platform][mutex][arxos.bin]` |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Available |
 | **Demo Video** |*Uploading Soon* |
 
 #### Task & Mutex Configuration
@@ -542,6 +544,7 @@ This demo validates the ARX kernel's Priority Inheritance mechanism using nine c
 | :--- | :--- |
 | **Executable** | `[platform][pitest][arxos.bin]` |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Available |
 | **Demo Video** |*Uploading Soon* |
 
 #### System Topology & Priority Hierarchy
