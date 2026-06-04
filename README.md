@@ -171,7 +171,7 @@ This demo validates the ARX kernel's stack overflow detection and active runtime
 | :--- | :--- |
 | **Executable** | `[platform][spovf][arxos.bin]` |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Planned / Upload Pending |
+| **Status** | Available |
 | **Demo Video** | *Uploading Soon* |
 
 #### Architectural Stack Protection Models
