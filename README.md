@@ -271,22 +271,31 @@ This short video demonstrates the test configuration, runtime execution flow, an
 ---
 
 ### 11.0 Temporal and Spatial isolation
+
 #### Overview
-This demo validates ARX temporal and spatial isolation mechanisms for protected realtime execution.  
-*Executable: `[platform][isolate][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
-* Temporal isolation
-* Spatial isolation
-* Memory protection
-* Execution partitioning
-* Fault containment
+This demo validates the ARX kernel's ability to enforce strict isolation boundaries between execution partitions. 
+It demonstrates how the system prevents "interference-from-freedom" by ensuring that a fault in one task—whether a memory violation or an execution budget overrun—cannot compromise the integrity of other system partitions.
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][isolate][arxos.bin]` |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** |*Uploading Soon* |
+
+#### Key Features Demonstrated
+- Temporal Isolation: Guaranteeing that a task cannot exceed its allocated execution time budget, preventing it from starving lower-priority or peer-partition tasks.
+- Spatial Isolation: Enforcing strict memory boundaries where each task is restricted to its own code and data segments via the MPU.
+- Memory Protection: Validation of hardware exception triggers (Data Abort / MemManage Fault) when a task attempts an illegal pointer de-reference.
+- Execution Partitioning: Demonstrating independent execution "silos" where timing jitter in one partition does not propagate to others.
+- Fault Containment: Proving that the kernel can identify, halt, and report a rogue task without causing a global system failure or reboot.
+
 #### Expected Behavior
-Tasks remain isolated in both execution time and memory space without interfering with other partitions.
+During the demo, a "malicious" task will attempt two illegal actions: writing to another task's memory region and entering an infinite loop to hog the CPU.
+
+The ARX kernel will immediately intercept the memory violation via the MPU, triggering a spatial fault handler. 
+Simultaneously, the temporal monitor will track the task's execution budget; upon expiration, the kernel will preempt the task regardless of its state. 
+Other system tasks will continue to execute within their designated memory and time windows with zero interference, proving complete architectural isolation.
 
 ---
   
@@ -426,21 +435,25 @@ The demonstration validates that communication operations execute correctly betw
 
 ### 18.0 ICC (Inter-Core Communication)
 #### Overview
-This demo validates ARX communication and synchronization between processor cores.  
-*Executable: `[platform][icc][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
-* Inter-core messaging
-* Core synchronization
-* Shared resource handling
-* Multicore communication
-* SMP coordination
+This demo validates the ARX Inter-Core Communication (ICC) subsystem, confirming reliable data routing, event propagation, and state synchronization across multiple independent processor cores under Symmetric Multiprocessing (SMP) and asymmetric configurations.
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][icc][arxos.bin]` |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** | *Uploading Soon* |
+
+#### Key Features Demonstrated
+* **Inter-Core Messaging:** Low-overhead passing of tracking structures and payloads across core boundaries without caching inconsistencies.
+* **Core Synchronization:** Utilizing barrier primitives to force concurrent cores to align at precise execution checkpoints.
+* **Shared Resource Handling:** Protecting global data zones using multi-core safe mechanisms (e.g., atomic operations, hardware spinlocks).
+* **Multicore Communication Pipelines:** Validation of lock-free or ring-buffer queues mapped directly onto shared tightly-coupled memory spaces.
+* **SMP Coordination:** Smooth hand-off of scheduling metrics, balancing loads, or signaling thread migrations across active execution nodes.
+
 #### Expected Behavior
-Processor cores exchange data reliably while maintaining synchronization integrity.
+Individual processor cores execute independent or cooperative workloads concurrently. When Core 0 broadcasts a data block or event to Core 1, it writes securely to the shared memory architecture and fires an Inter-Processor Interrupt (IPI). 
+The target core services the interrupt immediately, extracts the payload safely from the synchronized buffer queue, and processes the event. Data transfers preserve absolute ordering, cache coherency boundaries are cleanly maintained, and zero race conditions occur during shared memory arbitration.
 
 ---
 
