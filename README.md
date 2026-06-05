@@ -490,9 +490,9 @@ This demo validates the ARX exclusive locking primitives, confirming absolute, n
 
 | Attribute | Details |
 | :--- | :--- |
-| **Executable** | `[platform][excllk][arxos.bin]` |
+| **Executable** | `[platform][exclk][arxos.bin]` |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Planned / Upload Pending |
+| **Status** | Available |
 | **Demo Video** | *Uploading Soon* |
 
 #### Key Features Demonstrated
