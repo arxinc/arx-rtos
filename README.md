@@ -40,6 +40,7 @@ This demo validates the foundational ARX boot sequence, tracing the execution pa
 | :--- | :--- |
 | **Executable** | `[platform][boot][arxos.bin]` |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
 | **Demo Video** |*Uploading Soon* |
 
 #### Sequence & Initialization Phases
@@ -67,6 +68,7 @@ This demo validates the internal ARX kernel initialization lifecycle, confirming
 | :--- | :--- |
 | **Executable** | `[platform][kernel][arxos.bin]` |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
 | **Demo Video** |*Uploading Soon* |
 
 #### Core Initialization Subsystems
@@ -93,6 +95,7 @@ This demo validates the ARX kernel's lifecycle mechanisms for task creation, sta
 | :--- | :--- |
 | **Executable** | `[platform][newp][arxos.bin]` |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Available |
 | **Demo Video** |*Uploading Soon* |
 
 #### Task Characterization & Constraints
@@ -776,23 +779,31 @@ ARX initializes networking services and establishes stable communication success
   
 ---
 
-### 32.0 ARX power management
+### 32.0 ARX Power Management
+
 #### Overview
-This demo validates ARX runtime power management and low-power state transitions.  
-*Executable: `[platform][pwm][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending  
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
-* Idle management
-* Sleep states
-* Wake-up handling
-* Power optimization
-* Runtime power control
+This demo validates the ARX kernel's runtime power management subsystem, confirming its ability to monitor execution idling dynamically, transition the processor into deterministic low-power modes, and resume full multitasking operations without losing timing accuracy or system context.
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][pwm][arxos.bin]` |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** | *Uploading Soon* |
+
+#### Key Features Demonstrated
+* **Dynamic Idle Management:** Automatic detection of CPU idling, routing execution to a low-overhead idle task loop that safely throttles down core operations.
+* **Tickless Idle Architecture:** Suppressing or re-programming the periodic system hardware timer during extended idle periods to eliminate unnecessary CPU wake-ups.
+* **Multi-Tier Sleep States:** Safe entry into power-down levels (e.g., shallow sleep vs. deep sleep) by leveraging architecture-specific instructions like `WFI` (Wait For Interrupt).
+* **Deterministic Wake-Up Handling:** Clean operational recovery with bounded latency when a hardware interrupt or scheduled timer event signals the core.
+* **Runtime Power Control:** Dynamic power balancing during active operations, showing efficient coordination between peripheral clock gating and the task scheduler.
+
 #### Expected Behavior
-ARX transitions efficiently between active and low-power states while maintaining system stability.
+When all application tasks enter a sleeping/suspend state, the ARX kernel switches execution to the system idle task. 
+Recognizing that no workloads are pending, the power management module suspends the baseline periodic timer tick to optimize efficiency, before triggering the hardware's low-power state. 
+
+The moment an external interrupt or scheduled wake-up event fires, the processor wakes up instantly. 
+The ARX kernel recalculates the skipped time slices, resynchronizes the internal system time variables, unblocks the target task, and smoothly resumes deterministic execution with zero clock drift or state corruption.
 
 ---
 
