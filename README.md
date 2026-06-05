@@ -379,27 +379,34 @@ This short video demonstrates the test configuration, runtime execution flow, an
   
 ---
 
-### 16.0 Task software fault handling
+### 16.0 Task Software Fault Handling
 #### Overview
-This demo validates ARX task software fault detection and recovery during task execution.  
-*Executable: `[platform][swfaults][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending  
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
-* Fault reporting to ARX process management
-* Initial recovery attempt by associated fault handler(If available)
-* Last attempt by error task handler(If available)
-* Runtime protection from software logical/hardware faults
+This demo validates the ARX kernel's multi-tier software fault detection and escalation infrastructure. 
+It demonstrates how application-level logical faults are intercepted, isolated, and processed through a structured recovery cascade without destabilizing core system operations or adjacent tasks.
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][swfaults][arxos.bin]` |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** | *Uploading Soon* |
+
+#### Key Features Demonstrated
+* **Fault Reporting to ARX Process Management:** Instant telemetry capturing of software exceptions, saving task state snapshots for diagnostic auditing.
+* **Layered Local Recovery Hooks:** Evaluation of task-specific fault handlers designed to resolve deterministic logical errors locally.
+* **Global Error Task Handling Mitigation:** Seamless escalation to a dedicated system-wide error monitoring task if local containment fails or is missing.
+* **Runtime Logic Isolation:** Safeguarding core multi-tasking data structures from being corrupted by application-level logical failures or boundary violations.
+
 #### Expected Behavior
-Faulty tasks are detected and isolated without impacting overall system stability.
+During execution, a target task will intentionally trigger a software-level logical fault (such as a checked software assertion failure or an out-of-bounds state violation). 
+The ARX kernel will intercept the failure at the process management layer. 
+If a localized fault handler is registered, the kernel executes it to attempt a graceful inline recovery. 
+If it fails or is absent, the system escalates the tracking state to the global error task handler to safely purge or restart the context. 
+Throughout this entire escalation sequence, the rest of the operational task topology continues to run smoothly with zero latency spikes or system downtime.
 
 ---
 
 ### 17.0 IPC (Interprocess Communication)
-
 #### Overview
 This demo validates the ARX kernel's native Interprocess Communication (IPC) mechanisms, confirming safe, predictable, and deterministic data exchange and event signaling pathways between isolated, concurrent execution contexts.
 
@@ -409,8 +416,6 @@ This demo validates the ARX kernel's native Interprocess Communication (IPC) mec
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Available |
 | **Demo Video** |*Uploading Soon* |
-
----
 
 #### Key Features Demonstrated
 * **Inter-Task Communication:** Exchange of information between independent tasks using ARX IPC services.
@@ -457,23 +462,30 @@ The target core services the interrupt immediately, extracts the payload safely 
 
 ---
 
-### 19.0 Wait for event
+### 19.0 Wait for Event (WFE)
 #### Overview
-This demo validates ARX event-driven task synchronization and wake-up handling.  
-*Executable: `[platform][wfevt][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending  
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
-* Event waiting
-* Event signaling
-* Task blocking
-* Wake-up scheduling
-* Synchronization handling
+This demo validates the ARX kernel's event-driven task synchronization infrastructure, confirming that tasks can efficiently transition into a low-overhead blocked state while waiting for explicit environmental or software-generated signals, and resume execution with deterministic latency.
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][wfevt][arxos.bin]` |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** | *Uploading Soon* |
+
+#### Key Features Demonstrated
+* **Event Waiting (WFE Primitives):** Verification of non-polling, zero-CPU-overhead event waiting hooks inside standard user tasks.
+* **Event Signaling:** Safe, atomic generation of software or hardware-driven notifications that target specific wait-channels.
+* **Efficient Task Blocking:** Immediate relocation of waiting tasks out of the active scheduling ready-bitmap to conserve processing cycles.
+* **Wake-Up Scheduling:** Deterministic computation of wake-up delays and execution order when an event satisfies multiple waiting contexts.
+* **Synchronization Handling:** Clear orchestration of task dependencies, ensuring no signaling states or race conditions are dropped during asynchronous transitions.
+
 #### Expected Behavior
-Tasks block efficiently while waiting for events and resume execution deterministically.
+When a task invokes the event-wait service and the target event is absent, the ARX kernel smoothly suspends the context, changes its state to `WFE`, and removes it from priority ready tracking. 
+The CPU is instantly reallocated to other operational tasks. 
+
+The moment a second task (or an ISR) signals the specific event identifier, the kernel immediately moves the blocked task back into the `READY` queue. 
+If the unblocked task holds the highest priority, a context switch executes deterministically, resuming its execution path instantly with minimal jitter.
 
 ---
 
