@@ -40,7 +40,7 @@ This demo validates the ARX boot sequence, tracing execution from platform reset
 | :--- | :--- |
 | **Executable** | `[platform][boot][arxos.bin]` |
 | **Architecture** | RV64                        |
-| **Platform**     | SHAKTI-C (QEMU)             |
+| **Platform**     | SHAKTI-C (QEMU), VIRT       |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Available |
 | **Demo Video** |*Uploading Soon* |
@@ -70,7 +70,7 @@ This demo validates the ARX kernel's lifecycle mechanisms for task creation, sta
 | :--- | :--- |
 | **Executable** | `[platform][newp][arxos.bin]` |
 | **Architecture** | RV64                        |
-| **Platform**     | SHAKTI-C (QEMU)             |
+| **Platform**     | SHAKTI-C (QEMU), VIRT       |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Available |
 | **Demo Video** |*Uploading Soon* |
@@ -185,30 +185,40 @@ Rather than allowing an uncontrolled system crash or memory corruption, the kern
 ### 6.0 Cluster formation
 #### Overview
 This demo validates ARX: TODO  
-*Executable: `[platform][clust][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][clust][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** | *Uploading Soon* |
+
+#### Key Features Demonstrated
 * TODO
 #### Expected Behavior
+* TODO
 
 ---
 
 ### 7.0 CMD execution infrastructure
 #### Overview
 This demo validates ARX: TODO  
-*Executable: `[platform][cmdinfra][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][cmdinfra][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** | *Uploading Soon* |
+
+#### Key Features Demonstrated
 * TODO
 #### Expected Behavior
+* TODO
   
 ---
 
@@ -242,15 +252,20 @@ The framework successfully handles state loops and boundary errors without trigg
 ### 9.0 ARX Background processing
 #### Overview
 This demo validates ARX: TODO  
-*Executable: `[platform][bgndbw][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][bgdbw][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** | *Uploading Soon* |
+
+#### Key Features Demonstrated
 * TODO
 #### Expected Behavior
+* TODO
 
 ---
 
@@ -338,30 +353,40 @@ The ARX forced signal infrastructure cancelled any forced signal if issued befor
 ### 13.0 Task private signals
 #### Overview
 This demo validates ARX: TODO  
-*Executable: `[platform][pvts][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][pvts][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** | *Uploading Soon* |
+
+#### Key Features Demonstrated
 * TODO
 #### Expected Behavior
+* TODO
  
 ---
 
 ### 14.0 FEV demonstration
 #### Overview
 This demo validates ARX: TODO  
-*Executable: `[platform][fevs][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][fevs][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** | *Uploading Soon* |
+
+#### Key Features Demonstrated
 * TODO
 #### Expected Behavior
+* TODO
   
 ---
 
@@ -485,13 +510,17 @@ If the unblocked task holds the highest priority, a context switch executes dete
 ### 19.0 Fault handling
 #### Overview
 This demo validates ARX runtime fault handling and system protection mechanisms.  
-*Executable: `[platform][fault][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending  
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][faults][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** | *Uploading Soon* |
+
+#### Key Features Demonstrated
 * Fault detection
 * Exception processing
 * Runtime recovery
@@ -661,7 +690,6 @@ This demo validates the ARX Reader-Writer Lock (`rwlock`) primitives, confirming
 
 #### Expected Behavior
 Multiple reader tasks can acquire the lock simultaneously and access the critical shared resource concurrently without latency penalties. However, the moment a writer task requests access, ARX blocks subsequent reader requests, allows active readers to finish, and grants exclusive ownership to the writer. 
-
 During the write phase, all other threads remain blocked deterministically, ensuring absolute data consistency across execution domains.
 
 ---
@@ -669,13 +697,17 @@ During the write phase, all other threads remain blocked deterministically, ensu
 ### 25.0 MPU configuration and usage
 #### Overview
 This demo validates ARX Memory Protection Unit (MPU) configuration and runtime enforcement.  
-*Executable: `[platform][mpu][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending  
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][mpu][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** | *Uploading Soon* |
+
+#### Key Features Demonstrated
 * MPU region configuration
 * Memory isolation
 * Access protection
@@ -689,13 +721,17 @@ Unauthorized memory accesses are detected and blocked by MPU protection mechanis
 ### 26.0 FPU configuration and usage
 #### Overview
 This demo validates ARX Floating Point Unit (FPU) initialization and runtime usage.  
-*Executable: `[platform][fpu][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending  
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][fpu][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** | *Uploading Soon* |
+
+#### Key Features Demonstrated
 * FPU initialization
 * Floating-point context handling
 * Task FPU usage
@@ -708,14 +744,17 @@ Floating-point operations execute correctly across multiple concurrent tasks.
 
 ### 27.0 ARX HAL
 #### Overview
-This demo validates the ARX Hardware Abstraction Layer (HAL) interface and platform services.  
-*Executable: `[platform][hal][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending  
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
+This demo validates ARX: TODO  
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][hal][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** | *Uploading Soon* |
+
+#### Key Features Demonstrated
 * Hardware abstraction
 * Peripheral access
 * Platform portability
@@ -726,35 +765,19 @@ ARX provides consistent hardware-independent runtime services across supported p
 
 ---
 
-### 28.0 BSP development
-#### Overview
-This demo validates Board Support Package (BSP) initialization and platform integration.  
-*Executable: `[platform][bsp][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending  
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
-* Board initialization
-* Clock setup
-* Memory initialization
-* Peripheral configuration
-* Platform bring-up
-#### Expected Behavior
-The BSP initializes platform hardware correctly and enables ARX runtime operation.
-
----
-
-### 29.0 Interrupt handling
+### 28.0 Interrupt handling
 #### Overview
 This demo validates ARX interrupt processing and realtime interrupt response behavior.  
-*Executable: `[platform][isr][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][isr][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** | *Uploading Soon* |
+
 #### Demonstrated Features
 * ISR execution
 * Interrupt dispatch
@@ -766,16 +789,20 @@ Interrupts are handled deterministically with minimal latency and correct task s
 
 ---
 
-### 30.0 Network bring-up
+### 29.0 Network bring-up
 #### Overview
 This demo validates ARX network stack initialization and runtime connectivity.  
-*Executable: `[platform][net][arxos.bin]`*  
-*Location: `arxos/arch/<arch>/<cpu_variant>/<platform>`*
-> Status: Planned / Upload Pending  
-#### Demo Video
-This short video demonstrates the test configuration, runtime execution flow, and expected terminal output.  
-> Video: Uploading Soon
-#### Demonstrated Features
+
+| Attribute | Details |
+| :--- | :--- |
+| **Executable** | `[platform][net][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
+| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status** | Planned / Upload Pending |
+| **Demo Video** | *Uploading Soon* |
+
+#### Key Features Demonstrated
 * Network initialization
 * Interface configuration
 * Packet handling
@@ -786,7 +813,7 @@ ARX initializes networking services and establishes stable communication success
   
 ---
 
-### 31.0 ARX Power Management
+### 30.0 ARX Power Management
 #### Overview
 This demo validates the ARX kernel's runtime power management subsystem, confirming its ability to monitor execution idling dynamically, transition the processor into deterministic low-power modes, and resume full multitasking operations without losing timing accuracy or system context.
 
