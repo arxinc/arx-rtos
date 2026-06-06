@@ -21,10 +21,10 @@ It is built from first principles with a focus on predictability, low overhead, 
 - Active development (core implementation is private).
 
 ## SDK & Distribution
-- The SDK implementation is maintained in a private repository.
-- This public repository provides documentation, architecture insights, and project overview .
-- Demo-ready binaries will be released here soon.  
-
+- The ARX SDK implementation is maintained in a private repository.
+- This public repository provides documentation, architectural overviews, and project information.
+- Prebuilt demo binaries are distributed through this repository.
+  
 ## Roadmap
 Prebuilt demonstration binaries are being added progressively to help users quickly evaluate ARX RTOS features,  
 platform bring-up, and kernel capabilities.  
