@@ -40,7 +40,7 @@ This demo validates the foundational ARX boot sequence, tracing the execution pa
 | :--- | :--- |
 | **Executable** | `[platform][boot][arxos.bin]` |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Planned / Upload Pending |
+| **Status** | Available |
 | **Demo Video** |*Uploading Soon* |
 
 #### Sequence & Initialization Phases
@@ -60,34 +60,7 @@ A clean, predictable logs stream will output to the diagnostic console, tracking
 
 ---
 
-### 2.0 Kernel Bring-up
-#### Overview
-This demo validates the internal ARX kernel initialization lifecycle, confirming the deterministic setup of foundational data structures, registration of core services, and the activation of core timing infrastructures before the system hands control to the multitasking loop.
-
-| Attribute | Details |
-| :--- | :--- |
-| **Executable** | `[platform][kernel][arxos.bin]` |
-| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Planned / Upload Pending |
-| **Demo Video** |*Uploading Soon* |
-
-#### Core Initialization Subsystems
-During this specific phase, the kernel transitions from low-level assembly-level architecture setups into its modular, structured C-runtime environment:
-
-#### Key Features Demonstrated
-* **Kernel Initialization:** Setup of internal kernel states, operational modes, and global management tables.
-* **Core Service Registration:** Validation of the internal API interfaces, system call traps, and inter-process communication (IPC) plumbing hooks.
-* **Timer Initialization:** Setting up the architecture-specific tick counter, registering interrupt handlers, and scheduling the baseline quantum.
-* **Scheduler Initialization:** Allocation and configuration of priority run-queues, bitmap trackers, and the idle task framework.
-* **Runtime Environment Setup:** Fine-tuning kernel memory protections, critical section primitives, and early status structures.
-
-#### Expected Behavior
-The ARX kernel parses its internal module configuration definitions, initializes mandatory software objects, anchors its system call vector routing table, and activates hardware-driven tracking timers. 
-The phase concludes when all prerequisite internal subsystems report a ready status, at which point the kernel establishes its initial execution baseline and enters a fully deterministic, real-time multitasking state.
-
----
-
-### 3.0 New Task Creation
+### 2.0 New Task Creation
 #### Overview
 This demo validates the ARX kernel's lifecycle mechanisms for task creation, stack initialization, and seamless integration into the active scheduler run-queues.
 
@@ -122,7 +95,7 @@ Upon initialization, the ARX kernel parses the defined task topology, prepares t
 
 ---
 
-### 4.0 Scheduling Behavior
+### 3.0 Scheduling Behavior
 #### Overview
 This demo validates the ARX kernel's deterministic, fixed-priority preemptive scheduling engine under heavy concurrent execution workloads, proving its ability to guarantee immediate execution of high-priority tasks.
 
@@ -146,8 +119,7 @@ The lower-priority task is safely preserved in the ready queue and resumes execu
 
 ---
 
-### 5.0 Task State Transition
-
+### 4.0 Task State Transition
 #### Overview
 This demo validates the ARX kernel's task lifecycle management infrastructure, proving the integrity of the state machine as tasks transition dynamically through scheduler-driven execution modes based on timing, synchronization events, and explicit kernel requests.
 
@@ -172,8 +144,7 @@ Tasks enter, wait, wake up, and terminate in perfect synchronicity with environm
 
 ---
 
-### 6.0 Stack Overflow Detection
-
+### 5.0 Stack Overflow Detection
 #### Overview
 This demo validates the ARX kernel's stack overflow detection and active runtime protection mechanisms, proving the system's ability to trap illegal stack growth before it corrupts adjacent task contexts or critical kernel memory spaces.
 
@@ -202,7 +173,7 @@ Rather than allowing an uncontrolled system crash or memory corruption, the kern
 
 ---
  
-### 7.0 Cluster formation
+### 6.0 Cluster formation
 #### Overview
 This demo validates ARX: TODO  
 *Executable: `[platform][clust][arxos.bin]`*  
@@ -217,7 +188,7 @@ This short video demonstrates the test configuration, runtime execution flow, an
 
 ---
 
-### 8.0 CMD execution infrastructure
+### 7.0 CMD execution infrastructure
 #### Overview
 This demo validates ARX: TODO  
 *Executable: `[platform][cmdinfra][arxos.bin]`*  
@@ -232,8 +203,7 @@ This short video demonstrates the test configuration, runtime execution flow, an
   
 ---
 
-### 9.0 Realtime FSM Infrastructure
-
+### 8.0 Realtime FSM Infrastructure
 #### Overview
 This demo validates the ARX Finite State Machine (FSM) infrastructure, confirming deterministic state transitions, event-driven execution loops, and predictable execution timing boundaries designed for complex embedded control logic.
 
@@ -258,7 +228,7 @@ The framework successfully handles state loops and boundary errors without trigg
 
 ---
 
-### 10.0 ARX Background processing
+### 9.0 ARX Background processing
 #### Overview
 This demo validates ARX: TODO  
 *Executable: `[platform][bgndbw][arxos.bin]`*  
@@ -273,8 +243,7 @@ This short video demonstrates the test configuration, runtime execution flow, an
 
 ---
 
-### 11.0 Temporal and Spatial isolation
-
+### 10.0 Temporal and Spatial isolation
 #### Overview
 This demo validates the ARX kernel's ability to enforce strict isolation boundaries between execution partitions. 
 It demonstrates how the system prevents "interference-from-freedom" by ensuring that a fault in one task—whether a memory violation or an execution budget overrun—cannot compromise the integrity of other system partitions.
@@ -302,8 +271,7 @@ Other system tasks will continue to execute within their designated memory and t
 
 ---
   
-### 12.0 ARX Forced signal-Shutdown, Standby(Idle), Reset
-
+### 11.0 ARX Forced signal-Shutdown, Standby(Idle), Reset
 #### Overview
 This demo validates the ARX response to forced signals assertion by system control/emergency.
 
@@ -327,8 +295,7 @@ While the exact latency to achieve system readiness is bounded and dynamically d
   
 ---
 
-### 13.0 ARX Forced signal-Resume(Cancellation forced condition)
-
+### 12.0 ARX Forced signal-Resume(Cancellation forced condition)
 #### Overview
 This demo validates the ARX forced condition assertion canecellation.
 
@@ -352,7 +319,7 @@ The ARX forced signal infrastructure cancelled any forced signal if issued befor
   
 ---
 
-### 14.0 Task private signals
+### 13.0 Task private signals
 #### Overview
 This demo validates ARX: TODO  
 *Executable: `[platform][pvts][arxos.bin]`*  
@@ -367,7 +334,7 @@ This short video demonstrates the test configuration, runtime execution flow, an
  
 ---
 
-### 15.0 FEV demonstration
+### 14.0 FEV demonstration
 #### Overview
 This demo validates ARX: TODO  
 *Executable: `[platform][fevs][arxos.bin]`*  
@@ -382,7 +349,7 @@ This short video demonstrates the test configuration, runtime execution flow, an
   
 ---
 
-### 16.0 Task Software Fault Handling
+### 15.0 Task Software Fault Handling
 #### Overview
 This demo validates the ARX kernel's multi-tier software fault detection and escalation infrastructure. 
 It demonstrates how application-level logical faults are intercepted, isolated, and processed through a structured recovery cascade without destabilizing core system operations or adjacent tasks.
@@ -409,7 +376,7 @@ Throughout this entire escalation sequence, the rest of the operational task top
 
 ---
 
-### 17.0 IPC (Interprocess Communication)
+### 16.0 IPC (Interprocess Communication)
 #### Overview
 This demo validates the ARX kernel's native Interprocess Communication (IPC) mechanisms, confirming safe, predictable, and deterministic data exchange and event signaling pathways between isolated, concurrent execution contexts.
 
@@ -441,7 +408,7 @@ The demonstration validates that communication operations execute correctly betw
 
 ---
 
-### 18.0 ICC (Inter-Core Communication)
+### 17.0 ICC (Inter-Core Communication)
 #### Overview
 This demo validates the ARX Inter-Core Communication (ICC) subsystem, confirming reliable data routing, event propagation, and state synchronization across multiple independent processor cores under Symmetric Multiprocessing (SMP) and asymmetric configurations.
 
@@ -465,7 +432,7 @@ The target core services the interrupt immediately, extracts the payload safely 
 
 ---
 
-### 19.0 Wait for Event (WFE)
+### 18.0 Wait for Event (WFE)
 #### Overview
 This demo validates the ARX kernel's event-driven task synchronization infrastructure, confirming that tasks can efficiently transition into a low-overhead blocked state while waiting for explicit environmental or software-generated signals, and resume execution with deterministic latency.
 
@@ -492,7 +459,7 @@ If the unblocked task holds the highest priority, a context switch executes dete
 
 ---
 
-### 20.0 Fault handling
+### 19.0 Fault handling
 #### Overview
 This demo validates ARX runtime fault handling and system protection mechanisms.  
 *Executable: `[platform][fault][arxos.bin]`*  
@@ -512,7 +479,7 @@ ARX safely detects and handles runtime faults without uncontrolled failures.
 
 ---
 
-### 21.0 Exclusive Lock
+### 20.0 Exclusive Lock
 #### Overview
 This demo validates the ARX exclusive locking primitives, confirming absolute, non-blocking hardware/software isolation for critical resources. This mechanism is explicitly engineered for safe execution across both Task and Interrupt Service Routine (ISR) contexts.
 
@@ -535,8 +502,7 @@ This immediate feedback loop allows the calling context to gracefully diverge, e
 
 ---
 
-### 22.0 Mutex Synchronization
-
+### 21.0 Mutex Synchronization
 #### Overview
 This demo validates ARX mutex synchronization using four concurrent tasks and shared critical sections, where each task uses two mutexes to form a protected critical section.
 
@@ -570,8 +536,7 @@ Tasks compete dynamically for shared mutexes while the ARX kernel safely synchro
 
 ---
 
-### 23.0 Priority Inversion Handling
-
+### 22.0 Priority Inversion Handling
 #### Overview
 This demo validates the ARX kernel's Priority Inheritance mechanism using nine concurrent tasks split across High, Medium, and Low priority groups. It demonstrates how the system prevents unbounded priority inversion when middle-priority tasks attempt to preempt a lower-priority task holding a resource required by a high-priority task.
 
@@ -608,8 +573,7 @@ However, when a high-priority task blocks on the shared mutex currently held by 
 
 ---
 
-### 24.0 Semaphore
-
+### 23.0 Semaphore
 #### Overview
 This demo validates ARX semaphore-based synchronization mechanisms between concurrent tasks, evaluating both binary signaling and counting resource coordination primitives under real-time constraints.
 
@@ -633,8 +597,7 @@ Upon a token release (`Give`) by a producer or interrupting service, the schedul
 
 ---
 
-### 25.0 Reader-Writer Lock
-
+### 24.0 Reader-Writer Lock
 #### Overview
 This demo validates the ARX Reader-Writer Lock (`rwlock`) primitives, confirming the kernel's ability to safely decouple read-only shared access from exclusive write-only operations under high thread contention.
 
@@ -659,7 +622,7 @@ During the write phase, all other threads remain blocked deterministically, ensu
 
 ---
 
-### 26.0 MPU configuration and usage
+### 25.0 MPU configuration and usage
 #### Overview
 This demo validates ARX Memory Protection Unit (MPU) configuration and runtime enforcement.  
 *Executable: `[platform][mpu][arxos.bin]`*  
@@ -679,7 +642,7 @@ Unauthorized memory accesses are detected and blocked by MPU protection mechanis
 
 ---
 
-### 27.0 FPU configuration and usage
+### 26.0 FPU configuration and usage
 #### Overview
 This demo validates ARX Floating Point Unit (FPU) initialization and runtime usage.  
 *Executable: `[platform][fpu][arxos.bin]`*  
@@ -699,7 +662,7 @@ Floating-point operations execute correctly across multiple concurrent tasks.
 
 ---
 
-### 28.0 ARX HAL
+### 27.0 ARX HAL
 #### Overview
 This demo validates the ARX Hardware Abstraction Layer (HAL) interface and platform services.  
 *Executable: `[platform][hal][arxos.bin]`*  
@@ -719,7 +682,7 @@ ARX provides consistent hardware-independent runtime services across supported p
 
 ---
 
-### 29.0 BSP development
+### 28.0 BSP development
 #### Overview
 This demo validates Board Support Package (BSP) initialization and platform integration.  
 *Executable: `[platform][bsp][arxos.bin]`*  
@@ -739,7 +702,7 @@ The BSP initializes platform hardware correctly and enables ARX runtime operatio
 
 ---
 
-### 30.0 Interrupt handling
+### 29.0 Interrupt handling
 #### Overview
 This demo validates ARX interrupt processing and realtime interrupt response behavior.  
 *Executable: `[platform][isr][arxos.bin]`*  
@@ -759,7 +722,7 @@ Interrupts are handled deterministically with minimal latency and correct task s
 
 ---
 
-### 31.0 Network bring-up
+### 30.0 Network bring-up
 #### Overview
 This demo validates ARX network stack initialization and runtime connectivity.  
 *Executable: `[platform][net][arxos.bin]`*  
@@ -779,8 +742,7 @@ ARX initializes networking services and establishes stable communication success
   
 ---
 
-### 32.0 ARX Power Management
-
+### 31.0 ARX Power Management
 #### Overview
 This demo validates the ARX kernel's runtime power management subsystem, confirming its ability to monitor execution idling dynamically, transition the processor into deterministic low-power modes, and resume full multitasking operations without losing timing accuracy or system context.
 
