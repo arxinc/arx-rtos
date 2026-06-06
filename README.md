@@ -581,19 +581,30 @@ This demo validates ARX semaphore-based synchronization mechanisms between concu
 | :--- | :--- |
 | **Executable** | `[platform][sema][arxos.bin]` |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Planned / Upload Pending |
-| **Demo Video** | *Uploading Soon* |
+| **Status** | Available |
+| **Demo Video** |*Uploading Soon* |
+
+#### Task & Semaphore Configuration
+The tasks are configured to share resource boundaries across specific critical sections:
+
+| Task | Associated Semaphore | Shared Dependencies | Priority Alignment |
+| :--- | :--- | :--- | :--- |
+| **T1** | `S1`, `S2` |Shares with T2, T4 | Managed Priority |
+| **T2** | `S2`, `S3` |Shares with T1, T3 | Managed Priority |
+| **T3** | `S3`, `S4` |Shares with T2, T4 | Managed Priority |
+| **T4** | `S1`, `S4` |Shares with T1, T3 | Managed Priority |
+
+> **Note on Lock Order:** Semaphore are allocated and requested according to strict structural rules to ensure runtime predictability.
 
 #### Key Features Demonstrated
-* **Binary Semaphore:** Dedicated task-to-task signaling, verification of standard unblocking mechanics, and event-driven wakeups.
-* **Counting Semaphore:** Managing access to a bounded pool of identical shared system resources using atomic token tracking.
-* **Task Synchronization:** Strict coordination of execution sequencing between decoupled threads without resource leaking.
-* **Resource Coordination:** Clean management of task blocking and unblocking states within the scheduler run-queues based on token availability.
+* **Counting Semaphore Token Allocation:** Initializing multiple independent counting semaphores with strict atomic token capacity tracking (Count = 2).
+* **Counting Resource Arbitration:** Proving the kernel can manage multiple tokens per semaphore, allowing for a defined level of task concurrency before blocking occurs.
+* **Cyclic Dependency Management:** Validating that the scheduler handles interleaved Take and Give operations across a mesh of shared resources without losing track of token counts.
+* **Priority-Based Unblocking::** Demonstrating that when a token is released on a highly contested semaphore (like S1), the ARX kernel deterministically selects the highest-priority waiting task (Task 4) to resume execution.
+* **Race Condition Prevention:** Ensuring that atomic internal kernel operations prevent two tasks from claiming the final remaining token simultaneously.
 
 #### Expected Behavior
-Tasks interlock dynamically using the semaphore primitives without introducing race conditions. When a task attempts to acquire a semaphore with zero tokens available, the ARX kernel immediately blocks the calling context and updates its tracking state. 
-
-Upon a token release (`Give`) by a producer or interrupting service, the scheduler unblocks the highest-priority waiting task deterministically, resuming execution with predictable latency boundaries.
+Tasks compete dynamically for shared semaphores while the ARX kernel safely synchronizes access to shared resources, maintaining system determinism without introducing deadlocks or task starvation.
 
 ---
 
