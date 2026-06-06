@@ -34,25 +34,27 @@ Current planned demonstration coverage includes:
 
 ### 1.0 ARX Boot Process
 #### Overview
-This demo validates the foundational ARX boot sequence, tracing the execution path from cold hardware platform reset through low-level initialization, kernel subsystem bring-up, and the definitive transition into the active scheduler runtime.
+This demo validates the ARX boot sequence, tracing execution from platform reset through low-level hardware initialization, kernel startup, device driver initialization, task creation, and the transition to scheduler runtime.
 
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][boot][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Available |
 | **Demo Video** |*Uploading Soon* |
 
 #### Sequence & Initialization Phases
-The system bring-up sequence executes across distinct operational layers to guarantee a deterministic hardware state before multitasking begins:
+The system startup sequence executes in a defined order to ensure that the hardware platform, memory subsystem, kernel services, and device drivers are fully initialized before multitasking begins.
 
 #### Key Features Demonstrated
-* **Early Platform/BSP Initialization:** Verification of boot-strap entry points, register states, and basic architecture-specific setups.
+* **Platform/BSP Initialization:** Verifies bootstrap entry points, processor setup, and platform-specific hardware initialization.
 * **Memory Initialization:** Safe partitioning and initialization of RAM segments, vector table positioning, and runtime memory boundaries.
-* **Kernel Startup Sequence:** Orderly allocation and tracking of foundational kernel management layers.
-* **Device Driver Initialization:** Bring-up of mandatory system hardware blocks (e.g., system tick timers and diagnostic UART interfaces).
+* **Kernel Startup:** Initializes core kernel data structures and management services.
+* **Device Driver Initialization:** Brings up essential platform peripherals such as system timers and UART interfaces.
 * **User Task Creation:** Instantiation of the initial root task topologies into the execution pool.
-* **Scheduler Activation:** Dropping out of the raw bootstrap state and executing the first deterministic context switch.
+* **Scheduler Activation:** Starts the scheduler and performs the first task dispatch.
 
 #### Expected Behavior
 Upon power-on or platform reset, the binary processes all early Board Support Package (BSP) dependencies linearly. Once memory architectures and necessary system device drivers are online, ARX instantiates the predefined base tasks, initializes the core kernel state, and hands off execution control directly to the hardware-managed scheduler. 
@@ -67,6 +69,8 @@ This demo validates the ARX kernel's lifecycle mechanisms for task creation, sta
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][newp][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Available |
 | **Demo Video** |*Uploading Soon* |
@@ -102,6 +106,8 @@ This demo validates the ARX kernel's deterministic, fixed-priority preemptive sc
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][scheduler][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Planned / Upload Pending |
 | **Demo Video** | *Uploading Soon* |
@@ -126,6 +132,8 @@ This demo validates the ARX kernel's task lifecycle management infrastructure, p
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][state][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Planned / Upload Pending |
 | **Demo Video** | *Uploading Soon* |
@@ -151,6 +159,8 @@ This demo validates the ARX kernel's stack overflow detection and active runtime
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][spovf][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Available |
 | **Demo Video** | *Uploading Soon* |
@@ -168,7 +178,6 @@ Method B: Software Stack Canary Monitoring
 
 #### Expected Behavior
 The demo application intentionally forces a target task to execute deep recursive calls or allocate large arrays locally, exhausting its allocated stack limit. The moment the stack pointer crosses the safe operational threshold(80%), ARX intercepts the violation via a hardware exception (MPU fault) or a software guard check. 
-
 Rather than allowing an uncontrolled system crash or memory corruption, the kernel safely isolates the faulty task, preserves general system stability, and emits an explicit stack overflow warning message to the diagnostic terminal.
 
 ---
@@ -210,6 +219,8 @@ This demo validates the ARX Finite State Machine (FSM) infrastructure, confirmin
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][fsm][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Available |
 | **Demo Video** |*Uploading Soon* |
@@ -251,6 +262,8 @@ It demonstrates how the system prevents "interference-from-freedom" by ensuring 
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][isolate][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Planned / Upload Pending |
 | **Demo Video** |*Uploading Soon* |
@@ -264,7 +277,6 @@ It demonstrates how the system prevents "interference-from-freedom" by ensuring 
 
 #### Expected Behavior
 During the demo, a "malicious" task will attempt two illegal actions: writing to another task's memory region and entering an infinite loop to hog the CPU.
-
 The ARX kernel will immediately intercept the memory violation via the MPU, triggering a spatial fault handler. 
 Simultaneously, the temporal monitor will track the task's execution budget; upon expiration, the kernel will preempt the task regardless of its state. 
 Other system tasks will continue to execute within their designated memory and time windows with zero interference, proving complete architectural isolation.
@@ -278,6 +290,8 @@ This demo validates the ARX response to forced signals assertion by system contr
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][bsirc][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Available |
 | **Demo Video** |*Uploading Soon* |
@@ -302,6 +316,8 @@ This demo validates the ARX forced condition assertion canecellation.
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][fcan][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Available |
 | **Demo Video** |*Uploading Soon* |
@@ -357,6 +373,8 @@ It demonstrates how application-level logical faults are intercepted, isolated, 
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][swfaults][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Planned / Upload Pending |
 | **Demo Video** | *Uploading Soon* |
@@ -383,6 +401,8 @@ This demo validates the ARX kernel's native Interprocess Communication (IPC) mec
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][ipc][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Available |
 | **Demo Video** |*Uploading Soon* |
@@ -415,6 +435,8 @@ This demo validates the ARX Inter-Core Communication (ICC) subsystem, confirming
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][icc][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Planned / Upload Pending |
 | **Demo Video** | *Uploading Soon* |
@@ -439,6 +461,8 @@ This demo validates the ARX kernel's event-driven task synchronization infrastru
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][wfevt][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Planned / Upload Pending |
 | **Demo Video** | *Uploading Soon* |
@@ -453,7 +477,6 @@ This demo validates the ARX kernel's event-driven task synchronization infrastru
 #### Expected Behavior
 When a task invokes the event-wait service and the target event is absent, the ARX kernel smoothly suspends the context, changes its state to `WFE`, and removes it from priority ready tracking. 
 The CPU is instantly reallocated to other operational tasks. 
-
 The moment a second task (or an ISR) signals the specific event identifier, the kernel immediately moves the blocked task back into the `READY` queue. 
 If the unblocked task holds the highest priority, a context switch executes deterministically, resuming its execution path instantly with minimal jitter.
 
@@ -486,6 +509,8 @@ This demo validates the ARX exclusive locking primitives, confirming absolute, n
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][exclk][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Available |
 | **Demo Video** | *Uploading Soon* |
@@ -509,6 +534,8 @@ This demo validates ARX mutex synchronization using four concurrent tasks and sh
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][mutex][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Available |
 | **Demo Video** |*Uploading Soon* |
@@ -543,6 +570,8 @@ This demo validates the ARX kernel's Priority Inheritance mechanism using nine c
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][pitest][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Available |
 | **Demo Video** |*Uploading Soon* |
@@ -580,6 +609,8 @@ This demo validates ARX semaphore-based synchronization mechanisms between concu
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][sema][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Available |
 | **Demo Video** |*Uploading Soon* |
@@ -615,6 +646,8 @@ This demo validates the ARX Reader-Writer Lock (`rwlock`) primitives, confirming
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][rwlk][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Planned / Upload Pending |
 | **Demo Video** | *Uploading Soon* |
@@ -760,6 +793,8 @@ This demo validates the ARX kernel's runtime power management subsystem, confirm
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][pwm][arxos.bin]` |
+| **Architecture** | RV64                        |
+| **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Planned / Upload Pending |
 | **Demo Video** | *Uploading Soon* |
