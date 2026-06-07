@@ -42,7 +42,7 @@ This demo validates the ARX boot sequence, tracing execution from platform reset
 | **Architecture** | RV64                        |
 | **Platform**     | SHAKTI-C (QEMU), VIRT       |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Available |
+| **Status** | ✅ Available |
 | **Demo Video** |*Uploading Soon* |
 
 #### Sequence & Initialization Phases
@@ -72,7 +72,7 @@ This demo validates the ARX kernel's lifecycle mechanisms for task creation, sta
 | **Architecture** | RV64                        |
 | **Platform**     | SHAKTI-C (QEMU), VIRT       |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Available |
+| **Status** | ✅ Available |
 | **Demo Video** |*Uploading Soon* |
 
 #### Task Characterization & Constraints
@@ -162,7 +162,7 @@ This demo validates the ARX kernel's stack overflow detection and active runtime
 | **Architecture** | RV64                        |
 | **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Available |
+| **Status** | ✅ Available |
 | **Demo Video** | *Uploading Soon* |
 
 #### Architectural Stack Protection Models
@@ -232,7 +232,7 @@ This demo validates the ARX Finite State Machine (FSM) infrastructure, confirmin
 | **Architecture** | RV64                        |
 | **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Available |
+| **Status** | ✅ Available |
 | **Demo Video** |*Uploading Soon* |
 
 #### Key Features Demonstrated
@@ -308,7 +308,7 @@ This demo validates the ARX response to forced signals assertion by system contr
 | **Architecture** | RV64                        |
 | **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Available |
+| **Status** | ✅ Available |
 | **Demo Video** |*Uploading Soon* |
 
 #### Key Features Demonstrated
@@ -334,7 +334,7 @@ This demo validates the ARX forced condition assertion canecellation.
 | **Architecture** | RV64                        |
 | **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Available |
+| **Status** | ✅ Available |
 | **Demo Video** |*Uploading Soon* |
 
 #### Key Features Demonstrated
@@ -429,7 +429,7 @@ This demo validates the ARX kernel's native Interprocess Communication (IPC) mec
 | **Architecture** | RV64                        |
 | **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Available |
+| **Status** | ✅ Available |
 | **Demo Video** |*Uploading Soon* |
 
 #### Key Features Demonstrated
@@ -541,7 +541,7 @@ This demo validates the ARX exclusive locking primitives, confirming absolute, n
 | **Architecture** | RV64                        |
 | **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Available |
+| **Status** | ✅ Available |
 | **Demo Video** | *Uploading Soon* |
 
 #### Key Features Demonstrated
@@ -566,7 +566,7 @@ This demo validates ARX mutex synchronization using four concurrent tasks and sh
 | **Architecture** | RV64                        |
 | **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Available |
+| **Status** | ✅ Available |
 | **Demo Video** |*Uploading Soon* |
 
 #### Task & Mutex Configuration
@@ -602,7 +602,7 @@ This demo validates the ARX kernel's Priority Inheritance mechanism using nine c
 | **Architecture** | RV64                        |
 | **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Available |
+| **Status** | ✅ Available |
 | **Demo Video** |*Uploading Soon* |
 
 #### System Topology & Priority Hierarchy
@@ -641,7 +641,7 @@ This demo validates ARX semaphore-based synchronization mechanisms between concu
 | **Architecture** | RV64                        |
 | **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Available |
+| **Status** | ✅ Available |
 | **Demo Video** |*Uploading Soon* |
 
 #### Task & Semaphore Configuration
