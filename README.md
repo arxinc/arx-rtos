@@ -718,27 +718,69 @@ Unauthorized memory accesses are detected and blocked by MPU protection mechanis
 
 ---
 
-### 26.0 FPU configuration and usage
-#### Overview
-This demo validates ARX Floating Point Unit (FPU) initialization and runtime usage.  
 
-| Attribute | Details |
-| :--- | :--- |
-| **Executable** | `[platform][fpu][arxos.bin]` |
-| **Architecture** | RV64                        |
-| **Platform**     | SHAKTI-C (QEMU)             |
-| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Planned / Upload Pending |
-| **Demo Video** | *Uploading Soon* |
+## 26.0 FPU Configuration and Usage
 
-#### Key Features Demonstrated
-* FPU initialization
-* Floating-point context handling
-* Task FPU usage
-* Context switching
-* Runtime computation
-#### Expected Behavior
-Floating-point operations execute correctly across multiple concurrent tasks.
+### Overview
+
+This demo validates ARX kernel support for the Floating Point Unit (FPU), including hardware initialization, floating-point context management, and task-safe context switching.
+
+It demonstrates that floating-point computations can be performed concurrently across multiple tasks while preserving register integrity and computational accuracy during preemption and scheduling operations.
+
+| Attribute        | Details                          |
+| :--------------- | :------------------------------- |
+| **Executable**   | `[platform][fpu][arxos.bin]`     |
+| **Architecture** | RISC-V (RV64) /ARM Cortex-M4F    |
+| **Platform**     | SHAKTI-C (QEMU), STM32F407VG     |
+| **Location**     | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status**       | Planned / Upload Pending         |
+| **Demo Video**   | *Uploading Soon*                 |
+
+---
+
+### Key Features Demonstrated
+
+* **FPU Initialization**
+  Verifies proper detection, configuration, and enablement of the processor's floating-point extension during system startup.
+* **Floating-Point Context Management**
+  Validates saving and restoring floating-point registers during task switches.
+* **Task Isolation**
+  Ensures that floating-point operations performed by one task do not affect the execution state of another task.
+* **Deterministic Context Switching**
+  Demonstrates scheduler integration with FPU state management while maintaining predictable task execution behavior.
+* **IEEE 754 Compliance Validation**
+  Verifies floating-point computation accuracy and stability across repeated context switches and interrupt activity.
+
+### Demo Scenario
+The demo creates four independent tasks that continuously perform floating-point calculations using unique input values. Each task computes the area of a circle and compares the result against a manually calculated reference value.
+
+
+| Task | Radius | Calculation |
+|------|--------|-------------|
+| Task-1 | `1.2342f` | `area = PI * radius * radius` |
+| Task-2 | `1.2345f` | `area = PI * radius * radius` |
+| Task-3 | `1.2343f` | `area = PI * radius * radius` |
+| Task-4 | `1.2344f` | `area = PI * radius * radius` |
+
+Each task maintains a unique set of floating-point variables and continuously validates its computed result against a known reference value. The scheduler periodically preempts these tasks and switches execution between them, forcing the kernel to save and restore FPU register contents as part of the task context.
+
+This workload intentionally stresses the floating-point context management subsystem by repeatedly exercising task preemption, context switching, and FPU state restoration.
+
+### Expected Behavior
+During system initialization, ARX detects and enables the processor's floating-point extension. The scheduler then creates and dispatches four independent tasks that perform floating-point calculations using different radius values.
+
+As execution progresses, tasks are repeatedly preempted and resumed. Whenever a task uses floating-point instructions, the processor marks the floating-point state as modified. During a context switch, ARX preserves the outgoing task's floating-point register state and restores the incoming task's previously saved state.
+
+Throughout execution:
+
+* Each task retains its own floating-point context.
+* Calculated area values remain consistent across context switches.
+* Floating-point registers are isolated between tasks.
+* No floating-point state corruption or register leakage occurs.
+* Mathematical results continue to match the expected reference values.
+
+The demo is considered successful when all four tasks repeatedly produce the correct area values while the scheduler performs continuous context switching without introducing floating-point calculation errors.
+Successful execution confirms that the ARX kernel correctly initializes the FPU, manages floating-point context preservation, and provides reliable floating-point operation in a preemptive multitasking environment.
 
 ---
 
