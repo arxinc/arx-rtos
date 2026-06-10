@@ -694,27 +694,37 @@ During the write phase, all other threads remain blocked deterministically, ensu
 
 ---
 
-### 25.0 MPU configuration and usage
-#### Overview
-This demo validates ARX Memory Protection Unit (MPU) configuration and runtime enforcement.  
+### 25.0 Memory Protection Validation
 
-| Attribute | Details |
-| :--- | :--- |
-| **Executable** | `[platform][mpu][arxos.bin]` |
-| **Architecture** | RV64                        |
-| **Platform**     | SHAKTI-C (QEMU)             |
-| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Planned / Upload Pending |
-| **Demo Video** | *Uploading Soon* |
+#### Overview
+This demonstration validates the ARX memory protection framework and its ability to enforce memory access permissions, execution privileges, and isolation boundaries during runtime.
+
+The validation environment creates multiple tasks and processes that exercise protected memory regions configured with different access attributes. 
+Test scenarios include read, write, execute, privileged, unprivileged, shared-memory, and restricted-access regions to demonstrate protection enforcement and fault handling behavior.
+
+| Attribute        | Details                                      |
+| :--------------- | :------------------------------------------- |
+| **Executable**   | `[platform][mpu][arxos.bin]`                 |
+| **Architecture** | RISC-V (RV64) /ARM Cortex-M4F                |
+| **Platform**     | SHAKTI-C (QEMU), STM32F407VG                 |
+| **Location**     | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status**       | Planned / Upload Pending                     |
+| **Demo Video**   | *Uploading Soon*                             |
 
 #### Key Features Demonstrated
-* MPU region configuration
-* Memory isolation
-* Access protection
-* Fault generation
-* Runtime enforcement
+* Memory region configuration and protection management
+* Task-level memory isolation
+* Privileged and unprivileged access enforcement
+* Read, Write, and Execute (RWX) permission validation
+* Shared-memory protection and ownership validation
+* Memory access fault detection and reporting
+* Runtime protection enforcement during task scheduling
+* Protection verification across multiple execution contexts
+
 #### Expected Behavior
-Unauthorized memory accesses are detected and blocked by MPU protection mechanisms.
+The demonstration configures multiple protected memory regions with varying access permissions and ownership attributes. Tasks and processes attempt valid and invalid memory operations against these regions to verify protection enforcement.
+Authorized accesses complete successfully, while prohibited read, write, or execute operations generate protection violations and invoke the configured fault handling mechanisms.
+The validation demonstrates that ARX can enforce memory isolation boundaries, maintain access permissions across scheduling events, and provide deterministic fault reporting for unauthorized memory access attempts.
 
 ---
 
