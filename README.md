@@ -757,11 +757,18 @@ The demo creates four independent tasks that continuously perform floating-point
 
 | Task | Radius | Calculation |
 |------|--------|-------------|
-| Task-1 | `1.2342f` | `area = PI * radius * radius` |
-| Task-2 | `1.2343f` | `area = PI * radius * radius` |
-| Task-3 | `1.2344f` | `area = PI * radius * radius` |
-| Task-4 | `1.2345f` | `area = PI * radius * radius` |
+| Task-1 | `1.2342f` | `A = πR²` |
+| Task-2 | `1.2343f` | `A = πR²` |
+| Task-3 | `1.2344f` | `A = πR²` |
+| Task-4 | `1.2345f` | `A = πR²` |
+```c
+volatile float area = 0.0f;
+const float PI = 3.14159265359f;
+area = PI * radius * radius;
 
+The computed result is compared against a pre-calculated reference value. A test iteration passes when:
+`|A - Aref| < 1.0E-6`
+```
 Each task maintains a unique set of floating-point variables and continuously validates its computed result against a known reference value. The scheduler periodically preempts these tasks and switches execution between them, forcing the kernel to save and restore FPU register contents as part of the task context.
 
 This workload intentionally stresses the floating-point context management subsystem by repeatedly exercising task preemption, context switching, and FPU state restoration.
