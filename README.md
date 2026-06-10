@@ -678,7 +678,7 @@ This demo validates the ARX Reader-Writer Lock (`rwlock`) primitives, confirming
 | **Architecture** | RV64                        |
 | **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Planned / Upload Pending |
+| **Status** | ✅ Available |
 | **Demo Video** | *Uploading Soon* |
 
 #### Key Features Demonstrated
