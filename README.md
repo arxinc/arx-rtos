@@ -758,9 +758,9 @@ The demo creates four independent tasks that continuously perform floating-point
 | Task | Radius | Calculation |
 |------|--------|-------------|
 | Task-1 | `1.2342f` | `area = PI * radius * radius` |
-| Task-2 | `1.2345f` | `area = PI * radius * radius` |
-| Task-3 | `1.2343f` | `area = PI * radius * radius` |
-| Task-4 | `1.2344f` | `area = PI * radius * radius` |
+| Task-2 | `1.2343f` | `area = PI * radius * radius` |
+| Task-3 | `1.2344f` | `area = PI * radius * radius` |
+| Task-4 | `1.2345f` | `area = PI * radius * radius` |
 
 Each task maintains a unique set of floating-point variables and continuously validates its computed result against a known reference value. The scheduler periodically preempts these tasks and switches execution between them, forcing the kernel to save and restore FPU register contents as part of the task context.
 
