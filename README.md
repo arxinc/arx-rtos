@@ -733,7 +733,7 @@ It demonstrates that floating-point computations can be performed concurrently a
 | **Architecture** | RISC-V (RV64) /ARM Cortex-M4F    |
 | **Platform**     | SHAKTI-C (QEMU), STM32F407VG     |
 | **Location**     | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status**       | Planned / Upload Pending         |
+| **Status**       | ✅ Available                    |
 | **Demo Video**   | *Uploading Soon*                 |
 
 ---
