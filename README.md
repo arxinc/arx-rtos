@@ -202,24 +202,49 @@ This demo validates ARX: TODO
 
 ---
 
-### 7.0 CMD execution infrastructure
+### 7.0 CMD Execution Infrastructure
 #### Overview
-This demo validates ARX: TODO  
+This demo validates the ARX Command (CMD) execution infrastructure by simulating a high-throughput Solid-State Drive (SSD) workload profile. 
+The infrastructure processes concurrent operational requests divided into four distinct transaction categories modeled directly after the NVMe standard architecture.
 
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][cmdinfra][arxos.bin]` |
-| **Architecture** | RV64                        |
-| **Platform**     | SHAKTI-C (QEMU)             |
-| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Architecture** | RISC-V (RV64) |
+| **Platform** | SHAKTI-C (QEMU) |
+| **Location** | `arxos/arch/riscv/shakti_c/qemu` |
 | **Status** | Planned / Upload Pending |
 | **Demo Video** | *Uploading Soon* |
 
+#### Task and Execution Allocation Matrix
+The firmware employs a dedicated 16-task execution model that enforces strict separation between high-throughput data-path processing and asynchronous system management activities.
+
+| Task Group                  | Allocation          | Primary Responsibility                                                                   | Execution Model                                         |
+| ----------------------------| ------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| **PCIe Host Interface**     | 8 Tasks (`T0`–`T7`) | NVMe command processing, including Admin, Read, Write, and Erase operations              | Continuous, line-rate execution                         |
+| **Supervisor and Recovery** | 8 Tasks (`H0`–`H7`) | Error detection and correction, queue recovery, resource arbitration, and fault handling | Activated on exception/faults or recovery events        |
+
+This partitioning ensures that latency-sensitive host I/O processing remains isolated from background recovery and supervisory functions, preserving deterministic performance while enabling robust fault management.
+
 #### Key Features Demonstrated
-* TODO
+* **Admin Command Arbitration:** Execution of initialization, structural discovery, capabilities tracking, and queue management protocols mimicking NVMe Admin Submission queues.
+* **Block I/O Read Pipeline:** Low-latency parsing and memory allocation for non-blocking read arrays simulating localized sector retrievals.
+* **Block I/O Write Optimization:** Processing data ingestion payloads safely, verifying boundary parameters and tracking buffer allocations across simulated cells.
+* **Erase Block Management:** Emulating flash memory physical constraints via atomic structural clearing blocks and sector management overrides.
+* **16-Task Massive Parallelism:** Managing structural schedulable resources across a complex 16-task layout without starving core processing slices or locking system resources.
+* **8x Line-Rate NVMe PCIe Hosts:** Massively concurrent execution of 8 discrete host interface tasks (`T0`–`T7`) simulating high-speed, multi-queue hardware submission paths.
+* **8x Dedicated Error Mitigation Helpers(Tasks):** Provisioning 8 paired helper tasks (`H0`–`H7`) explicitly bound to intercept operational errors, run parity/CRC corrections, and recover command queues asynchronously.
+* **8x Dedicated Error Mitigation Helpers(Fault Handler):** Provisioning 8 paired helper fault handler associated with each host tasks (`H0`–`H7`) explicitly bound to correct light weight operational errors synchronously.
+* **Concurrent Transaction Stressing:** Routing multiple mixed-category commands simultaneously over the ARX interface to guarantee queue depth alignment and prevent structural deadlocks.
+
 #### Expected Behavior
-* TODO
-  
+Upon initialization, the ARX command subsystem maps out a localized block of memory to function as the virtual flash storage target. 
+The testing application then floods the pipeline with a chaotic mix of Admin, Read, Write, and Erase transactions across the **8 concurrent NVMe PCIe Host Interface tasks**. 
+The command infrastructure cleanly routes each packet to its respective processing engine based on the command identifier. 
+Write operations update the virtual memory map cleanly, Read commands fetch exact matched payloads back across the software ring-buffer interfaces, and Erase routines reset targets to zeroed out base states. 
+If transaction corruptions, boundary faults, or timeout conditions are intentionally injected into any of the host pipelines, the **8 dedicated Error Helper tasks** intercept the failure immediately. 
+These helper contexts run corrections and reset the specific queue boundaries asynchronously, allowing the remaining host interfaces to maintain continuous execution with zero performance degradation or global stall conditions.
+
 ---
 
 ### 8.0 Realtime FSM Infrastructure
