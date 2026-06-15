@@ -182,23 +182,47 @@ Rather than allowing an uncontrolled system crash or memory corruption, the kern
 
 ---
  
-### 6.0 Cluster formation
+### 6.0 ARX Tasks Cluster Formation
+
 #### Overview
-This demo validates ARX: TODO  
+This demo validates the ARX real-time task clustering infrastructure. It demonstrates the framework's ability to dynamically aggregate multiple independent real-time execution threads into a unified, synchronized processing group to achieve a collective execution goal with deterministic boundaries.
 
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][clust][arxos.bin]` |
-| **Architecture** | RV64                        |
-| **Platform**     | SHAKTI-C (QEMU)             |
-| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Architecture** | RISC-V (RV64) |
+| **Platform** | SHAKTI-C (QEMU) |
+| **Location** | `arxos/arch/riscv/shakti_c/qemu` |
 | **Status** | Planned / Upload Pending |
 | **Demo Video** | *Uploading Soon* |
 
+#### Task Aggregation Topology
+
+```c
+                      ┌───────┐
+                   ┌─►│Task TA├─┐
+                   │  └───────┘ │
+[Hardware]   ┌─────┴──────────┐ │   ┌───────────────┐
+Resources ──►│ARX Group Layer ├─┼──►│Collective Goal│
+             └─────┬──────────┘ │   └───────────────┘
+                   │  ┌───────┐ │   [Barrier Release]
+                   ├─►│Task TB├─┤
+                   │  └───────┘ │
+                   │  ┌───────┐ │
+                   └─►│Task TC├─┘
+                      └───────┘
+```
+
 #### Key Features Demonstrated
-* TODO
+Static Group Aggregation: Programmatic clustering of discrete RTOS tasks into bounded execution domains without modifying individual kernel task control blocks (TCBs).
+Coordinated Resource Budgeting: Enforcing shared memory, MPU boundaries, and CPU time-slice budgets across all member tasks within a designated group.
+Deterministic Barrier Synchronization: Utilizing low-overhead hardware/software primitives to ensure all aggregated tasks reach collective execution checkpoints simultaneously.
+Priority Inter-Inheritance: Preventing priority inversion across clusters by ensuring the group's real-time urgency context scales dynamically based on localized workload strains.
+Jitter Elimination: Verifying that grouped execution transitions eliminate inter-task scheduling jitter during parallel real-time calculations.
+
 #### Expected Behavior
-* TODO
+Upon subsystem initialization, the ARX kernel spawns multiple independent task vectors and assigns them to a single structured execution cluster.
+The console output will show these tasks coordinating to solve a single processing target. Rather than executing in a scattered, interleaved fashion, the tasks will use the group formation layer to synchronize their steps perfectly. You will see clean, aligned logs showing group registration, balanced workload distribution across the task slices, barrier arrival timestamps matching down to the exact clock cycle, and clean group de-allocation once the collective execution goal is met.
 
 ---
 
