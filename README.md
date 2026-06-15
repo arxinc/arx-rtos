@@ -219,10 +219,10 @@ The infrastructure processes concurrent operational requests divided into four d
 #### Task and Execution Allocation Matrix
 The firmware employs a dedicated 16-task execution model that enforces strict separation between high-throughput data-path processing and asynchronous system management activities.
 
-| Task Group                  | Allocation          | Primary Responsibility                                                                   | Execution Model                                         |
-| ----------------------------| ------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| **PCIe Host Interface**     | 8 Tasks (`T0`–`T7`) | NVMe command processing, including Admin, Read, Write, and Erase operations              | Continuous, line-rate execution                         |
-| **Supervisor and Recovery** | 8 Tasks (`H0`–`H7`) | Error detection and correction, queue recovery, resource arbitration, and fault handling | Activated on exception/faults or recovery events        |
+| Context | Tasks | Core Domain | Scheduling |
+| :--- | :--- | :--- | :--- |
+| **PCIe Host Interface** | `T0` – `T7` *(8x)* | NVMe Command Processing (Admin, Read, Write, Erase) | Continuous / Line-Rate |
+| **Supervisor & Recovery** | `H0` – `H7` *(8x)* | Fault Handling, Queue Recovery, Error Correction | Asynchronous / Event-Driven |
 
 This partitioning ensures that latency-sensitive host I/O processing remains isolated from background recovery and supervisory functions, preserving deterministic performance while enabling robust fault management.
 
