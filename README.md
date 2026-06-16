@@ -432,24 +432,32 @@ This demo validates ARX: TODO
  
 ---
 
-### 14.0 FEV demonstration
+### 14.0 FEV Handling Simulation
 #### Overview
-This demo validates ARX: TODO  
+This demo evaluates the ARX FEV(Funationality Extending Vectors) mechanisms in response to software-generated signals.
+It illustrates how ARX enhances traditional RTOS task functionality by enabling event-driven execution paths without requiring the creation of additional tasks, thereby reducing system overhead and improving resource utilization.
 
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][fevs][arxos.bin]` |
-| **Architecture** | RV64                        |
-| **Platform**     | SHAKTI-C (QEMU)             |
-| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Planned / Upload Pending |
+| **Architecture** |  RISC-V (RV64IMAC)  |
+| **Platform** | SHAKTI-C (QEMU) |
+| **Location** | `arxos/arch/riscv/shakti_c/qemu` |
+| **Status**   | ✅ Available |
 | **Demo Video** | *Uploading Soon* |
 
 #### Key Features Demonstrated
-* TODO
+* **Asynchronous Vector Routing:** Immediate interception of signal asserted by system for specific task or broadcasted to a group of taks or entire system.
+* **Granular Vector Registration Arrays:** Each task may have upto 16 different default functionalities registered with it beyond its reghular work load.
+* **Interrupt-Context Arbitrated Execution:** These signals are asserted in interrupt context by system and directed taks(s) for specific job(s).
+* **Controlled Boot-State Lifecycle Validation:** Customized and controlled starts for each process those registered signal handler.
+
 #### Expected Behavior
-* TODO
-  
+When the simulation begins, the test framework deliberately generates a sequence of signal vectors for a designated PID.
+The console logs the execution of the corresponding signal handler upon signal assertion.
+These default handlers are typically used during system initialization, emergency processing, and task control operations.
+From an interrupt context, a signal may be broadcast to an individual process, a process group, a process class, or the entire system, enabling efficient event notification and coordination.
+
 ---
 
 ### 15.0 Task Software Fault Handling
@@ -460,7 +468,7 @@ It demonstrates how application-level logical faults are intercepted, isolated, 
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][swfaults][arxos.bin]` |
-| **Architecture** | RV64                        |
+| **Architecture** | RISC-V (RV64IMAC) |
 | **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Planned / Upload Pending |
