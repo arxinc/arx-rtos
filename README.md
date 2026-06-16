@@ -471,7 +471,7 @@ It demonstrates how application-level logical faults are intercepted, isolated, 
 | **Architecture** | RISC-V (RV64IMAC) |
 | **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Planned / Upload Pending |
+| **Status** | ✅ Available |
 | **Demo Video** | *Uploading Soon* |
 
 #### Key Features Demonstrated
