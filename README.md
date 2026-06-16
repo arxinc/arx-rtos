@@ -250,6 +250,19 @@ The firmware employs a dedicated 16-task execution model that enforces strict se
 
 This partitioning ensures that latency-sensitive host I/O processing remains isolated from background recovery and supervisory functions, preserving deterministic performance while enabling robust fault management.
 
+#### Expected Console sample output
+```console
+Illegal CMDs:1191
+Decoding Failed:97850
+Corrected(ERR Task):5
+Corrected(Fault Handler):697406
+ERR(RD Build): 264  Corrected(RD CMD):  174680  ERR In Exec(RD CMD):     191  RD CMD Executed:135632382  RD CMD RCVD:135657450
+ERR(WR Build): 320  Corrected(WR CMD):  174381  ERR In Exec(WR CMD):     187  WR CMD Executed:135632204  WR CMD RCVD:135657450
+ERR(ER Build): 292  Corrected(ER CMD):  174289  ERR In Exec(ER CMD):     206  ER CMD Executed:135631955  ER CMD RCVD:135657450
+ERR(AD Build): 288  Corrected(AD CMD):  174056  ERR In Exec(AD CMD):     175  AD CMD Executed:135632295  AD CMD RCVD:135657450
+All RWEA CMDs are processed
+```
+
 #### Key Features Demonstrated
 * **Admin Command Arbitration:** Execution of initialization, structural discovery, capabilities tracking, and queue management protocols mimicking NVMe Admin Submission queues.
 * **Block I/O Read Pipeline:** Low-latency parsing and memory allocation for non-blocking read arrays simulating localized sector retrievals.
