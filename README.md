@@ -234,10 +234,10 @@ The infrastructure processes concurrent operational requests divided into four d
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][cmdinfra][arxos.bin]` |
-| **Architecture** | RISC-V (RV64) |
+| **Architecture** | RISC-V (RV64IMAC) |
 | **Platform** | SHAKTI-C (QEMU) |
 | **Location** | `arxos/arch/riscv/shakti_c/qemu` |
-| **Status** | Planned / Upload Pending |
+| **Status** | ✅ Available |
 | **Demo Video** | *Uploading Soon* |
 
 #### Task and Execution Allocation Matrix
