@@ -250,7 +250,7 @@ The firmware employs a dedicated 16-task execution model that enforces strict se
 
 This partitioning ensures that latency-sensitive host I/O processing remains isolated from background recovery and supervisory functions, preserving deterministic performance while enabling robust fault management.
 
-#### Expected Console sample output
+#### Sample Console Output
 ```console
 Illegal CMDs:15
 Decoding Failed:1825
