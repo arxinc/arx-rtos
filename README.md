@@ -425,6 +425,11 @@ It demonstrates how task-level signals are dispatched, isolated, and intercepted
 | **Status** | ✅ Available |
 | **Demo Video** | *Uploading Soon* |
 
+#### Sample Console Output
+When private signal vector 4 is asserted for PID 2, the registered handler is invoked and the following message is logged to the console:
+```console
+[   775.216s][C0][USR][PID: 2][INFO]: PVT VECT[PID=2][SIG=4]
+```
 #### Key Features Demonstrated
 * **Direct Instruction Routing (Unicast):** Direct, targeted injection of runtime signals into a specific process identifier (PID) to perform custom actions without impacting neighboring tasks.
 * **Global System Broadcast Escalation:** Task-wide propagation of high-priority control signals to specific tasks for rapid global state changes or emergency synchronization.
@@ -452,6 +457,11 @@ It illustrates how ARX enhances traditional RTOS task functionality by enabling 
 | **Status**   | ✅ Available |
 | **Demo Video** | *Uploading Soon* |
 
+#### Sample Console Output
+When FEV signal vector 11 is asserted for PID 1, the registered FEV handler is invoked and the following message is logged to the console:
+```console
+[   683.732s][C0][USR][PID: 1][INFO]: FEV VECT[PID=1][SIG=11]
+```
 #### Key Features Demonstrated
 * **Asynchronous Vector Routing:** Immediate interception of signal asserted by system for specific task or broadcasted to a group of taks or entire system.
 * **Granular Vector Registration Arrays:** Each task may have upto 16 different default functionalities registered with it beyond its reghular work load.
@@ -480,6 +490,11 @@ It demonstrates how application-level logical faults are intercepted, isolated, 
 | **Status** | ✅ Available |
 | **Demo Video** | *Uploading Soon* |
 
+#### Sample Console Output
+When fault signal vector 5 is asserted by PID 3, the registered fault handler is invoked by ARX process management and the following message is logged to the console:
+```console
+[   5234.563s][C0][USR][PID: 3][INFO]: FLT VECT[PID=3][SIG=5]
+```
 #### Key Features Demonstrated
 * **Fault Reporting to ARX Process Management:** Instant telemetry capturing of software exceptions, saving task state snapshots for diagnostic auditing.
 * **Layered Local Recovery Hooks:** Evaluation of task-specific fault handlers designed to resolve deterministic logical errors locally.
