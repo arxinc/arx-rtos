@@ -897,10 +897,10 @@ The demonstration highlights the separation between kernel execution logic and h
 | Attribute        | Details                                      |
 | :--------------- | :------------------------------------------- |
 | **Executable**   | `[platform][hal][arxos.bin]`                 |
-| **Architecture** | RV64                                         |
+| **Architecture** | RISC-V (RV64IMAC)                            |
 | **Platform**     | SHAKTI-C (QEMU)                              |
 | **Location**     | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status**       | Planned / Upload Pending                     |
+| **Status**       | ✅ Available                                 |
 | **Demo Video**   | *Uploading Soon*                             |
 
 #### Key Features Demonstrated
@@ -911,7 +911,12 @@ The demonstration highlights the separation between kernel execution logic and h
 * **Low-Level System Services:** Hardware-independent APIs for privileged operations, including cache management, memory synchronization, address translation maintenance, processor state control, and platform-specific synchronization primitives.
 * **Consistent Hardware Interface Model:** A standardized framework for accessing platform resources, enabling kernel components and applications to interact with underlying hardware through well-defined interfaces.
 * **Scalable Multi-Platform Support:** A modular architecture that supports deployment across diverse processor families and hardware configurations while preserving a common kernel code base.
-
+#### Sample Console Output
+```console
+[     0.824s][C0][USR][PID: 3][INFO]: HAL WRITE[FEND]: PASSED.
+[     0.824s][C0][USR][PID: 3][WARN]: HAL CMD  [FEND]: FAILED!
+[     0.920s][C0][USR][PID: 4][INFO]: HAL ERASE[BGND]: PASSED.
+```
 #### Expected Behavior
 Upon execution, the HAL performs the platform initialization sequence required to prepare the system for kernel operation.
 During startup, the console output reflects the following initialization stages:
