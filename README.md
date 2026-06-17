@@ -600,25 +600,40 @@ If the unblocked task holds the highest priority, a context switch executes dete
 
 ### 19.0 Fault handling
 #### Overview
-This demo validates ARX runtime fault handling and system protection mechanisms.  
+This demo validates the ARX RTOS runtime fault-detection, isolation, and system protection infrastructure across both ARM and RISC-V processor architectures. 
+It illustrates how the kernel intercepts critical hardware exceptions (such as memory aborts, bus access faults, and execution violations) using low-level, platform-specific trapping routines to maintain absolute system integrity and prevent global kernel crashes.
 
 | Attribute | Details |
 | :--- | :--- |
-| **Executable** | `[platform][faults][arxos.bin]` |
-| **Architecture** | RV64                        |
-| **Platform**     | SHAKTI-C (QEMU)             |
+| **Executable** | `[platform][excep][arxos.bin]` |
+| **Architecture** | RISC-V (RV32/64) / ARM (Cortex-A/R/M)    |
+| **Platform**     | SHAKTI-C (QEMU) / ARM32 (ST32F4/ VersatilePB)  |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
 | **Status** | Planned / Upload Pending |
 | **Demo Video** | *Uploading Soon* |
 
 #### Key Features Demonstrated
-* Fault detection
-* Exception processing
-* Runtime recovery
-* System protection
-* Error reporting
+* **Dual-Architecture Vector Trapping:** Seamless execution of low-level exception handlers on both platforms:
+RISC-V: Dynamic trapping with precise context saving of core registers plus.
+ARM: Direct configuration of the Vector Base Address Register (VBAR) or high vectors (SCTLR.V), handling Undefined Instruction, Prefetch Abort, and Data Abort vectors.
+
+* **Deterministic Fault Decoding:** Real-time register decoding to pinpoint fault sources:
+RISC-V: Parsing the exception code (e.g., Cause 2 for Illegal Instruction, Cause 13 for Load Page Fault).
+ARM: Interrogating the Fault to isolate bad memory reference addresses.
+
+* **Memory Protection Isolation (MPU):** Intercepting hardware protection alerts when a non-privileged user-space task attempts unauthorized memory operations or execution across protected boundaries.
+* **Task-Level Fault Containment (Quarantine):** Ensuring that a faulted execution thread is immediately suspended, isolated from the active scheduler run-queue, and its resources are safely reclaimed without triggering a CPU-wide panic.
+* **Non-Blocking Post-Mortem Diagnostics:** Immediate serialization of the saved execution frame to the UART console, displaying a detailed registers matrix to accelerate hardware debugging.
+
 #### Expected Behavior
-ARX safely detects and handles runtime faults without uncontrolled failures.
+During execution, the validation suite dynamically triggers controlled hardware faults (such as executing an invalid undefined instruction opcode, or forcing an unaligned memory access).  
+**Under RISC-V:**  
+The hardware trap shifts the CPU execution mode directly to the ARX machine vector base. The console displays a structured dump of the RISC-V registers, printing the raw mepc (Instruction Pointer) and mcause flags. 
+The kernel halts the offending task, frees the associated thread blocks, and switches context back to the active line-rate scheduling pool without jitter.  
+**Under ARM Cortex-A/R/M:**  
+The exception instantly triggers either a Data Abort or Undefined Instruction trap. 
+The ARX vector handler find out exact violating address and access mode. 
+The system gracefully cleans the memory layout allocated to the thread, terminates the PID, and restarts the core interface helper, demonstrating that the remaining RTOS tasks continue to run concurrently and without disruption.
 
 ---
 
