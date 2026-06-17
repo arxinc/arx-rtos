@@ -414,21 +414,27 @@ The ARX forced signal infrastructure cancelled any forced signal if issued befor
 
 ### 13.0 Task private signals
 #### Overview
-This demo validates ARX: TODO  
-
+This demo validates the ARX kernel's deterministic asynchronous software signal assertion and routing infrastructure.
+It demonstrates how task-level signals are dispatched, isolated, and intercepted within a bounded execution environment to control thread states dynamically.
 | Attribute | Details |
 | :--- | :--- |
 | **Executable** | `[platform][pvts][arxos.bin]` |
-| **Architecture** | RV64                        |
+| **Architecture** | RISC-V (RV64IMAC) |
 | **Platform**     | SHAKTI-C (QEMU)             |
 | **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Planned / Upload Pending |
+| **Status** | ✅ Available |
 | **Demo Video** | *Uploading Soon* |
 
 #### Key Features Demonstrated
-* TODO
+* **Direct Instruction Routing (Unicast):** Direct, targeted injection of runtime signals into a specific process identifier (PID) to perform custom actions without impacting neighboring tasks.
+* **Global System Broadcast Escalation:** Task-wide propagation of high-priority control signals to specific tasks for rapid global state changes or emergency synchronization.
+
 #### Expected Behavior
-* TODO
+During execution, a software tracking thread running within the high-priority interrupt context will intentionally assert an asynchronous logical signal directed at a target process (PID).
+The ARX process management intercepts this assertion, prepares the execution context for the process, and the signal handler executes when the task is assigned CPU by scheduler.
+ARX tasks allow 8 different functionalities controlled by the system beyond its regular workload.
+If no handler is explicitly bound, the kernel processes the signal using its default safety behavior (dropping uncritical notification flags or forcing a strict, safe containment state).
+This demonstrates that the signaling infrastructure functions predictably and continuously without causing unhandled unmapped core panics.
  
 ---
 
