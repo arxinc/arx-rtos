@@ -890,24 +890,39 @@ Successful execution confirms that the ARX kernel correctly initializes the FPU,
 
 ### 27.0 ARX HAL
 #### Overview
-This demo validates ARX: TODO  
-| Attribute | Details |
-| :--- | :--- |
-| **Executable** | `[platform][hal][arxos.bin]` |
-| **Architecture** | RV64                        |
-| **Platform**     | SHAKTI-C (QEMU)             |
-| **Location** | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status** | Planned / Upload Pending |
-| **Demo Video** | *Uploading Soon* |
+This demo validates the architecture-independent design of the ARX Hardware Abstraction Layer (HAL).
+It demonstrates how core RTOS services—including scheduling, thread management, interrupt handling, and inter-process communication (IPC)—operate independently of the underlying hardware platform by interacting exclusively through standardized, platform-neutral HAL interfaces.
+The demonstration highlights the separation between kernel execution logic and hardware-specific implementations, enabling portability across multiple architectures and SoC variants with minimal platform-dependent code.
+
+| Attribute        | Details                                      |
+| :--------------- | :------------------------------------------- |
+| **Executable**   | `[platform][hal][arxos.bin]`                 |
+| **Architecture** | RV64                                         |
+| **Platform**     | SHAKTI-C (QEMU)                              |
+| **Location**     | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
+| **Status**       | Planned / Upload Pending                     |
+| **Demo Video**   | *Uploading Soon*                             |
 
 #### Key Features Demonstrated
-* Hardware abstraction
-* Peripheral access
-* Platform portability
-* Driver interface
-* System services
+* **Architecture Independence:** Complete separation of kernel execution logic from processor-specific registers, interrupt mechanisms, memory management units, and hardware-specific resources.
+* **Unified Interrupt Abstraction:** Standardized interfaces for interrupt controllers and event-handling subsystems, enabling consistent management of timer, software, and peripheral interrupts across supported platforms.
+* **Portable Platform Layer:** Isolation of architecture- and platform-dependent components within dedicated HAL and BSP layers, allowing new processors and hardware platforms to be supported without modifying core kernel services.
+* **Abstracted Peripheral Access:** Unified Board Support Package (BSP) interfaces and lightweight driver abstractions for peripherals such as serial communication, timers, clock management, watchdogs, and system control functions.
+* **Low-Level System Services:** Hardware-independent APIs for privileged operations, including cache management, memory synchronization, address translation maintenance, processor state control, and platform-specific synchronization primitives.
+* **Consistent Hardware Interface Model:** A standardized framework for accessing platform resources, enabling kernel components and applications to interact with underlying hardware through well-defined interfaces.
+* **Scalable Multi-Platform Support:** A modular architecture that supports deployment across diverse processor families and hardware configurations while preserving a common kernel code base.
+
 #### Expected Behavior
-ARX provides consistent hardware-independent runtime services across supported platforms.
+Upon execution, the HAL performs the platform initialization sequence required to prepare the system for kernel operation.
+During startup, the console output reflects the following initialization stages:
+1. Platform memory and address-space initialization.
+2. Processor exception and interrupt subsystem configuration.
+3. Initialization of platform-specific interrupt controllers and event-routing mechanisms.
+4. Configuration of the hardware timer source used by the kernel scheduler.
+Once the hardware environment is fully initialized, control is transferred to the ARX kernel, and normal task scheduling begins.
+After initialization is complete, control is transferred to the ARX scheduler.
+Subsequent console logs demonstrate peripheral operations—such as UART transmissions and simulated GPIO activity—executed through hardware-neutral APIs. 
+These operations verify that kernel services remain fully decoupled from the underlying hardware implementation while maintaining deterministic and predictable system behavior.
 
 ---
 
