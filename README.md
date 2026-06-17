@@ -598,7 +598,7 @@ If the unblocked task holds the highest priority, a context switch executes dete
 
 ---
 
-### 19.0 Fault handling
+### 19.0 Fault Isolation & Recovery
 #### Overview
 This demo validates the ARX RTOS runtime fault-detection, isolation, and system protection infrastructure across both ARM and RISC-V processor architectures. 
 It illustrates how the kernel intercepts critical hardware exceptions (such as memory aborts, bus access faults, and execution violations) using low-level, platform-specific trapping routines to maintain absolute system integrity and prevent global kernel crashes.
