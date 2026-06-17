@@ -613,12 +613,12 @@ It illustrates how the kernel intercepts critical hardware exceptions (such as m
 | **Demo Video** | *Uploading Soon* |
 
 #### Key Features Demonstrated
-* **Dual-Architecture Vector Trapping:** Seamless execution of low-level exception handlers on both platforms:
-RISC-V: Dynamic trapping with precise context saving of core registers plus.
-ARM: Direct configuration of the Vector Base Address Register (VBAR) or high vectors (SCTLR.V), handling Undefined Instruction, Prefetch Abort, and Data Abort vectors.
+* **Dual-Architecture Vector Trapping:** Seamless execution of low-level exception handlers on both platforms:  
+RISC-V: Dynamic trapping with precise context saving of core registers plus.  
+ARM: Configures the exception vector table and handles Undefined Instruction, Prefetch Abort, and Data Abort exceptions.
 
-* **Deterministic Fault Decoding:** Real-time register decoding to pinpoint fault sources:
-RISC-V: Parsing the exception code (e.g., Cause 2 for Illegal Instruction, Cause 13 for Load Page Fault).
+* **Deterministic Fault Decoding:** Real-time register decoding to pinpoint fault sources:  
+RISC-V: Parsing the exception code (e.g., Cause 2 for Illegal Instruction, Cause 13 for Load Page Fault).  
 ARM: Interrogating the Fault to isolate bad memory reference addresses.
 
 * **Memory Protection Isolation (MPU):** Intercepting hardware protection alerts when a non-privileged user-space task attempts unauthorized memory operations or execution across protected boundaries.
