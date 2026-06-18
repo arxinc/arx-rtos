@@ -814,8 +814,60 @@ Test scenarios include read, write, execute, privileged, unprivileged, shared-me
 | **Architecture** | RISC-V (RV64) /ARM Cortex-M4F                |
 | **Platform**     | SHAKTI-C (QEMU), STM32F407VG                 |
 | **Location**     | `arxos/arch/<arch>/<cpu_variant>/<platform>` |
-| **Status**       | Planned / Upload Pending                     |
+| **Status**       | ✅ Available                                |
 | **Demo Video**   | *Uploading Soon*                             |
+
+#### Fault Detection and Containment
+This test validates MPU-based memory protection for a task executing in **unprivileged mode**.
+A 256-byte MPU region is configured at address **0x20007600** and is assigned to a simulated process (**PID #3**). 
+The task associated with PID #3 attempts to access this region using both read and write operations.
+The region is configured with the following access permissions:
+* **Privileged mode:** Read-only access permitted
+* **Unprivileged mode:** No read or write access permitted
+
+Since application tasks execute in **unprivileged mode**, any access attempt to this region is expected to generate an MPU protection fault (MemManage Fault). 
+Successful fault generation confirms that the MPU configuration and process isolation mechanisms are operating correctly.
+
+##### Expected Fault Output(Reference: STM32F407VG)
+```text
+----------------------------------
+Task ID: 3
+Fault Counts: 0x00000001
+Fault Type: Memory MGMT
+Fault Time: 2002
+
+SCB->HFSR   0x00000000
+SCB->MMFAR  0x20007600
+SCB->BFAR   0x20007600
+SCB->CFSR   0x00000082
+
+SP          0x200059F0
+R0          0x0000000A
+R1          0x0000000F
+R2          0x00000000
+R3          0x20006B00
+R12         0x0000000A
+LR          0x08006185
+PC          0x080061E0
+xPSR        0x21000000
+----------------------------------
+ARX Functional Report:
+BSRC Report: Shut Downs:0  Soft Reset:0  Force Idle:1  Resumed:1  Timeouts:0
+System Stack Used:%(N/A)
+Processing power saved:%(N/A)
+System up-time since last reboot    0 :  17 :  31
+PID STS CLS TSL FLT PWM   EVENTS   RSCHDREQ      RELNQ PRE-EMPTD SUSP-LTD  SUSP-ULTD   RESUME    SLEEP   WAKSUP    BLOCK    NOBLK  EXITINLK  SYSCALL    SCHDSEL      TSEXP WDGA    Core0  STK USED(%)
+  0 IDL BGD   2   0   0        0          0          0         0        0         0         0        0        0        0        0         0        0     369327          0  0     369329   23
+  1 RDY BGD   8   0   0        0          0        612         8        0         0         0        0        0        0        0         0        0      20198      19578  0      20198   19
+  2 RDY FED   8   0   0        0          0        612         8        0         0         0        0        0        0        0         0        0      20198      19578  0      20198   19
+  3 TER PRD   8   1   0        1          0          0         0        0         0         0        0        0        0        0         0        0          2          1  0          2   19
+  4 WAT EVT   8   0   0       14          0          7         0        0         0         0        0        0        0        0         0        0         15          8  0         15   19
+
+```
+The fault information confirms that the offending access occurred at address **0x20007600**, which belongs to the MPU-protected region. 
+The reported **MemManage Fault** (`CFSR = 0x00000082`) indicates a data access violation and provides a valid fault address through `MMFAR`.  
+Upon detecting the violation, **ARX RTOS successfully isolates and terminates the offending task (PID #3)**, preventing further execution and protecting the integrity of the system. 
+All remaining tasks continue to execute normally, demonstrating process isolation and fault containment within the ARX protection framework.
 
 #### Key Features Demonstrated
 * Memory region configuration and protection management
