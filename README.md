@@ -138,6 +138,45 @@ This demo validates the ARX kernel's task lifecycle management infrastructure, p
 | **Status** | Planned / Upload Pending |
 | **Demo Video** | *Uploading Soon* |
 
+## Task State Model
+
+The ARX scheduler manages task execution through the following lifecycle:
+
+```mermaid
+stateDiagram-v2
+
+    [*] --> CREATE
+    CREATE --> READY
+
+    READY --> RUNNING
+    READY --> SLEEP
+    READY --> SUSPEND
+    READY --> TERMINATE
+
+    RUNNING --> WAIT
+    RUNNING --> READY
+    RUNNING --> TERMINATE
+    RUNNING --> SUSPEND
+    RUNNING --> SLEEP
+    RUNNING --> BLOCKED
+
+    SUSPEND --> RUNNING
+    SLEEP --> RUNNING
+    BLOCKED --> READY
+
+    WAIT --> TERMINATE
+    WAIT --> SUSPEND
+    WAIT --> SLEEP
+    WAIT --> READY
+
+    note right of RUNNING
+        SMP:
+        Multiple tasks may run
+        simultaneously on
+        different CPU cores.
+    end note
+```
+
 #### Key Features Demonstrated
 * **Running & Ready States:** Proper allocation of the CPU to the highest-priority target task, and immediate queue re-insertion when a task is yielded or preempted.
 * **Blocked State:** Orderly relocation of a task from the active ready queue to a resource-specific wait queue upon encountering a locked primitive or missing dependency.
@@ -313,7 +352,8 @@ The framework successfully handles state loops and boundary errors without trigg
 
 ### 9.0 ARX Background processing
 #### Overview
-This demo validates ARX: TODO  
+This demo validates the ARX scheduler's ability to safely process deferred background workloads under heavy real-time constraints.
+It focuses on the Background class tasks  scheduling when system is more relexed and no urgent or high priority tasks are available.
 
 | Attribute | Details |
 | :--- | :--- |
@@ -325,9 +365,13 @@ This demo validates ARX: TODO
 | **Demo Video** | *Uploading Soon* |
 
 #### Key Features Demonstrated
-* TODO
+* **Low-Priority Idle Cooperative Scheduling**: Utilizing the lowest-priority thread band (just above the system idle task) for resource-heavy operations to avoid stealing cycles from line-rate execution tasks.
+* **Preemption Latency Under Load**: Instant preemption of the background task when a high-priority task arrives.
+* **Temporal Budget Constraints:** Preventing background task execution drift or lockups from starving the system of scheduling resources.
+
 #### Expected Behavior
-* TODO
+When front class tasks yield or blocked (sleep or suspended), the ARX scheduler activates the background task for that duration.
+If a new high-priority I/O interrupt or task wakes up, the ARX kernel instantly preempts the background writer task. 
 
 ---
 
