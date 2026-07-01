@@ -291,15 +291,40 @@ This partitioning ensures that latency-sensitive host I/O processing remains iso
 
 #### Sample Console Output
 ```console
-Illegal CMDs:15
-Decoding Failed:1825
-Corrected(ERR Task):17
-Corrected(Fault Handler):13322
-ERR(RD Build):  10  Corrected(RD CMD):    3437  ERR In Exec(RD CMD):       0  RD CMD Executed: 2555425  RD CMD RCVD: 2555865
-ERR(WR Build):   5  Corrected(WR CMD):    3343  ERR In Exec(WR CMD):       0  WR CMD Executed: 2555378  WR CMD RCVD: 2555865
-ERR(ER Build):   3  Corrected(ER CMD):    3264  ERR In Exec(ER CMD):       3  ER CMD Executed: 2555401  ER CMD RCVD: 2555865
-ERR(AD Build):   5  Corrected(AD CMD):    3295  ERR In Exec(AD CMD):       0  AD CMD Executed: 2555390  AD CMD RCVD: 2555865
+ARX Functional Report:
+BSRC Report: Shut Downs:10251  Soft Reset:0  Force Idle:0  Resumed:1477  Timeouts:8776
+System Stack Used:%(N/A)
+Processing power saved:%(N/A)
+System up-time since last reboot   36 :  20 :   0
+PID STS CLS TSL FLT PWM   EVENTS   RSCHDREQ      RELNQ PRE-EMPTD SUSP-LTD  SUSP-ULTD   RESUME    SLEEP   WAKSUP    BLOCK    NOBLK  EXITINLK  SYSCALL    SCHDSEL      TSEXP WDGA    Hart0      STK USED(%)
+  0 IDL BGD   2   0   0        0          0          0         0        0         0         0        0        0        0        0         0        0    9500221          0  0    9500221      64
+  1 RDY FED   2   0   0        0          0       4215         0        0         0         0        0        0        0        0         0        0   11192839   11188623  0   11192839      55
+  2 RDY FED   2   0   0        0          0       5365         0        0         0         0        0        0        0        0         0        0   11192839   11187473  0   11192839      55
+  3 RDY FED   2   0   0        0          0       4639         0        0         0         0        0        0        0        0         0        0   11192839   11188200  0   11192839      55
+  4 RDY FED   2   0   0        0          0       4852         0        0         0         0        0        0        0        0         0        0   11192839   11187987  0   11192839      55
+  5 RDY FED   2   0   0        0          0   11192725         0        0         0         0        0        0        0        0         0        0   11192839        113  0   11192839      54
+  6 RDY FED   2   0   0        0          0   11192778         0        0         0         0        0        0        0        0         0        0   11192839         60  0   11192839      54
+  7 RDY FED   2   0   0        0          0   11192784         0        0         0         0        0        0        0        0         0        0   11192839         54  0   11192839      32
+  8 RDY FED   2   0   0        0          0   11192771         0        0         0         0        0        0        0        0         0        0   11192839         67  0   11192839      54
+  9 RDY FED   4   0   0        0          0   11191274         0        0         0         0        0        0        0        0      4502        0   11197341       6066  0   11197341      67
+ 10 RDY FED   4   0   0        0          0   11191188         0        0         0         0        0        0        0        0      4526        0   11197365       6176  0   11197365      86
+ 11 RDY FED   4   0   0        0          0   11191207         0        0         0         0        0        0        0        0      4491        0   11197330       6122  0   11197330      67
+ 12 RDY FED   4   0   0        0          0   11191203         0        0         0         0        0        0        0        0      4525        0   11197364       6160  0   11197364      65
+ 13 RDY FED   4   0   0        0          0   11191199         0        0         0         0        0        0        0        0      4499        0   11197338       6138  0   11197338      65
+ 14 RDY FED   4   0   0        0          0   11191152         0        0         0         0        0        0        0        0      4457        0   11197296       6143  0   11197296      67
+ 15 RDY FED   4   0   0        0          0   11191136         0        0         0         0        0        0        0        0      4840        0   11197679       6542  0   11197679      64
+ 16 RDY FED   4   0   0        0          0   11190874         0        0         0         0        0        0        0        0      4622        0   11197461       6586  0   11197461      65
+---------------------------------------------
+Illegal CMDs:17308
+Decoding Failed:1402576
+Corrected(ERR Task):104056
+Corrected(Fault Handler):9933750
+ERR(RD Build):4264  Corrected(RD CMD): 2508852  ERR In Exec(RD CMD):    2492  RD CMD Executed:1952253918  RD CMD RCVD:1952615325
+ERR(WR Build):4361  Corrected(WR CMD): 2510560  ERR In Exec(WR CMD):    2495  WR CMD Executed:1952253721  WR CMD RCVD:1952615325
+ERR(ER Build):4405  Corrected(ER CMD): 2511662  ERR In Exec(ER CMD):    2525  ER CMD Executed:1952253449  ER CMD RCVD:1952615325
+ERR(AD Build):4194  Corrected(AD CMD): 2506732  ERR In Exec(AD CMD):    2552  AD CMD Executed:1952253040  AD CMD RCVD:1952615325
 All RWEA CMDs are processed
+----------------------------------------------------------------------------------------------------------------------------
 ```
 
 #### Key Features Demonstrated
